@@ -1,0 +1,42 @@
+<?php
+ 
+// valida Email
+function es_email_valido($sEmail){
+
+   // primero validamos la longuitud
+   if ((strlen($sEmail) < 6) or (strlen($sEmail) > 100)){ 
+     return 'Error: debe tener entre 6 y 100 caracteres.';
+
+  }else{
+     return (!preg_match("/^[_a-zA-Z0-9-ñÑ]+(\\.[_a-zA-Z0-9-ñÑ]+)*@+([_a-zA-Z0-9-
+]+\\.)*[a-zA-Z0-9-]{2,100}\\.[a-zA-Z]{2,6}$/",$sEmail) 
+      ? 'Error: email incorrecto' : true);
+  }
+}
+ 
+// validara los campos "nombre y comentarios"
+function validar_cadena($sCadena,$sCampo){
+
+   if(empty($sCadena)) return false;
+
+   if (!valida_cadena($sCadena)){
+      return 'Error: solo caracteres alfanumericos, espacios, apóstrofe';
+
+   }else{
+	$min = $sCampo == 'comentarios' ? 5 : 3;
+        $max = $sCampo == 'comentarios' ? 100 : 20;
+
+        if ((strlen($sCadena) < $min) or (strlen($sCadena) > $max)){
+           return "Error: debe tener entre 4 y 20 caracteres";
+
+       }else
+         return true;
+   }
+}
+ 
+// se compara el campo de confirmacion
+function es_valida_cadena($sCadena){
+
+   if(empty($sCadena)) return false;
+   return preg_match("/^[a-z_ÑÁÉÍÓÚÄËÏÖÜñáéíóüäëïöü\'\s]*$/i",$sCadena);
+?>

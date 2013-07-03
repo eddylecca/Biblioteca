@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html"; charset="utf-8">
+   <link href="css/estilo.css" rel="stylesheet" />
+   <title>Sistema de comentarios con XAJAX</title>
+</head>
+<body>
+ <div id='main'>
+<div id="comment_area">
+   <h3>Deja un comentario</h3>
+   <p class='nota'>Tu Email NO será publicado. Los campos marcados con asteriscos (<span class="requerido">*</span>) son obligatoríos.</p>
+   <form action="#" method="post" id="formComment">				
+    <p class='campo'><input tabindex='1' id="txtNombre" name="txtNombre" size="30" type="text"> Nombre <span class="requerido">*</span></p>
+    <p class='campo'><input tabindex='2' id="txtEmail" name="txtEmail" size="30" type="text" value='@'> Email <span class="requerido">*</span></p>
+    <p class='campo'><input tabindex='3' id="txtURL" name="txtURL" size="30" type="text"> Web</p>
+    <p class='campo'>Comentario: <span class="requerido">*</span></p>
+    <p class='campo'><textarea tabindex='4' class='estilotextarea' id="txtComentario" name="txtComentario"></textarea></p><!-- cols="50px" rows="8" -->
+    <p class='submit'><input tabindex='5' name="submit" id="submit" value="Publicar comentario" type="submit"></p>
+   </form>
+  </div>
+  <div id="comment_box">
+   <div class='numero'>1</div>
+   <div class="avatar"><img src='imagenes/avatar1.jpg'></div>
+   <div class='autor'>María dijo ..</div>
+   <div class="contenido">Ahora podemos usar diversas cantidades de espacio en blanco entre los párrafos para indicar cortes importantes en el texto. Definamos tres clases diferentes: stb (por small thematic break, pequeño corte temático), mtb (medium thematic break; corte temático medio) y ltb (large thematic break; gran corte temático). Hemos asignado a este párrafo la clase stb, para que pueda ver el efecto. </div>
+   </div>
+   <div id='clear'></div>
+  </div>
+  <div id="comment_box">
+   <div class='numero'>2</div>
+   <div class="avatar"><img src='imagenes/avatar2.jpg'></div>
+   <div class='autor'>Rei contesto ..</div>
+   <div class="contenido">ya tas loquita chica.. debes tomarte las pastillitas que si no mira como te pones.. :s</div>
+   </div>
+   <div id='clear'></div>
+  </div>
+<div id="comment_box">
+   <div class='numero'>3</div>
+   <div class="avatar"><img src='imagenes/avatar2.jpg'></div>
+   <div class='autor'>Rei contesto ..</div>
+   <div class="contenido">ya tas loquita chica.. debes tomarte las pastillitas que si no mira como te pones.. :s</div>
+   </div>
+   <div id='clear'></div>
+  </div>
+ 
+ </div>
+ <hr/>
+</body>
+</html>

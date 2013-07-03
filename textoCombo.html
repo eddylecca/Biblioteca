@@ -1,0 +1,43 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script type="text/javascript" src="js/jquery-1.5.1.min.js"></script>
+        <script>
+            /* //id
+        $(document).ready(function() {
+            $("#my-select").change(function() {
+                alert($(this).val());
+            });
+        });
+        */
+       
+       /* //Texto*/
+       $(document).ready(function() {
+        $("#my-select").change(function() {
+            alert($('#my-select option:selected').html());
+            /*var texto=$('#my-select option:selected').html();*/
+            //Asigno la variable texto a la caja con id "texto"
+            /*$("#texto").val(texto);*/
+            
+        });
+       });
+       
+        </script>        
+        
+        
+    </head>
+    <body>
+        <select id="my-select">
+            <option value="1">valor 1</option>
+            <option value="2">valor 2</option>
+        </select>
+
+        <p>Texto: <input type="text" name="texto"  id="texto" /></p>
+    </body>
+</html>

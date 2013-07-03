@@ -1,0 +1,146 @@
+<?php
+
+// incluimos la clase
+require_once("xajax/xajax_core/xajax.inc.php");
+ 
+// Incluimos las funciones generales
+require_once("modppal.php");
+
+// Creamos una instancia al objeto XAJAX:
+$xajax = new xajax();
+
+// valida el campo pasado por parametro
+function FormManage($form,$sCampo)
+{
+   // obtenemos el valor del campo
+   $sValorCampo = $form["txt$sCampo"];
+   $sMsjGlobal  = '';//inicializamos
+
+   // iniciamos las validaciones
+
+   // si el campo está vacio
+   if (empty($sValorCampo))
+      $sMsj = 'El campo <b>'.$sCampo.'</b> es obligatorio.';
+   else
+   {
+      if ($sCampo == 'Nombre' || $sCampo == 'Comentarios')
+         $sMsj = NotIsCorrect($sCadena,$sCampo);
+      elseif ($sCampo == 'Email')
+         $sMsj = NotIsEmail($sCadena);
+   }
+ 
+   // asignamos el valor que determinara la imagen y el mensaje a mostrar por campo
+   $sImg = (empty($sMsj) ? 'incorrecto' : 'correcto');
+ 
+   // asignamos el mensaje por campo..
+   $sHTMLMsj  = $sImg=='correcto' 
+                ? "<img border='0' src='imagenes/$sImg.png' /> valor correcto"
+                : "<img border='0' src='imagenes/$sImg.png' /> $sMsj";
+ 
+   // creamos una nueva instancia para generar la respuesta con ajax (xajaxResponse).
+   $objRespuesta = new xajaxResponse();
+    
+   // Actualizamos los div
+   $objRespuesta -> assign("div$sCampo",'innerHTML', $sHTMLMsj);
+
+   // retornamos el objeto
+   return $objRespuesta;
+}
+
+function FormProcess($form)
+{
+   // creamos una nueva instancia para generar la respuesta con ajax
+   $objRespuesta = new xajaxResponse();
+ 
+   // si los campos no estan correctos 
+   if (!validar_cadena($form['txtNombre'],'Nombre') === true or
+       !es_email_valido($form['txtEmail']) === true or
+       !validar_cadena($form['txtComentarios'],'Comentarios') === true){
+
+      $objRespuesta->alert('¡El formulario debe estar perfectamente validado!');
+   }else{
+      
+
+
+//**************************************************************************************
+      $objRespuesta->alert('¡Datos almacenados correctamente!');
+ 
+      // limpiamos los campos -------------------------------------
+      $ArrayCampos = array('Nombre','Email','Comentarios'); 
+      foreach($ArrayCampos as $sValor){
+         $objRespuesta
+            ->clear("txt$sValor",'value')      //limpiando los txt
+            ->clear("div$sValor",'innerHTML'); //limpiando los div  
+      }
+   }
+   return $objRespuesta;
+}
+
+$xajax -> registerFunction('FormManage');  // gestiona las validaciones del formulario
+$xajax -> registerFunction('FormProcess'); // procesa los datos del formulario
+
+//Le indicamos al objeto xajax que procese la peticion / el pedido
+$xajax -> processRequest();
+
+exit('ahm')
+?>
+
+<html>
+<head>
+  <!--meta http-equiv="Content-Type" content="text/html"; charset="utf-8"-->
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+  <link href="css/estilo.css" rel="stylesheet" />
+  <title>XAJAX-MySQL: mini sistema de comentarios</title>
+  <?php 
+    //se le dice que incluya el JavaScript generado desde XAJAX
+    $xajax->printJavascript('xajax/'); 
+  ?>
+</head>
+<body>
+  <div id='main'>
+
+    <div id="comment_box">
+      <div class='numero'>1</div><div class="avatar_default"></div>
+      <div class='autor'>María dijo ..</div>
+      <div class="contenido">Ahora podemos usar diversas cantidades de espacio en blanco entre los párrafos para indicar cortes importantes en el texto. Definamos tres clases diferentes: stb (por small thematic break, pequeño corte temático), mtb (medium thematic break; corte temático medio) y ltb (large thematic break; gran corte temático). Hemos asignado a este párrafo la clase stb, para que pueda ver el efecto.</div>
+   </div>
+   <div id='clear'></div>
+
+   <div id="comment_area">
+     <h3>Deja un comentario</h3>
+     <p class='nota'>Tu Email NO será publicado. Los campos marcados con asteriscos 
+     (<span class="requerido">*</span>) son obligatoríos.</p>
+     <form action="#" method="post" id="formComment" name="formComment" 
+     onsubmit="xajax_FormProcess(xajax.getFormValues('formComment'))">
+				
+       <p class='campo'>
+         <input tabindex='1' id="txtNombre" name="txtNombre" size="30" type="text" 
+         onkeyup="xajax_FormManage(xajax.getFormValues('formComment'),'Nombre')" /> Nombre
+         <span class="requerido">*</span><div id='divNombre'>
+       </p>
+
+       <p class='campo'>
+         <input tabindex='2' id="txtEmail" name="txtEmail" size="30" type="text" value='@'
+         onkeyup="xajax_FormManage(xajax.getFormValues('formComment'),'Email')" /> Email
+         <span class="requerido">*</span><div id='divEmail'>
+       </p>
+
+       <p class='campo'>
+         <input tabindex='3' id="txtURL" name="txtURL" size="30" type="text" 
+         onkeyup="xajax_FormManage(xajax.getFormValues('formComment'),'Web')" /> Web
+         <div id='divWeb'>
+       </p>
+
+       <p class='campo'>Comentario: <span class="requerido">*</span></p>
+       <p class='campo'>
+          <textarea tabindex='4' class='estilotextarea' id="txtComentario" name="txtComentario"
+          onkeyup="xajax_FormManage(xajax.getFormValues('formComment'),'Comentario')" /></textarea>
+          <div id='divComentarios'>
+       </p>
+
+       <p class='submit'><input tabindex='5' name="submit" id="submit" value="Publicar comentario" type="submit"></p>
+     </form>
+   </div>
+ </div>
+</body>
+</html>

@@ -1,0 +1,10 @@
+/***********25 01 2013***********/
+
+Se ha corregido la parte de edición, el guardado del año de publicación (variable year_pub en el xml)
+
+Actualización de la base de datos BD_ITS: hasta el registro nro 80 de la tabla data
+
+/***********25 01 2013***********/
+
+Para seguir actualizando sin restricciones se debe actualizar el archivo auxiliary.php lineas 104 (autor pri) y 125 (detalle referencia)
+

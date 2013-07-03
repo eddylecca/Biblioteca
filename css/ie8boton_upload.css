@@ -1,0 +1,37 @@
+.caja {
+	background-color: #414141;
+	border:2px solid silver;
+	width:180px;
+	margin:-7px;
+	padding:5px;
+        font-color:blue;
+}
+
+.boton_upload {
+
+
+	width: 146px;
+	height: 30px;
+        border: 1px solid #CCCCCC;        
+        background: url(../img/boton_plomo.png) 0 0 no-repeat;
+        
+        /*
+        position: relative;
+        left: 1095px; top: 500px !important;
+        */
+        
+        padding:18px 100px 0px 50px;
+}
+   
+#mensaje{
+        /*
+        position: absolute !important;
+        left: 1095px !important;  top: 510px !important;
+        
+        
+        position: relative;
+        left: 380px; top: -70px;
+        */
+}    
+
+.contenedor-combo-buscador-1{float:left; width:200px; margin-bottom:5px;}

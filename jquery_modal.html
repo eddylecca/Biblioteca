@@ -1,0 +1,71 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="css/ui-lightness/jquery-ui-1.8.14.custom.css" rel="Stylesheet" type="text/css" />	
+<script type="text/javascript" src="js/jquery-1.5.1.min.js"></script>
+<script type="text/javascript" src="js/jquery-ui-1.8.14.custom.min.js"></script>
+        
+    </head>
+    <body>
+<meta charset="utf-8">
+
+	<script>
+	// increase the default animation speed to exaggerate the effect
+	$.fx.speeds._default = 1000;
+	$(function() {
+		$( "#dialog1,#dialog2" ).dialog({
+			autoOpen: false,
+			show: "fade",
+			hide: "fade",
+                        height: 200,
+                        width: 300
+                        /*modal: true*/
+		});
+
+		$( "#opener1" ).click(function() {
+			$( "#dialog1" ).dialog( "open" );
+			return false;
+		});
+                
+
+
+		$( "#opener2" ).click(function() {
+			$( "#dialog2" ).dialog( "open" );
+			return false;
+		});
+
+	});
+	</script>
+
+
+
+<div class="demo">
+
+<div id="dialog1" title="Basic dialog">
+	<p>Contacte con el autor 1</p>
+        <a href="http://www.google.com.pe" target="_blank" >Ronald Woodman</a>
+</div>
+
+<div id="dialog2" title="Basic dialog">
+	<p>Contacte con el autor 2</p>
+        <a href="http://www.google.com.pe" target="_blank" >Jorge Luis Chau</a>
+</div>
+
+<button id="opener1">Open Dialog</button>
+<button id="opener2">Open Dialog</button>
+
+</div><!-- End demo -->
+
+
+
+<div class="demo-description">
+<p>Dialogs may be animated by specifying an effect for the show and/or hide properties.  You must include the individual effects file for any effects you would like to use.</p>
+</div><!-- End demo-description -->
+    </body>
+</html>

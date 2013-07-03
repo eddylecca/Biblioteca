@@ -1,0 +1,58 @@
+
+
+
+	/*------------------------
+	---------------- CONTENT
+	------------------------*/
+	
+	/* images container - This is the most important container - Don't change important properties */
+	#yourSliderId {
+        height: 165px;
+		width: 960px;
+		list-style: none;
+		margin: 0px;
+		padding:0px;
+	}
+
+		/* each slider item - Nothing to change here */
+		#yourSliderId li {
+            display: none;
+			float: left;
+			margin: 0px 0px 0px -480px;
+			padding:0px;
+			width: 960px;
+			
+		}
+		
+		/* Don't edit this part */
+		#yourSliderId li.current {
+			
+			display: block;
+			z-index: 2 !important;
+			
+		}
+		
+		/* Don't edit this part */
+		#yourSliderId li.next {
+			
+			display: block;
+			z-index: 1 !important;
+			
+		}
+		
+		/* Don't edit this part - prevents inline lists from being hidden */
+		#yourSliderId li ul li {
+			
+			display: block !important;
+			position: relative !important;
+			
+		}
+/*
+		.banner-texto{float:left; width:481px; padding:15px 0px 15px 0px; text-align:left;}
+
+		.banner-solo-texto{padding:15px 0px 15px 0px; text-align:left;}
+
+		.banner-imagen-derecha{float:left; padding:0px 0px 0px 20px;}
+
+		.banner-imagen-izquierda{float:left; padding:0px 20px 0px 0px;}
+*/

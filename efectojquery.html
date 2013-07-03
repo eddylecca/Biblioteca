@@ -1,0 +1,95 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+<script src="http://code.jquery.com/jquery-1.4.2.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+
+<script>
+function menu(id)
+{
+
+$(document).ready(function(){
+$("#titulo_menu"+id).click(function(){
+$("#body_menu"+id).hide("clip", { direction: "horizontal" }, 1000);
+});
+
+return false;
+});
+
+}
+</script>
+
+<style>
+
+#container
+{
+position:relative;
+width:200px;
+height:auto;
+}
+
+#titulo_menu
+{
+width:200px;
+height:40px;
+position:relative;
+margin:auto;
+border:1px solid #000;
+background-color:#ff0000;
+cursor:hand;
+cursor:pointer;
+}
+
+#body_menu
+{
+width:200px;
+height:350px;
+position:relative;
+margin:auto;
+border:1px solid #000;
+background-color:#ff4534;
+}
+
+#titulo_menu2
+{
+width:200px;
+height:40px;
+position:relative;
+margin:auto;
+border:1px solid #000;
+background-color:#ff0000;
+}
+
+#body_menu2
+{
+width:200px;
+height:350px;
+position:relative;
+margin:auto;
+border:1px solid #000;
+background-color:#ff4534;
+}
+</style>        
+    </head>
+    <body>
+
+<div id="container">
+
+<div Onclick="javascript:menu('')" id="titulo_menu">sssssssssss</div>
+<br><br>
+<div id="body_menu">sssssssssss</div>
+
+<br><br>
+
+<div Onclick="javascript:menu('2')" id="titulo_menu2">sssssssssss</div>
+<br><br>
+<div id="body_menu2">sssssssssss</div>
+
+</div>
+        
+    </body>
+</html>

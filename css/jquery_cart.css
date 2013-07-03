@@ -1,0 +1,206 @@
+#wrap {
+    bottom: 0;
+    min-height: 600px;
+    position: relative;
+    top: 0;
+    width: 100%;
+}
+#wrap ul {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    width: 700px;
+    /*width: 100%;*/
+}
+#wrap .detail-view {
+    border: 1px solid #E2E2E2;
+    clear: both;
+    display: none;
+    height: 380px;
+    left: 0;
+    margin-bottom: 15px;
+    margin-left: 13px;
+    overflow: hidden;
+    width: 96%;
+}
+#wrap .detail-view .close {
+    margin: 5px;
+    text-align: right;
+    width: 98%;
+}
+#wrap .close a {
+    color: #525049;
+    height: 10px;
+    padding: 6px;
+    width: 20px;
+}
+#wrap .detail-view .detail_images {
+    float: left;
+}
+#wrap .detail-view .detail_info {
+    color: #525049;
+    float: right;
+    font-family: "Helvetica Neue",Helvetica,"Nimbus Sans L",Arial,sans-serif;
+    font-size: 12px;
+    margin-right: 20px;
+    margin-top: 30px;
+    text-align: justify;
+    width: 250px;
+}
+#wrap .detail-view .detail_info label {
+    font-size: 12px;
+    letter-spacing: 1px;
+    line-height: 60px;
+    text-transform: uppercase;
+}
+#wrap .detail-view .detail_info p {
+    height: 110px;
+}
+a#show_cart {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #E8E7DC;
+    color: #525049;
+    cursor: pointer;
+    display: inline-block;
+    font: 9px/21px "Helvetica Neue",Helvetica,"Nimbus Sans L",Arial,sans-serif;
+    letter-spacing: 2px;
+    padding: 8px;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+.add-to-cart-button {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #E8E7DC;
+    color: #525049;
+    cursor: pointer;
+    display: inline-block;
+    font: 9px/21px "Helvetica Neue",Helvetica,"Nimbus Sans L",Arial,sans-serif;
+    letter-spacing: 2px;
+    margin-top: 15px;
+    padding-top: 10px;
+    text-transform: uppercase;
+}
+.add-to-cart-button:hover {
+    background: none repeat scroll 0 0 #F8F8F3;
+}
+.shopp {
+    background: none repeat scroll 0 0 #F8F8F3;
+}
+#wrap ul li {
+    border: 1px solid #FFFFFF;
+    float: left;
+    font-family: "LubalGraphBdBTBold",Tahoma;
+    /*font-size: 2em;*/
+    height: 196px;
+    list-style-type: none;
+    margin-bottom: 25px;
+    margin-left: 10px;
+    /*overflow: hidden;*/
+    padding: 15px 0 0;
+    width: 160px;
+}
+.footer {
+    background: none repeat scroll 0 0 #E2E2E2;
+    height: 400px;
+}
+#wrap ul li:hover {
+    border: 1px solid #F3F4EE;
+}
+#wrap ul li div {
+    background: none repeat scroll 0 0 #F3F4EE;
+    bottom: 0;
+    color: #525049;
+    font: 12px/21px "Helvetica Neue",Helvetica,"Nimbus Sans L",Arial,sans-serif;
+    /*height: 31px;*/
+    margin-top: 5px;
+    margin-bottom: 10px;
+    opacity: 0.8;
+    padding-bottom: 4px;
+    padding-top: 6px;
+    position: relative;
+    text-align: center;
+    text-shadow: 0 2px 3px #555555;
+    width: 160px;
+}
+img#cart {
+    bottom: 0;
+    margin-left: 30px;
+    position: fixed;
+}
+#wrap ul li {
+    cursor: pointer;
+}
+#cart_wrapper {
+    background: none repeat scroll 0 0 #E2E2E2;
+    border: 1px solid #E8E7DC;
+    display: none;
+    font: 12px/21px "Helvetica Neue",Helvetica,"Nimbus Sans L",Arial,sans-serif;
+    min-height: 120px;
+    padding-top: 15px;
+    position: relative;
+    width: 100%;
+}
+#Submit {
+    float: left;
+    height: 78px;
+}
+.closeCart {
+    cursor: pointer;
+}
+/*button {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #CCCCCC;
+    color: #525049;
+    cursor: pointer;
+    display: inline-block;
+    font: 9px/21px "Helvetica Neue",Helvetica,"Nimbus Sans L",Arial,sans-serif;
+    letter-spacing: 2px;
+    margin-left: 20px;
+    margin-top: 1px;
+    padding: 8px;
+    text-transform: uppercase;
+    width: 140px;
+}
+button:hover {
+    background: none repeat scroll 0 0 #F8F8F3;
+}*/
+.cart-total {
+    background: none repeat scroll 0 0 #F8F8F3;
+}
+.shopp, .cart-total {
+    border: 1px solid #E8E7DC;
+    border-radius: 8px 8px 8px 8px;
+    float: left;
+    font-family: "LubalGraphBdBTBold",Tahoma;
+    font-size: 12px;
+    margin-top: 3px;
+    padding: 8px;
+    width: 320px;
+}
+#cart_form {
+    padding-left: 15px;
+    width: 570px;
+}
+div.shopp span {
+    float: left;
+}
+div.shopp div.label {
+    float: left;
+    width: 130px;
+}
+div.shopp div.shopp-price {
+    float: left;
+    width: 70px;
+}
+.quantity {
+    float: left;
+    margin-top: -3px;
+    width: 20px;
+}
+img.remove {
+    cursor: pointer;
+    float: right;
+}
+.cart-total b {
+    width: 130px;
+}

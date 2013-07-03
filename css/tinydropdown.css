@@ -1,0 +1,49 @@
+
+.nav {background-image:url(../img/004.gif);background-repeat:repeat-x;padding:0px 0px 0px 0px;height:36px; background:#414141; color:white; text-shadow:1px 1px #888; z-index:1000}
+.menu a {float:left; color:white; text-decoration:none; width:120px; height:28px; padding-top:8px}
+.menu span {float:left; color:white; text-decoration:none; width:120px; height:28px; padding-top:8px}
+.menu a:hover {color:white}
+.menu {list-style:none; font:16px Arial,Verdana; text-align:center; width:911px; margin:0 auto}
+.menu li {position:relative; float:left; width:120px; z-index:1000}
+.menu li a:hover{background:black; color:white}
+.menu ul {display:none; position:absolute; font:normal 13px Arial,Verdana; top:36px; left:0; background:#414141; display:none; list-style:none}
+
+/*Resaltar el boton que no contiene enlace*/
+.menu ul li {float:none; border-top:1px solid #ccc; width:120px}
+
+.menu ul li a, li.menuhover li a, li.menuhover li.menuhover li a {float:none; display:block; background:none; height:22px; padding-top:5px}
+.menu ul li a:hover, li.menuhover li a:hover, li.menuhover li.menuhover li a:hover {background:black; color:white}
+.menu ul li span, li.menuhover li span, li.menuhover li.menuhover li span {float:none; display:block; background:none; height:22px; padding-top:5px}
+.menu ul ul {left:120px; top:0}
+.menu li.submenu {font-weight:bold}
+.menu li.noborder {border-top:none}
+li.menuhover a, li.menuhover li.menuhover a {color:white; background:black}
+li.menuhover span, li.menuhover li.menuhover span {color:white; background:black}
+#info {width:180px; background:#eee}
+#info li {width:160px; border-top:none; padding:8px 10px; color:#666; text-shadow:1px 1px #fff; text-align:left}
+/*
+.nav {width: 951px;background-image:url(../img/004.gif);background-repeat:repeat-x;padding:0px 0px 0px 0px;height:30px;font-weight:bold;color:#FFF; float:left; z-index:3;}
+.menu a {float:left; color:#eee; text-decoration:none; width:120px; height:28px; padding-top:8px}
+.menu span {float:left; color:#eee; text-decoration:none; width:120px; height:28px; padding-top:8px}
+.menu a:hover {background:black; color:white}
+.menu {z-index:100;
+margin: 0;
+padding: 0;
+list-style-type: none;
+}
+.menu li {position:relative; float:left; width:120px; z-index:1000}
+.menu ul {display:none; position:absolute; font:normal 13px Arial,Verdana; top:36px; left:0; background:#414141; display:none; list-style:none}
+.menu ul li {float:none; border-top:1px solid #ccc; width:120px}
+.menu ul li a, li.menuhover li a, li.menuhover li.menuhover li a {float:none; display:block; background:black; color: white; height:22px; padding-top:5px}
+.menu ul li a:hover, li.menuhover li a:hover, li.menuhover li.menuhover li a:hover {background: black; color: white; }
+.menu ul li span, li.menuhover li span, li.menuhover li.menuhover li span {float:none; display:block; background:black; color: white; height:22px; padding-top:5px}
+.menu ul ul {left:120px; top:0}
+.menu li.submenu {font-weight:bold}
+.menu li.noborder {border-top:none}
+li.menuhover a, li.menuhover li.menuhover a {color:white; background:black}
+li.menuhover span, li.menuhover li.menuhover span {color:white; background:black}
+#info {width:180px; background:#eee}
+#info li {width:160px; border-top:none; padding:8px 10px; color:#666; text-shadow:1px 1px #fff; text-align:left}
+*/
+/*Evita que cause conflicto con el archivo css/blueprint/screen.css*/
+.menu ul, ol {margin:0;padding-left:0;}

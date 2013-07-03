@@ -1,0 +1,219 @@
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+
+  <form method="post" action="results.asp" name="frmSearch">
+        <fieldset> <legend>Buscador de textos</legend>
+        <table border="0" cellspacing="0" cellpadding="0" width="100%">
+          <tbody><tr>
+            <td valign="top">
+              <table width="100%" border="0" cellspacing="0" cellpadding="0" align="left">
+                <tbody><tr>
+                  <td>
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                      <tbody><tr>
+                        <td width="1%"><img src="../gifs/trans.gif" alt="" width="10" height="1"></td>
+                        <td width="1%"><img src="../gifs/trans.gif" alt="" width="275" height="1"></td>
+                        <td width="1%"><img src="../gifs/trans.gif" alt="" width="5" height="10"></td>
+                        <td width="1%"><img src="../gifs/trans.gif" alt="" width="100" height="1"></td>
+                        <td width="1%"><img src="../gifs/trans.gif" alt="" width="5" height="1"></td>
+                        <td width="1%"><img src="../gifs/trans.gif" alt="" width="150" height="1"></td>
+                        <td><img src="../gifs/trans.gif" alt="" width="1" height="1"></td>
+                      </tr>
+                      <tr>
+                        <td class="cuerpotexto" colspan="2"> Título</td>
+                        <td><img src="../gifs/trans.gif" alt="" width="1" height="1"></td>
+                        <td class="cuerpotexto"> Autor </td>
+                        <td><img src="../gifs/trans.gif" alt="" width="1" height="1"></td>
+                        <td class="cuerpotexto" align="right">Género o materia
+                        </td>
+                        <td class="cuerpotexto" align="right"><img src="../gifs/trans.gif" alt="" width="1" height="1"></td>
+                      </tr>
+                      <tr>
+                        <td colspan="2">
+                          <input type="text" name="txtTitulo" size="35" maxlength="40" value="peru">
+                        </td>
+                        <td><img src="../gifs/trans.gif" alt="" width="1" height="1"></td>
+                        <td>
+                          <input type="text" name="txtAutor" size="25" maxlength="40" value="">
+                        </td>
+                        <td><img src="../gifs/trans.gif" alt="" width="1" height="1"></td>
+                        <td align="right">
+                          <select name="txtTema" class="cuerpotexto">
+                            
+         <option value="">Cualquier materia</option>
+  
+         <option value="Administración pública">Administración pública</option>
+  
+         <option value="Agricultura">Agricultura</option>
+  
+         <option value="Antropología">Antropología</option>
+  
+         <option value="Arquitectura y urbanismo">Arquitectura y urbanismo</option>
+  
+         <option value="Arte">Arte</option>
+  
+         <option value="Astronomía">Astronomía</option>
+  
+         <option value="Biblioteconomía">Biblioteconomía</option>
+  
+         <option value="Biografías">Biografías</option>
+  
+         <option value="Biología">Biología</option>
+  
+         <option value="Ciencia y tecnología">Ciencia y tecnología</option>
+  
+         <option value="Cine">Cine</option>
+  
+         <option value="Derecho">Derecho</option>
+  
+         <option value="Diseño">Diseño</option>
+  
+         <option value="Economía">Economía</option>
+  
+         <option value="Educación">Educación</option>
+  
+         <option value="Estudios culturales">Estudios culturales</option>
+  
+         <option value="Filología">Filología</option>
+  
+         <option value="Filosofía">Filosofía</option>
+  
+         <option value="Física">Física</option>
+  
+         <option value="Geografía">Geografía</option>
+  
+         <option value="Geología">Geología</option>
+  
+         <option value="Historia">Historia</option>
+  
+         <option value="Ingeniería">Ingeniería</option>
+  
+         <option value="Matemáticas">Matemáticas</option>
+  
+         <option value="Medicina y salud">Medicina y salud</option>
+  
+         <option value="Medio ambiente">Medio ambiente</option>
+  
+         <option value="Música">Música</option>
+  
+         <option value="Narrativa">Narrativa</option>
+  
+         <option value="Otros">Otros</option>
+  
+         <option value="Pensamiento político">Pensamiento político</option>
+  
+         <option value="Poesía">Poesía</option>
+  
+         <option value="Psicología">Psicología</option>
+  
+         <option value="Química">Química</option>
+  
+         <option value="Referencia y consulta">Referencia y consulta</option>
+  
+         <option value="Religión">Religión</option>
+  
+         <option value="Teatro">Teatro</option>
+  
+         <option value="Veterinaria">Veterinaria</option>
+  
+                          </select>
+                        </td>
+                        <td align="right"><img src="../gifs/trans.gif" alt="" width="1" height="1"></td>
+                      </tr>
+                      <tr>
+                        <td colspan="7"><img src="../gifs/trans.gif" alt="" width="1" height="1"></td>
+                      </tr>
+                      <tr>
+                        <td class="cuerpotexto" colspan="2">URL</td>
+                        <td><img src="../gifs/trans.gif" alt="" width="1" height="1"></td>
+                        <td class="cuerpotexto">&nbsp;Idioma</td>
+                        <td><img src="../gifs/trans.gif" alt="" width="1" height="1"></td>
+                        <td class="cuerpotexto" align="right">Mostrar resultados</td>
+                        <td class="cuerpotexto" align="right"><img src="../gifs/trans.gif" alt="" width="1" height="1"></td>
+                      </tr>
+                      <tr>
+                        <td class="cuerpotexto"> http:// </td>
+                        <td class="cuerpotexto">
+                          <input type="text" name="txtURL" size="34" maxlength="150" value="">
+                        </td>
+                        <td><img src="../gifs/trans.gif" alt="" width="1" height="1"></td>
+                        <td>
+                          <select name="lstIdioma" onchange="activabusqueda(true)" class="cuerpotexto">
+                            ----<option value="0">Cualquier idioma</option><option value="Castellano">Castellano</option><option value="Valenciano/Catalán">Valenciano/Catalán</option><option value="Inglés">Inglés</option><option value="Alemán">Alemán</option><option value="Francés">Francés</option><option value="Italiano">Italiano</option><option value="Portugués">Portugués</option><option value="Chino">Chino</option><option value="Danés">Danés</option><option value="Japonés">Japonés</option><option value="Latín">Latín</option><option value="Sueco">Sueco</option><option value="Gallego">Gallego</option><option value="Holandés">Holandés</option><option value="Búlgaro">Búlgaro</option><option value="Varios idiomas">Varios idiomas</option><option value="Griego">Griego</option><option value="Galés">Galés</option>
+                          </select>
+                        </td>
+                        <td><img src="../gifs/trans.gif" alt="" width="1" height="1"></td>
+                        <td align="right">
+                          <select name="lstItemsCount" onchange="activabusqueda(true)" class="cuerpotexto">
+                            <option value="10" selected="">de
+                            10 en 10 &nbsp; &nbsp;</option>
+                            <option value="25">de
+                            25 en 25 &nbsp; &nbsp;</option>
+                            <option value="50">de
+                            50 en 50 &nbsp; &nbsp;</option>
+                          </select>
+                        </td>
+                        <td align="right"><img src="../gifs/trans.gif" alt="" width="1" height="1"></td>
+                      </tr>
+                      <tr>
+                        <td colspan="5" class="cuerpotexto"><img src="../gifs/trans.gif" alt="" width="1" height="1"></td>
+                        <td align="right"><a href="javascript:document.frmSearch.submit();"><input type="image" src="../gifs/buscar.gif" alt="buscar"></a></td>
+                        <td align="right"><img src="../gifs/trans.gif" alt="" width="1" height="1"></td>
+                      </tr>
+                    </tbody></table>
+                  </td>
+                </tr>
+                <tr>
+                  <td><img src="../gifs/trans.gif" alt="" width="1" height="4"></td>
+                </tr>
+                <tr>
+                  <td><img src="../gifs/trans.gif" alt="" width="1" height="4"></td>
+                </tr>
+              </tbody></table>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                <tbody><tr>
+                  <td nowrap="" width="1%">
+                    <input type="image" src="../gifs/ordenar.gif" alt="ordenar">
+                  </td>
+                  <td nowrap="" class="cuerpotexto" width="1%"><img src="../gifs/trans.gif" alt="" width="1" height="1">:</td>
+                  <td valign="middle" class="cuerpotexto" width="1%"><label for="Título">&nbsp;&nbsp;Título</label></td>
+                  <td width="1%" align="left">
+                    <input type="radio" name="radOrder" value="TIT">
+                  </td>
+                  <td valign="middle" class="cuerpotexto" width="1%"><label for="Autor">&nbsp;&nbsp;&nbsp;&nbsp;Autor</label>
+                  </td>
+                  <td width="1%">
+                    <input type="radio" name="radOrder" value="AUT" checked="">
+                  </td>
+                  <td valign="middle" class="cuerpotexto" width="1%"><label for="Temática">&nbsp;&nbsp;&nbsp;&nbsp;Temática
+                    </label></td>
+                  <td width="1%">
+                    <input type="radio" name="radOrder" value="TEM">
+                  </td>
+                  <td valign="middle" class="cuerpotexto" width="1%"><label for="Idioma">&nbsp;&nbsp;&nbsp;&nbsp;Idioma
+                  </label></td>
+                  <td width="1%">
+                    <input type="radio" name="radOrder" value="LAN">
+                  </td>
+                  <td nowrap="" valign="middle" class="cuerpotexto" width="1%"><label for="visitado">&nbsp;&nbsp;&nbsp;&nbsp;El
+                    más visitado</label> </td>
+                  <td width="50%">
+                    <input type="radio" name="radOrder" value="VIS">
+                  </td>
+                </tr>
+              </tbody></table>
+            </td>
+          </tr>
+        </tbody></table>
+        </fieldset>
+      </form>
+
+</body>
+</html>

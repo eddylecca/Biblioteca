@@ -1,0 +1,332 @@
+#fmasters-widget {
+	z-index: 999;
+	overflow: hidden;
+	width: 325px;
+	height: 106px;
+	background: url(img/widget_minimized.png);
+	font: 12px/1.136 verdana,sans-serif;
+}
+
+#fmasters-widget .fmasters-widget-preloader {
+	position: absolute;
+	top: 0;
+	right: 100%;
+}
+
+#fmasters-widget .fmasters-shine {
+	background:url(img/shine.png);
+	position:absolute;
+	width:300px;
+	height:78px;
+	background-position:-99px 0;
+	left:11px;
+	top:15px;
+	background-repeat: no-repeat;
+	cursor: pointer;
+}
+
+#fmasters-widget .fmasters-closebutton,
+#fmasters-dialog .fmasters-closebutton {
+	background: #eb3030;
+	position: absolute;
+	top: 17px;
+	right: 16px;
+	width: 23px;
+	height: 23px;
+	border-top: 1px solid #f8bbbb;
+	border-bottom: 1px solid #ab2323;
+	border-left: 1px solid #bd5841;
+	-webkit-box-shadow: 0px 0px 4px 0px #000; /* Saf3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+       -moz-box-shadow: 0px 0px 4px 0px #000; /* FF3.5 - 3.6 */
+            box-shadow: 0px 0px 4px 0px #000; /* Opera 10.5, IE9, FF4+, Chrome 6+, iOS 5 */
+}
+
+#fmasters-widget .fmasters-closebuttontext,
+#fmasters-dialog .fmasters-closebuttontext {
+	color: #fff;
+	position: absolute;
+	top: 11px;
+	right: 21px;
+	font-family: verdana, sans-serif;
+	font-size: 24px;
+	padding: 0;
+	text-shadow: none;
+}
+
+#fmasters-widget .fmasters-closetarget,
+#fmasters-dialog .fmasters-closetarget {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 45px;
+	height: 45px;
+	cursor: pointer;
+}
+
+#fmasters-dialogbg {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: #000;
+	z-index: 4999;
+	opacity: 0.6;
+	filter: alpha(opacity=60);
+}
+
+#fmasters-dialog {
+	position: absolute;
+	width: 718px;
+	height: 611px;
+    top: 40px;
+    left: 50%;
+	margin-left: -363px;
+	z-index: 5999;
+	font: 12px/1.136 verdana,sans-serif;
+	-webkit-box-shadow: 0px 0px 40px 0px #000; /* Saf3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+       -moz-box-shadow: 0px 0px 40px 0px #000; /* FF3.5 - 3.6 */
+            box-shadow: 0px 0px 40px 0px #000; /* Opera 10.5, IE9, FF4+, Chrome 6+, iOS 5 */
+}
+
+#fmasters-dialog a.fmasters-button {
+	text-align: center;
+	position: absolute;
+	bottom: 8px;
+	left: 0;
+	right: 0;
+	width: 100%;
+	color: #eb3030;
+	font-size: 21px;
+	cursor: pointer;
+	text-decoration: none;
+	font-family: "Gill Sans MT", "Gill Sans", Calibri, "Trebuchet MS", sans-serif;
+}
+
+#fmasters-dialog button.fmasters-button,
+#fmasters-dialog button.fmasters-button:active {
+	font-weight: normal;
+	font-size: 18px;
+	padding: .45em 20px;
+	text-shadow: none;
+	background: #cd2320;
+	color: #fff;
+	border: 0;
+	border-top: 1px solid #f8bbbb;
+	border-bottom: 2px solid #ab2323;
+	cursor: pointer;
+
+    /* useful if you don't want a bg color from leaking outside the border: */
+    -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;
+    
+	-webkit-box-shadow: 0px 0px 10px rgba(0,0,0,0.3); /* Saf3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+       -moz-box-shadow: 0px 0px 10px rgba(0,0,0,0.3); /* FF3.5 - 3.6 */
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.3); /* Opera 10.5, IE9, FF4+, Chrome 6+, iOS 5 */
+}
+
+#fmasters-dialog button.fmasters-button {
+    position: absolute;
+	top: 22px;
+	right: 30px;
+}
+
+#fmasters-dialog-image {
+	position: absolute;
+	width: 718px;
+	height: 611px;
+	background: url(img/expanded.jpg);
+	-webkit-box-shadow: 0px 10px 10px 0px rgba(0,0,0,0.8); /* Saf3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+       -moz-box-shadow: 0px 10px 10px 0px rgba(0,0,0,0.8); /* FF3.5 - 3.6 */
+            box-shadow: 0px 10px 10px 0px rgba(0,0,0,0.8); /* Opera 10.5, IE9, FF4+, Chrome 6+, iOS 5 */
+}
+
+#fmasters-dialog-bottom {
+	position: absolute;
+	width: 100%;
+	top: 510px;
+    z-index: 6999;
+}
+
+#fmasters-dialog-bottom form p {
+	font-family: "Gill Sans MT", "Gill Sans", Calibri, "Trebuchet MS", sans-serif;
+	font-size: 24px;
+	text-shadow: none;
+	margin-left: 35px;
+	float: left;
+	color: #191816;
+	margin-bottom: 0;
+}
+
+#fmasters-suggest {
+	clear: both;
+	margin: 0;
+	padding: 5px 20px;
+}
+
+#fmasters-dialog-bottom input {
+	font-size: 16px;
+	padding: 10px 15px;
+	width: 320px;
+	margin-top: 25px;
+	margin-left: 190px;
+	border: 1px solid #747474;
+	-webkit-box-shadow: inset 0px 0px 10px rgba(0,0,0,0.2); /* Saf3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+       -moz-box-shadow: inset 0px 0px 10px rgba(0,0,0,0.2); /* FF3.5 - 3.6 */
+            box-shadow: inset 0px 0px 10px rgba(0,0,0,0.2); /* Opera 10.5, IE9, FF4+, Chrome 6+, iOS 5 */
+}
+
+#fmasters-dialog-margin {
+	position: absolute;
+	height: 80px;
+	width: 100%;
+	top: 906px;
+}
+
+#fmasters-dialog-form {
+	background: transparent;
+	margin: 0;
+	padding: 0;
+	border: none;
+}
+
+/* < 500px */
+@media all and (max-width: 500px) {
+	#fmasters-widget, 
+	#fmasters-widget .fmasters-widgetbg {
+		width: 320px;
+		height: 50px;
+	}
+	
+	#fmasters-widget {
+		background: url(img/widget_mobile.jpg);
+	}
+	
+	#fmasters-widget .fmasters-shine {
+		left: 0;
+		top: 0;
+		width: 320px;
+	}
+	
+	#fmasters-widget .fmasters-closebutton,
+	#fmasters-dialog .fmasters-closebutton {
+		top: 14px;
+		right: 12px;
+	}
+	
+	#fmasters-widget .fmasters-closebuttontext,
+	#fmasters-dialog .fmasters-closebuttontext {
+		top: 8px;
+		right: 17px;
+	}
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2) {
+	#fmasters-widget {
+		background: url(img/widget_minimized_2x.png);
+		background-size: 325px 106px;
+	}
+	
+	#fmasters-dialog-image {
+		background: url(img/expanded_2x.jpg);
+		background-size: 726px 816px;
+	}
+}
+
+@media all and (min-width: 676px) {
+	#fmasters-suggest {
+		margin-left: 250px;
+	}
+}
+
+@media all and (max-width: 675px) {
+	#fmasters-dialog {
+		position: absolute;
+	    top: 40px;
+	    left: 50%;
+		margin-left: -161px;
+		width: 322px;
+		height: 740px;
+		-webkit-box-shadow: 0px 0px 40px 0px #000; /* Saf3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+	       -moz-box-shadow: 0px 0px 40px 0px #000; /* FF3.5 - 3.6 */
+	            box-shadow: 0px 0px 40px 0px #000; /* Opera 10.5, IE9, FF4+, Chrome 6+, iOS 5 */
+	}
+	
+	#fmasters-dialog-image {
+		background: url(img/expanded_mobile.jpg);
+		width: 322px;
+		height: 740px;
+	}
+
+	#fmasters-dialog-bottom {
+		top: 668px;
+	}
+	
+	#fmasters-dialog .fmasters-closebutton,
+	#fmasters-dialog .fmasters-closebutton {
+		top: 5px;
+		right: 12px;
+	}
+	
+	#fmasters-dialog .fmasters-closebuttontext,
+	#fmasters-dialog .fmasters-closebuttontext {
+		top: 0px;
+		right: 17px;
+	}
+	
+	#fmasters-dialog a.fmasters-button {
+		bottom: 5px;
+		font-size: 16px;
+	}
+	
+	#fmasters-dialog-bottom form p {
+		float: none;
+		text-align: center;
+		font-size: 18px;
+		color: #191816;
+	}
+
+	#fmasters-dialog-bottom input {
+		position: static;
+		float: left;
+		width: auto;
+		width: 170px;
+		margin-right: 10px;
+		font-size: 14px;
+		margin-top: 5px;
+		margin-left: 6px;
+		padding: 8px 15px;
+	}
+	
+	#fmasters-dialog button.fmasters-button,
+	#fmasters-dialog button.fmasters-button:active {
+		position: static;
+		top: auto;
+		left: auto;
+		float: left;
+		width: auto;
+		height: auto;
+		margin-top: 5px;
+		background: #ce2d3c;
+		line-height: 30px;
+		padding: 2px 7px;
+		border: 1px solid black;
+		font-weight: normal;
+		font-size: 18px;
+		color: #fff;
+		border: 0;
+	}
+}
+
+@media only screen and (max-width: 500px) and (-webkit-min-device-pixel-ratio: 2) {
+	#fmasters-widget {
+		background: url(img/widget_mobile_2x.jpg);
+		background-size: 320px 50px;
+	}
+}
+
+@media only screen and (max-width: 675px) and (-webkit-min-device-pixel-ratio: 2) {
+	#fmasters-dialog-image {
+		background: url(img/expanded_mobile_2x.jpg);
+		background-size: 322px 740px;
+	}
+}

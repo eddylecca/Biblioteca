@@ -1,0 +1,44 @@
+.caja {
+	background-color: #414141;
+	border:2px solid silver;
+	width:180px;
+	margin:-7px;
+	padding:5px;
+        font-color:blue;
+}
+
+.boton_upload {
+
+
+	width: 146px;
+	height: 30px;
+        border: 1px solid #CCCCCC;        
+        background: url(../img/boton_plomo.png) 0 0 no-repeat;
+
+        /*
+        position: relative;
+        left: 1095px;  top: 510px;
+        */
+        
+        padding-top:0px !important;
+        padding-right: 0px !important;
+        padding-bottom: 0px !important;
+        padding-left: 0px !important;                
+        
+        position: absolute;
+        left: 1060px; top: 650px !important;
+        
+        
+        /*padding:18px 100px 0px 50px;*/
+}
+   
+#mensaje{
+        
+        position: absolute !important;
+        left: 1055px !important;  top: 650px !important;
+        width: 200px;
+        /*
+        position: relative;
+        left: 380px; top: -70px;
+        */
+}    
