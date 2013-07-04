@@ -84,7 +84,7 @@
                         $html='<table><tr><td style="text-align: center;">';
                         $html.='<img src="img/login.jpg" />';
                         $html.='</td></tr></table>';
-
+                        
                         $respuesta->assign("imghome", "innerHTML", $html);
                         
 			}   
