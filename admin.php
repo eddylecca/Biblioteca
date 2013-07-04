@@ -2082,7 +2082,8 @@
 				</div>'.$formAutor.'
 	                        '.$fieldhidden.'
 	            
-	            <div style="float:right"><input id="botonbuscar" class="ui-state-default ui-corner-all" onclick='.$functionButton.' type="button" value="Buscar"></div>
+	            
+                                <button id="btn-search">Buscar</button>
 				<div style="clear:both;"></div>
 				<div id="msj_query_type"> </div>
 				<br/>
@@ -2163,6 +2164,21 @@
 	    	
 	    	   	
 	    	
+                
+                $( "#btn-search" ).button({
+                    icons: {
+                        primary: "ui-icon-search"
+                    }            
+                })
+                .click(function() {                                    
+                                    xajax_auxSearchShow(20,1,xajax.getFormValues(formSearch)); return false;
+                })  
+                               
+
+
+                
+                
+                
 	    	
 
 		');

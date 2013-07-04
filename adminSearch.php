@@ -561,7 +561,7 @@ else{
 }
                             
 		            $html.= "<td>".$apellido.", ".ucfirst($author_name[$i])."</td>";
-		            $html.= "<td><a href='#formulario'><img alt='Eliminar' style='cursor: pointer; border:0;' onclick='xajax_delSearchAuthorSesionPriShow(\"$idauthor[$i]\"); return false;' src='img/userDEL.png' /></a></td>";
+		            $html.= "<td><a href='#formulario'><img alt='Eliminar' style='cursor: pointer; border:0;' onclick='xajax_delSearchAuthorSesionPriShow(\"$idauthor[$i]\"); return false;' src='img/iconos/userDEL.png' /></a></td>";
 		            $html.= "</tr>"; 
 		    }
 		    
@@ -708,7 +708,7 @@ elseif(isset($_SESSION["tmp"])){
 		    		$html.= "<tr class='impar'>";            
 		            $html.= "<td>".$nro."</td>";
 		            $html.= "<td>".ucfirst($author_surname[$i]).", ".ucfirst($author_first_name[$i])."</td>";
-		            $html.= "<td><a href='#formulario'><img alt='Eliminar' style='cursor: pointer; border:0;' onclick='xajax_delSearchAuthorSesionPriShow(\"$idauthor[$i]\"); return false;' src='img/userDEL.png' /></a></td>";
+		            $html.= "<td><a href='#formulario'><img alt='Eliminar' style='cursor: pointer; border:0;' onclick='xajax_delSearchAuthorSesionPriShow(\"$idauthor[$i]\"); return false;' src='img/iconos/userDEL.png' /></a></td>";
 		            $html.= "</tr>"; 
 		    }
 		    
@@ -1385,7 +1385,7 @@ function verificaArchivo($url)
                     $html="<h5><p>No existe el autor regístrelo como nuevo<br>";
                 }
 
-                $html.='<span style="float:left; font-size: 12px"><a href="#" onclick="xajax_mostrarBusquedaAutores(); return false;" class="txt-rojo" id="boton_regreso"><img style="cursor: pointer; border:0;" width="12px" src="img/flecha-atras.jpg">&nbsp;&nbsp;&nbsp;Retornar a la búsqueda</a></span></div><br>';
+                $html.='<span style="float:left; font-size: 12px"><a href="#" onclick="xajax_mostrarBusquedaAutores(); return false;" class="txt-rojo" id="boton_regreso"><img style="cursor: pointer; border:0;" width="12px" src="img/iconos/flecha-atras.jpg">&nbsp;&nbsp;&nbsp;Retornar a la búsqueda</a></span></div><br>';
                 //$html.="<br>".$result["Query"];
             }                
             elseif($result["Error"]==2){
@@ -1395,7 +1395,7 @@ function verificaArchivo($url)
             elseif($result["Error"]==3){
                 $html=$result["Msg"];
                 $html.="<br>".$result["result_array"][0];
-                $html.='<span style="float:left; font-size: 12px"><a href="#" onclick="xajax_mostrarBusquedaAutores(); return false;" class="txt-rojo" id="boton_regreso"><img style="cursor: pointer; border:0;" width="12px" src="img/flecha-atras.jpg">&nbsp;&nbsp;&nbsp;Retornar a la búsqueda</a></span></div><br>';
+                $html.='<span style="float:left; font-size: 12px"><a href="#" onclick="xajax_mostrarBusquedaAutores(); return false;" class="txt-rojo" id="boton_regreso"><img style="cursor: pointer; border:0;" width="12px" src="img/iconos/flecha-atras.jpg">&nbsp;&nbsp;&nbsp;Retornar a la búsqueda</a></span></div><br>';
             }
 		
 		
@@ -1407,7 +1407,7 @@ function verificaArchivo($url)
 		    $author_surname =$result["author_surname"];
 		
 		    $html="";
-                    $html.='<span style="float:left; font-size: 12px;"><a href="#" onclick="xajax_mostrarBusquedaAutores(); return false;" class="txt-rojo" id="boton_regreso" ><img style="cursor: pointer; border:0;" width="12px" src="img/flecha-atras.jpg">&nbsp;&nbsp;&nbsp;Retornar a la búsqueda</a></span></div><br>';
+                    $html.='<span style="float:left; font-size: 12px;"><a href="#" onclick="xajax_mostrarBusquedaAutores(); return false;" class="txt-rojo" id="boton_regreso" ><img style="cursor: pointer; border:0;" width="12px" src="img/iconos/flecha-atras.jpg">&nbsp;&nbsp;&nbsp;Retornar a la búsqueda</a></span></div><br>';
 		    $html.= '<table class="tablacebra-2" cellspacing="0" cellpadding="0" border="0" width="380px">';
 			$html.= '<tr style="text-align: left;" class="cab">';
 		    $html.= "<td width='40px'>Nro</td>";
@@ -1437,9 +1437,9 @@ else{
 		            //$html.= "<td>".ucfirst($author_surname[$i]).", ".ucfirst(substr($author_first_name[$i],0,2))."</td>";
                             $html.= "<td>".$apellido.", ".ucfirst(substr($author_name[$i],0,2))."</td>";
                             
-		            $html.= "<td><a href=\"#formulario\" style=\"cursor: pointer;\"><img alt=\"autor primario\" style=\"cursor: pointer; border:0;\" onclick=\"xajax_auxAuthorPriShow(5,$currentPage,xajax.getFormValues('autorPRI'),$idauthor[$i],'$apellidoArray'); return false;\" src=\"img/userPRI.png\" /></a></td>";
+		            $html.= "<td><a href=\"#formulario\" style=\"cursor: pointer;\"><img alt=\"autor primario\" style=\"cursor: pointer; border:0;\" onclick=\"xajax_auxAuthorPriShow(5,$currentPage,xajax.getFormValues('autorPRI'),$idauthor[$i],'$apellidoArray'); return false;\" src=\"img/iconos/userPRI.png\" /></a></td>";
 		            $html.= "<td>
-		            <a href=\"#formulario\" style=\"cursor: pointer;\"><img alt=\"autor secundario\" style=\"cursor: pointer;border:0;\" onclick=\"xajax_auxAuthorSecShow(5,$currentPage,xajax.getFormValues('autorPRI'),$idauthor[$i],'$apellidoArray'); return false;\" src=\"img/userSEC.png\" /></a>
+		            <a href=\"#formulario\" style=\"cursor: pointer;\"><img alt=\"autor secundario\" style=\"cursor: pointer;border:0;\" onclick=\"xajax_auxAuthorSecShow(5,$currentPage,xajax.getFormValues('autorPRI'),$idauthor[$i],'$apellidoArray'); return false;\" src=\"img/iconos/userSEC.png\" /></a>
 		            </td>";
 		            $html.= "</tr>";
 		    }
