@@ -311,7 +311,7 @@
 		//$objResponse->Alert("ipp=$pageSize and page=$currentPage");
 		$objResponse->Assign("resultSearch","style.display","block");
 		$objResponse->Assign("resultSearch","innerHTML",$html);
-		$objResponse->alert(print_r($searchFrom,TRUE));
+		//$objResponse->alert(print_r($searchFrom,TRUE));
 	
 		
                 
