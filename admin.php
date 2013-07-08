@@ -403,13 +403,17 @@
 			if($elemento==$div){
 				$objResponse->assign($elemento,"style.display","block");
 				foreach ($titulos as $nombre_titulos){
-					if($nombre_titulos==$idtitle){                                    
-						$objResponse->assign($idtitle,"style.background","#F0F0F0");
-						$objResponse->assign($idtitle,"style.border","solid 1px #C8C8C8");
+					if($nombre_titulos==$idtitle){
+						$objResponse->script("
+							$('body .tab').removeClass('tabactive');
+							$('body #".$idtitle."').addClass('tabactive');
+
+							");
+						
 					}
 					else{
-						$objResponse->assign($nombre_titulos,"style.background","#FFFFFF");
-						$objResponse->assign($nombre_titulos,"style.border","none");
+						// $objResponse->assign($nombre_titulos,"style.background","#FFFFFF");
+						// $objResponse->assign($nombre_titulos,"style.border","none");
 	                                        
 					}
 	                                
@@ -838,7 +842,7 @@
             $_SESSION["idsubcategory"]=0;
 	
 	    $html='<h2 class="txt-azul">'.$tituloGeneral.'</h2>
-	    		<span id="botonRegresar"></span><br>
+	    		<span id="botonRegresar"></span>
 
 				<div style="padding-top:20px;">
 		            <span class="tab" id="titulo1"></span>
@@ -970,7 +974,7 @@
         
         
 		$html="
-       	<div style='clear:both'></div>  
+       	<div class='clear'></div>  
 
        	
        	<input type='hidden' value='tipoPonencia_description' id='tipoPonencia_txt' name='tipoPonencia_txt' class='field'>
@@ -979,7 +983,7 @@
        	<div class='contenedor-caja-buscador-1'>
        	<input type='text' placeholder='Ingrese titulo aqui' onchange='xajax_registerTitulo(this.value); return false;' value='$tit' id='title' name='title' class='caja-buscador-1' /><div id='titulo_error'></div></div>
                 
-		<div style='clear:both'></div>
+		<div class='clear'></div>
 
 		<div class='campo-buscador' id='tit_tipoPonencia'>Formato</div>
        	<div class='contenedor-combo-buscador-1' id='tipoPonencia'>$formatBook</div>
@@ -990,7 +994,7 @@
                 
 		<div class='clear'></div>
 
-		<div class='campo-buscador'>CALL BACK</div>
+		<div class='campo-buscador'>CALL NUMBER</div>
        	<div class='contenedor-caja-buscador-1'>
        	<input type='text'  placeholder='Ingrese CallNumber(codigo de ubicación) aqui' onchange='xajax_registerCallNumber(this.value); return false;' value='$CallNumber' id='CallNumber' name='CallNumber' class='caja-buscador-1' /><div id='call-back-error'></div></div>
                 
@@ -1074,19 +1078,19 @@
             //$objResponse->script("xajax_cargaScriptMostrarAutores()");
 
         list($htmlArchivo,$link)=iniArchivoShow();
-        $objResponse->Assign('titulo7',"innerHTML","<a href=#1 onclick=\"xajax_displaydiv('archivo','titulo7'); return false;\">Archivo</a>");
+        $objResponse->Assign('titulo7',"innerHTML","<a href=#1 onclick=\"xajax_displaydiv('archivo','titulo7'); return false;\">Imagen</a>");
     	$objResponse->Assign("archivo","innerHTML",$htmlArchivo);
     	
                     if($link!=""){
                         $objResponse->Assign("formUpload","style.display","none");
-                        //$objResponse->alert($link);
+                        // $objResponse->alert($link);
                     }
         
 		$objResponse->Assign("formulario","style.display","block");
 		$objResponse->Assign("resultSearch","style.display","none");
 
 		$objResponse->Assign("estadisticas", "style.display", "none");
-                //$objResponse->script("xajax_cargaScriptDates()");
+                $objResponse->script("xajax_cargaScriptDates()");
                 
                 if(isset($_SESSION["editar"])){
 		    if($_SESSION["editar"]==1){

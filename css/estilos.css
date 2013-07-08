@@ -323,8 +323,9 @@ tr.presidencia td{background-color:#FF99FF; padding:6px; font-family: Arial; fon
 
 /* TABS */
 .tab{
-	padding:5px 5px 0px 5px;
+	padding: 10px 10px 5px 10px;
 	font-weight: bold;
+	background: rgb(228, 226, 226);
 }
 
 

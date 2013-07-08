@@ -130,6 +130,12 @@ background-color: #CECECE;
     width: 220px;
 }
 
+body .tabactive {
+background: #F0F0F0;
+border: solid 1px #C8C8C8;
+border-bottom: 1px solid #F0F0F0;
+}
+
 /* CSS Document */
 
 

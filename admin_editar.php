@@ -689,280 +689,280 @@
 		return $objResponse;
 	}
 	
-	function formPonenciasShow($iddata=0,$idSubcategory=0){
-		$objResponse = new xajaxResponse();
+	// function formPonenciasShow($iddata=0,$idSubcategory=0){
+	// 	$objResponse = new xajaxResponse();
 
-		//Borramos las variables de sesion
-		if(isset($_SESSION["tmp"])){
-		    unset($_SESSION["tmp"]);
-		    unset($_SESSION["publicaciones"]);
-		}
+	// 	//Borramos las variables de sesion
+	// 	if(isset($_SESSION["tmp"])){
+	// 	    unset($_SESSION["tmp"]);
+	// 	    unset($_SESSION["publicaciones"]);
+	// 	}
 		
-		if(isset($_SESSION["editar"])){
-		    if($_SESSION["editar"]==1){
-		        $action="UPD";
-		        $tituloBoton="ACTUALIZAR";
-		        $tituloGeneral="Editar ponencia";
-				//$linkRegresar='<span style="float:right;"><a class="negro" href=# onclick="xajax_abstractHide(\'formulario\'); xajax_abstractShow(\'consultas\'); xajax_abstractShow(\'resultSearch\'); xajax_abstractShow(\'paginator\'); return false;"><img style="cursor: pointer; border:0;" width="20px" src="img/flecha-izq.jpg">&nbsp;&nbsp; Retornar a resultados </a></span>';
-				//$objResponse->assign("botonRegresar","innerHTML",$linkRegresar);
-		    }
-		}
-		else{
-			$action="INS";
-                        $tituloBoton="GUARDAR";
-                        $tituloGeneral="Ingresar ponencia";
-		}
+	// 	if(isset($_SESSION["editar"])){
+	// 	    if($_SESSION["editar"]==1){
+	// 	        $action="UPD";
+	// 	        $tituloBoton="ACTUALIZAR";
+	// 	        $tituloGeneral="Editar ponencia";
+	// 			//$linkRegresar='<span style="float:right;"><a class="negro" href=# onclick="xajax_abstractHide(\'formulario\'); xajax_abstractShow(\'consultas\'); xajax_abstractShow(\'resultSearch\'); xajax_abstractShow(\'paginator\'); return false;"><img style="cursor: pointer; border:0;" width="20px" src="img/flecha-izq.jpg">&nbsp;&nbsp; Retornar a resultados </a></span>';
+	// 			//$objResponse->assign("botonRegresar","innerHTML",$linkRegresar);
+	// 	    }
+	// 	}
+	// 	else{
+	// 		$action="INS";
+ //                        $tituloBoton="GUARDAR";
+ //                        $tituloGeneral="Ingresar ponencia";
+	// 	}
                 
-                $objResponse->script("xajax_registerDateIng()");
+ //                $objResponse->script("xajax_registerDateIng()");
                 
-	    $tipoDocumento="ponencias";
+	//     $tipoDocumento="ponencias";
 	
-	    $_SESSION["tipoDocumento"]="ponencias";
-	    $_SESSION["subcategory"]="ponencia";
-            $_SESSION["idtypedocument"]=2;
-            $_SESSION["idsubcategory"]=0;
+	//     $_SESSION["tipoDocumento"]="ponencias";
+	//     $_SESSION["subcategory"]="ponencia";
+ //            $_SESSION["idtypedocument"]=2;
+ //            $_SESSION["idsubcategory"]=0;
 	
-	    $html='<h2 class="txt-azul">'.$tituloGeneral.'</h2>
-	    		<span id="botonRegresar"></span><br>
+	//     $html='<h2 class="txt-azul">'.$tituloGeneral.'</h2>
+	//     		<span id="botonRegresar"></span><br>
 
-				<div style="padding-top:20px;">
-		            <span class="tab" id="titulo1"></span>
-		            <span class="tab" id="titulo2"></span>
-		            <span class="tab" id="titulo3"></span>
-		            <span class="tab" id="titulo4"></span>
-		            <span class="tab" id="titulo5"></span>
-		            <span class="tab" id="titulo6"></span>
-		            <span class="tab" id="titulo7"></span>
-				</div>
+	// 			<div style="padding-top:20px;">
+	// 	            <span class="tab" id="titulo1"></span>
+	// 	            <span class="tab" id="titulo2"></span>
+	// 	            <span class="tab" id="titulo3"></span>
+	// 	            <span class="tab" id="titulo4"></span>
+	// 	            <span class="tab" id="titulo5"></span>
+	// 	            <span class="tab" id="titulo6"></span>
+	// 	            <span class="tab" id="titulo7"></span>
+	// 			</div>
 	
-	            <div id="idcontactform" class="listado-busqueda">
+	//             <div id="idcontactform" class="listado-busqueda">
 	                
-	                <div  id="titulo_tipo_prepor"></div>
+	//                 <div  id="titulo_tipo_prepor"></div>
 	        
-		            <div id="author" style="display:none;">
-				        <div id="search_authorPRI"></div>
-				        <div class="linea-separacion"></div>
-				        <div id="newFormAuthor"></div>
-		            </div>
+	// 	            <div id="author" style="display:none;">
+	// 			        <div id="search_authorPRI"></div>
+	// 			        <div class="linea-separacion"></div>
+	// 			        <div id="newFormAuthor"></div>
+	// 	            </div>
 	
-	                <div id="referencia" style="display:none"></div>
+	//                 <div id="referencia" style="display:none"></div>
 	
-	                <div id="tipoTesis_pais_universidad" style="display:none">
-	                    <div class="txt-azul" id="titTipoTesis"></div>
-	                        <div id="labelTipoTesis"></div>
-	                        <div id="registerTipoTesis"></div>
-	                    <div class="txt-azul" id="titPais"></div>
-	                        <div id="pais"></div>
-	                    <div class="txt-azul" id="titUniversidad"></div>
-	                        <div id="universidad"></div>
-	                </div>
+	//                 <div id="tipoTesis_pais_universidad" style="display:none">
+	//                     <div class="txt-azul" id="titTipoTesis"></div>
+	//                         <div id="labelTipoTesis"></div>
+	//                         <div id="registerTipoTesis"></div>
+	//                     <div class="txt-azul" id="titPais"></div>
+	//                         <div id="pais"></div>
+	//                     <div class="txt-azul" id="titUniversidad"></div>
+	//                         <div id="universidad"></div>
+	//                 </div>
 	
-	                <div id="lugarPais" style="display:none"></div>
+	//                 <div id="lugarPais" style="display:none"></div>
 	
-	                <div id="evento" style="display:none"></div>
+	//                 <div id="evento" style="display:none"></div>
 	
-	            <div id="area_tema" style="display:none">
-	                <div class="txt-azul" id="titArea"></div>
-	                <div id="area_propietaria"></div>
-					<div  class="linea-separacion"></div>	                    
+	//             <div id="area_tema" style="display:none">
+	//                 <div class="txt-azul" id="titArea"></div>
+	//                 <div id="area_propietaria"></div>
+	// 				<div  class="linea-separacion"></div>	                    
 
-					<div class="txt-azul" id="titOtrasAreas"></div>
-	                <div id="otrasAreas"></div>
-					<div  class="linea-separacion"></div>
+	// 				<div class="txt-azul" id="titOtrasAreas"></div>
+	//                 <div id="otrasAreas"></div>
+	// 				<div  class="linea-separacion"></div>
 						                
-	                <div class="txt-azul" id="titOtrosTemas"></div>
-	                <div id="otrosTemas"></div>
-					<div  class="linea-separacion"></div>
+	//                 <div class="txt-azul" id="titOtrosTemas"></div>
+	//                 <div id="otrosTemas"></div>
+	// 				<div  class="linea-separacion"></div>
 						                
-	                <div class="txt-azul" id="titNuevoTema"></div>
-	                <div id="nuevo_tema_publicacion"></div>
-	            </div>
+	//                 <div class="txt-azul" id="titNuevoTema"></div>
+	//                 <div id="nuevo_tema_publicacion"></div>
+	//             </div>
 	
-					<div id="fecha_permisos" style="display:none">
-						<div class="txt-azul" id="titFechasTesis"></div>
-						<div id="fechasTesis"></div>
-						<div  class="linea-separacion"></div>					
-						<div class="txt-azul" id="titPermisosTesis"></div>
-						<div id="permisosTesis"></div>
-					</div>
-				<div id="archivo" style="display:none"></div>
-			</div>
-            <div><p><input class="button" type="button" onclick="xajax_newPonencia('.$iddata.',\''.$action.'\');" value='.$tituloBoton.' /></p></div>
-			';
+	// 				<div id="fecha_permisos" style="display:none">
+	// 					<div class="txt-azul" id="titFechasTesis"></div>
+	// 					<div id="fechasTesis"></div>
+	// 					<div  class="linea-separacion"></div>					
+	// 					<div class="txt-azul" id="titPermisosTesis"></div>
+	// 					<div id="permisosTesis"></div>
+	// 				</div>
+	// 			<div id="archivo" style="display:none"></div>
+	// 		</div>
+ //            <div><p><input class="button" type="button" onclick="xajax_newPonencia('.$iddata.',\''.$action.'\');" value='.$tituloBoton.' /></p></div>
+	// 		';
 
-    	//###############################################################
-		//PRIMERO COLOCAMOS EL FORMULARIO QUE CONTIENE LAS DEMAS CAPAS
-	    $objResponse->assign("formulario","innerHTML","$html");	    
+ //    	//###############################################################
+	// 	//PRIMERO COLOCAMOS EL FORMULARIO QUE CONTIENE LAS DEMAS CAPAS
+	//     $objResponse->assign("formulario","innerHTML","$html");	    
 	    
-		// Muestra los tabs por default
-	    $objResponse->script("xajax_displaydiv('titulo_tipo_prepor','titulo1')");
+	// 	// Muestra los tabs por default
+	//     $objResponse->script("xajax_displaydiv('titulo_tipo_prepor','titulo1')");
 
 	    
 	    
-	    //$objResponse->script("xajax_iniTitulo_Tipo_Presentado('titulo1')");
+	//     //$objResponse->script("xajax_iniTitulo_Tipo_Presentado('titulo1')");
 
-	    $titulo="T&iacute;tulo / Tipo";
-		if(isset($_SESSION["edit"])){
-		    $recuperar=$_SESSION["edit"];
-		}
-		elseif(isset($_SESSION["tmp"])){
-		    $recuperar=$_SESSION["tmp"];
-		 }
+	//     $titulo="T&iacute;tulo / Tipo";
+	// 	if(isset($_SESSION["edit"])){
+	// 	    $recuperar=$_SESSION["edit"];
+	// 	}
+	// 	elseif(isset($_SESSION["tmp"])){
+	// 	    $recuperar=$_SESSION["tmp"];
+	// 	 }
 	
-        if(isset($recuperar["titulo"])){
-            $tit=$recuperar["titulo"];
-        }
-        else{
-            $tit="";
-        }
+ //        if(isset($recuperar["titulo"])){
+ //            $tit=$recuperar["titulo"];
+ //        }
+ //        else{
+ //            $tit="";
+ //        }
 	
-        //Presentado por
-        if(isset($recuperar["prePorNombre"])){
-            $prePorNombre=$recuperar["prePorNombre"];
-        }
-        else{
-            $prePorNombre="";
-        }
+ //        //Presentado por
+ //        if(isset($recuperar["prePorNombre"])){
+ //            $prePorNombre=$recuperar["prePorNombre"];
+ //        }
+ //        else{
+ //            $prePorNombre="";
+ //        }
 
-        if(isset($recuperar["prePorApellido"])){
-            $prePorApellido=$recuperar["prePorApellido"];
-        }
-        else{
-            $prePorApellido="''";
-        }
+ //        if(isset($recuperar["prePorApellido"])){
+ //            $prePorApellido=$recuperar["prePorApellido"];
+ //        }
+ //        else{
+ //            $prePorApellido="''";
+ //        }
         
-        if(isset($recuperar["idtipoPonencia"])){
-            $tipoPonencia_id=$recuperar["idtipoPonencia"];
-        }
-        else{
-            $tipoPonencia_id=0;
-        }
+ //        if(isset($recuperar["idtipoPonencia"])){
+ //            $tipoPonencia_id=$recuperar["idtipoPonencia"];
+ //        }
+ //        else{
+ //            $tipoPonencia_id=0;
+ //        }
 
-        if(isset($recuperar["tipoPonencia_description"])){
-            $tipoPonencia_description=$recuperar["tipoPonencia_description"];
-        }
-        else{
-            $tipoPonencia_description="";
-        }
-		$tipoPonencia="";
-		$tipoPonencia=comboTipoPonencia($tipoPonencia_id);
+ //        if(isset($recuperar["tipoPonencia_description"])){
+ //            $tipoPonencia_description=$recuperar["tipoPonencia_description"];
+ //        }
+ //        else{
+ //            $tipoPonencia_description="";
+ //        }
+	// 	$tipoPonencia="";
+	// 	$tipoPonencia=comboTipoPonencia($tipoPonencia_id);
         
         
-		$html="
-       	<div style='clear:both'></div>  
+	// 	$html="
+ //       	<div style='clear:both'></div>  
 
-       	<div class='campo-buscador' id='tit_tipoPonencia'>Tipo de ponencia</div>
-       	<div class='contenedor-combo-buscador-1' id='tipoPonencia'>$tipoPonencia</div>
-       	<input type='hidden' value='tipoPonencia_description' id='tipoPonencia_txt' name='tipoPonencia_txt' class='field'>
-		<div style='clear:both'></div>
-		<div class='campo-buscador'>Título:&nbsp;</div>
-       	<div class='contenedor-caja-buscador-1'>
-       	<input type='text' onchange='xajax_registerTitulo(this.value); return false;' value='$tit' id='title' name='title' class='caja-buscador-1' /><div id='titulo_error'></div></div>
+ //       	<div class='campo-buscador' id='tit_tipoPonencia'>Tipo de ponencia</div>
+ //       	<div class='contenedor-combo-buscador-1' id='tipoPonencia'>$tipoPonencia</div>
+ //       	<input type='hidden' value='tipoPonencia_description' id='tipoPonencia_txt' name='tipoPonencia_txt' class='field'>
+	// 	<div style='clear:both'></div>
+	// 	<div class='campo-buscador'>Título:&nbsp;</div>
+ //       	<div class='contenedor-caja-buscador-1'>
+ //       	<input type='text' onchange='xajax_registerTitulo(this.value); return false;' value='$tit' id='title' name='title' class='caja-buscador-1' /><div id='titulo_error'></div></div>
                 
-		<div style='clear:both'></div>		
+	// 	<div style='clear:both'></div>		
 		
-       	<div class='txt-azul'>Presentado Por:</div>
-       	<div class='campo-buscador'>Nombre:</div>
-       	<div class='contenedor-caja-buscador-1'>
-       	<input type='text' maxlength='1' onchange='xajax_registerPrePorNombre(this.value); return false;' value='$prePorNombre' id='prePorNombre' name='prePorNombre' class='caja-buscador-3'>
-                (solo el primer caracter)
-       	</div>
-		<div style='clear:both'></div>       	
-       	<div class='campo-buscador'>Apellido:</div>
-       	<div class='contenedor-caja-buscador-1'>       	
-       	<input type='text' onchange='xajax_registerPrePorApellido(this.value); return false;' value='$prePorApellido' id='prePorApellido' name='prePorApellido' class='caja-buscador-1'>
-		</div>
-		<div style='clear:both'></div>		
-       	";
-	    $objResponse->Assign("titulo_tipo_prepor","innerHTML",$html);
-		$objResponse->Assign('titulo1',"innerHTML","<a href=#1 onclick=\"xajax_displaydiv('titulo_tipo_prepor','titulo1'); return false;\">$titulo</a>");
+ //       	<div class='txt-azul'>Presentado Por:</div>
+ //       	<div class='campo-buscador'>Nombre:</div>
+ //       	<div class='contenedor-caja-buscador-1'>
+ //       	<input type='text' maxlength='1' onchange='xajax_registerPrePorNombre(this.value); return false;' value='$prePorNombre' id='prePorNombre' name='prePorNombre' class='caja-buscador-3'>
+ //                (solo el primer caracter)
+ //       	</div>
+	// 	<div style='clear:both'></div>       	
+ //       	<div class='campo-buscador'>Apellido:</div>
+ //       	<div class='contenedor-caja-buscador-1'>       	
+ //       	<input type='text' onchange='xajax_registerPrePorApellido(this.value); return false;' value='$prePorApellido' id='prePorApellido' name='prePorApellido' class='caja-buscador-1'>
+	// 	</div>
+	// 	<div style='clear:both'></div>		
+ //       	";
+	//     $objResponse->Assign("titulo_tipo_prepor","innerHTML",$html);
+	// 	$objResponse->Assign('titulo1',"innerHTML","<a href=#1 onclick=\"xajax_displaydiv('titulo_tipo_prepor','titulo1'); return false;\">$titulo</a>");
 	    
 	    
 	    
-    	//###############################################################
-		//PARA EL AUTOR
-	    //$objResponse->script("xajax_iniAuthorShow('titulo2')");
+ //    	//###############################################################
+	// 	//PARA EL AUTOR
+	//     //$objResponse->script("xajax_iniAuthorShow('titulo2')");
 
-    	$objResponse->assign("titulo2","innerHTML","<a href=# onclick=\"xajax_displaydiv('author','titulo2'); return false;\">Autor</a>");
-    	$objResponse->script("xajax_searchAuthorSesionPriShow()");
-    	$objResponse->script("xajax_searchAuthorSesionSecShow()");
+ //    	$objResponse->assign("titulo2","innerHTML","<a href=# onclick=\"xajax_displaydiv('author','titulo2'); return false;\">Autor</a>");
+ //    	$objResponse->script("xajax_searchAuthorSesionPriShow()");
+ //    	$objResponse->script("xajax_searchAuthorSesionSecShow()");
 
     	
-    	$objResponse->assign("search_authorPRI","innerHTML",iniAuthorPriShow());    		
-        $objResponse->assign("newFormAuthor","innerHTML",formAuthorShow());
+ //    	$objResponse->assign("search_authorPRI","innerHTML",iniAuthorPriShow());    		
+ //        $objResponse->assign("newFormAuthor","innerHTML",formAuthorShow());
 	    
 	    
-    	//###############################################################
-	    // PAIS    		    
-	    $objResponse->script("xajax_iniLugarPais('titulo3')");
+ //    	//###############################################################
+	//     // PAIS    		    
+	//     $objResponse->script("xajax_iniLugarPais('titulo3')");
 	    
-      	//###############################################################
-	    // EVENTO      	
-	    $objResponse->script("xajax_iniEvento('titulo4')");
+ //      	//###############################################################
+	//     // EVENTO      	
+	//     $objResponse->script("xajax_iniEvento('titulo4')");
 	
-    	//###############################################################    		
-	    //$objResponse->script("xajax_iniAreaTheme('titulo5')");
-	    // AREA Y TEMA
-		$link="<a onclick=\"xajax_displaydiv('area_tema','titulo5'); return false;\" href='#'>&Aacute;rea y Tema</a>";
-		$objResponse->assign('titulo5',"innerHTML",$link);
+ //    	//###############################################################    		
+	//     //$objResponse->script("xajax_iniAreaTheme('titulo5')");
+	//     // AREA Y TEMA
+	// 	$link="<a onclick=\"xajax_displaydiv('area_tema','titulo5'); return false;\" href='#'>&Aacute;rea y Tema</a>";
+	// 	$objResponse->assign('titulo5',"innerHTML",$link);
 	
-	        //Temas del area 
-	    $objResponse->script("xajax_iniAreaShow('".$_SESSION["idarea"]."')");
+	//         //Temas del area 
+	//     $objResponse->script("xajax_iniAreaShow('".$_SESSION["idarea"]."')");
 	
-	        //Asociar a otras areas
-	    $objResponse->script("xajax_iniOtrasAreasShow('".$_SESSION["idarea"]."')");
+	//         //Asociar a otras areas
+	//     $objResponse->script("xajax_iniOtrasAreasShow('".$_SESSION["idarea"]."')");
 	
-	        //Asociar a otros temas
-		$range=readSessionArea();
-		$objResponse->script("xajax_otrosTemasShow('$range')");
+	//         //Asociar a otros temas
+	// 	$range=readSessionArea();
+	// 	$objResponse->script("xajax_otrosTemasShow('$range')");
 	
-	        //Asociar a otros temas
-		$objResponse->script("xajax_iniOtrosTemasShow()");
+	//         //Asociar a otros temas
+	// 	$objResponse->script("xajax_iniOtrosTemasShow()");
 	
-	        //Ingresar nuevo tema
-		$objResponse->script("xajax_newThemeShow()");	    
+	//         //Ingresar nuevo tema
+	// 	$objResponse->script("xajax_newThemeShow()");	    
 	    
     	
-		//###############################################################    		
-                $objResponse->script("xajax_iniDatePermission('titulo6')");
+	// 	//###############################################################    		
+ //                $objResponse->script("xajax_iniDatePermission('titulo6')");
 	    
 		
 
-		//###############################################################
-		// ARCHIVO			
-	    //$objResponse->script("xajax_iniArchivoShow('titulo7')");
-	    //$htmlArchivo=iniArchivoShow();            
-            //$objResponse->script("xajax_cargaScriptMostrarAutores()");
+	// 	//###############################################################
+	// 	// ARCHIVO			
+	//     //$objResponse->script("xajax_iniArchivoShow('titulo7')");
+	//     //$htmlArchivo=iniArchivoShow();            
+ //            //$objResponse->script("xajax_cargaScriptMostrarAutores()");
 
-        list($htmlArchivo,$link)=iniArchivoShow();
-        $objResponse->Assign('titulo7',"innerHTML","<a href=#1 onclick=\"xajax_displaydiv('archivo','titulo7'); return false;\">Archivo</a>");
-    	$objResponse->Assign("archivo","innerHTML",$htmlArchivo);
+ //        list($htmlArchivo,$link)=iniArchivoShow();
+ //        $objResponse->Assign('titulo7',"innerHTML","<a href=#1 onclick=\"xajax_displaydiv('archivo','titulo7'); return false;\">Archivo</a>");
+ //    	$objResponse->Assign("archivo","innerHTML",$htmlArchivo);
     	
-                    if($link!=""){
-                        $objResponse->Assign("formUpload","style.display","none");
-                        //$objResponse->alert($link);
-                    }
+ //                    if($link!=""){
+ //                        $objResponse->Assign("formUpload","style.display","none");
+ //                        //$objResponse->alert($link);
+ //                    }
         
-		$objResponse->Assign("formulario","style.display","block");
-		$objResponse->Assign("resultSearch","style.display","none");
+	// 	$objResponse->Assign("formulario","style.display","block");
+	// 	$objResponse->Assign("resultSearch","style.display","none");
 
-		$objResponse->Assign("estadisticas", "style.display", "none");
-                //$objResponse->script("xajax_cargaScriptDates()");
+	// 	$objResponse->Assign("estadisticas", "style.display", "none");
+ //                //$objResponse->script("xajax_cargaScriptDates()");
                 
-                if(isset($_SESSION["editar"])){
-		    if($_SESSION["editar"]==1){
-				$linkRegresar='<span style="float:right;"><a class="negro" href=# id="boton_actualizar"onclick="xajax_abstractHide(\'formulario\'); xajax_abstractShow(\'consultas\'); xajax_abstractShow(\'resultSearch\'); xajax_abstractShow(\'paginator\');"><img style="cursor: pointer; border:0;" width="20px" src="img/flecha-izq.jpg">&nbsp;&nbsp; Retornar a resultados </a></span>';
-				$objResponse->assign("botonRegresar","innerHTML",$linkRegresar);
-		    }
-		}
+ //                if(isset($_SESSION["editar"])){
+	// 	    if($_SESSION["editar"]==1){
+	// 			$linkRegresar='<span style="float:right;"><a class="negro" href=# id="boton_actualizar"onclick="xajax_abstractHide(\'formulario\'); xajax_abstractShow(\'consultas\'); xajax_abstractShow(\'resultSearch\'); xajax_abstractShow(\'paginator\');"><img style="cursor: pointer; border:0;" width="20px" src="img/flecha-izq.jpg">&nbsp;&nbsp; Retornar a resultados </a></span>';
+	// 			$objResponse->assign("botonRegresar","innerHTML",$linkRegresar);
+	// 	    }
+	// 	}
                 
-                $objResponse->script('	$(document).ready(function() {
-		$("input.file").si();});');
+ //                $objResponse->script('	$(document).ready(function() {
+	// 	$("input.file").si();});');
                 
-                //$objResponse->alert(print_r($_SESSION["subcategory"], true));
-                //$objResponse->alert(print_r($_SESSION, true));
-		return $objResponse;
-	}
+ //                //$objResponse->alert(print_r($_SESSION["subcategory"], true));
+ //                //$objResponse->alert(print_r($_SESSION, true));
+	// 	return $objResponse;
+	// }
 	
 	
 	function formInformacionInternaShow($iddata=0,$idSubcategory=0){

@@ -141,7 +141,7 @@ return $objResponse;
                                
 		$html='<form id="formUpload" name="formUpload" method="post" enctype="multipart/form-data" action="librerias/uploadEdit.php" target="iframeUpload">
 		            <div id="tituloUpload" name="tituloUpload" style="display:block" class="txt-azul">Carga de Archivo </div>
-                            <label id="mensaje" class="txt-rojo">*Luego de elegir el archivo, esperar que se muestre el mensaje.</label>
+                            <label id="mensaje" class="txt-verde">*Luego de elegir el archivo, esperar que se muestre el mensaje.</label>
                             <label id="fileR" for="demo-photoupload" style="display:block">
                                         <input id="fileUpload" name="fileUpload" type="file" class="file" onchange=" javascript: submit(); " />
                             </label>
