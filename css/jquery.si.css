@@ -27,7 +27,7 @@ div.si div.uploadButton {
         /*posicion del boton*/
         left: 380px; top: -60px;
 }
-div.si div.uploadButton div {
+div.si .uploadButton div {
 	width: 146px;
 	height: 30px;
         border: 1px solid #CCCCCC;        
