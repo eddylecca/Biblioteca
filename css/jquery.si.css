@@ -32,7 +32,7 @@ div.si .uploadButton div {
 	height: 30px;
         border: 1px solid #CCCCCC;        
         border-radius: 6px;
-        background: url(../img/boton_plomo.png) 0 0 no-repeat;
+        background: url(boton_plomo.png) 0 0 no-repeat;
 	left: -156px;
 	position: absolute;
 	z-index: 1;

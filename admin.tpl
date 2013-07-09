@@ -5,6 +5,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>BIBLIOTECA - ADMIN</title>
 
+
     <!-- Framework CSS -->
     <link href="css/estilos.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="css/style.css" type="text/css">
@@ -15,7 +16,7 @@
     
     <!--[if lt IE 8]><link rel="stylesheet" href="css/blueprint/ie.css" type="text/css" media="screen, projection"><![endif]-->
 
-    
+  
     
     <!-- Import fancy-type plugin for the sample page. -->
     <link rel="stylesheet" href="css/blueprint/plugins/fancy-type/screen.css" type="text/css" media="screen, projection">
@@ -28,6 +29,7 @@
     
     
     <script src="js/jquery.si.js" type="text/javascript"></script>
+    <link href="css/jquery.si.css" rel="stylesheet" type="text/css" />
     <!--Estilo del botón-->
     
     
@@ -56,7 +58,8 @@
 	<link rel="stylesheet" href="librerias/ax-jquery-multiuploader/examples/css/classicTheme/style.css" type="text/css" media="all" />
 	<!-- /SET UP AXUPLOADER  -->
 	
-	<link rel="stylesheet" href="css/upload.css" type="text/css" media="all" />
+        <!-- Comentado porque solamente le da estilo al filset del upload>
+	<link rel="stylesheet" href="css/upload.css" type="text/css" media="all" />-->
 
 
 
@@ -74,92 +77,66 @@
 
     });
     </script>            
-  <link rel="icon" type="image/x-icon" href="./img/favicon.ico" />
-  <title>IGP - Convenios</title>
+  
+
 <script type="text/javascript">
-function resultadoUpload(estado, file, tipo_documento){
+function efectoUpload() {
+                xajax.$('boton_guardar').style.display = 'none';
+}    
 
-    if (tipo_documento== "Invitacion"){
-        var letra = "I";
-        var letra2 = '"I"';
-        
-    }
-    if (tipo_documento== "Aceptacion"){
-        var letra = "A";
-        var letra2 = '"A"';
-        
-    }    
-    if (tipo_documento== "Programa"){
-        var letra = "P";
-        var letra2 = '"P"';
-    }
-    if (tipo_documento== "Presentacion"){
-        var letra = "Pre";
-        var letra2 = '"Pre"';
-    }
-    
-    var link = "<br /><br /><a href='#upload' onclick='javascript: verFile("+letra2+")'>Reemplazar Archivo</a> ";
-    var linkSubir = "<br /><br /><a href='#upload' onclick='javascript: verFile("+letra2+")'>Subir Archivo</a> ";
-    
-    var archivoSubido= "&nbsp;&nbsp;&nbsp;<a href='data/"+file+"' target='_blank'>"+file+"</a> ";
+function efectoUpload2(){
+    xajax.$('boton_guardar').style.display = 'block';
+}
 
+    
+function resultadoUpload(estado, file) {
+    var link = "<br /><br /><a href='#upload' onclick='javascript: verFile(); return false'><b>Reemplazar Archivo</b></a> ";
+    var linkSubir = "<br /><br /><a href='#upload' onclick='javascript: verFile(); return false'><b>Subir Archivo</b></a> ";
+    
     if (estado == 0){
-    var mensaje = archivoSubido+'<font color="green"> subido correctamente </font><div id="divParticipacion"></div>' + link ;
+        var mensaje = '<font color=green> El Archivo se ha subido correctamente </font>' + link;
+        
+        /*boton_guardar=document.getElementById("boton_guardar");
+        boton_guardar.disabled="true";*/
+
     }
-
-    if (estado == 1)
-        var mensaje = "<font color='red'>Error ! - El Archivo no llego al servidor </font>" + linkSubir;
-
-    if (estado == 2)
-        var mensaje = "<font color='red'>Error ! - Solo se permiten Archivos tipo PDF, PPT ó WORD</font>" + linkSubir;
-    
+        
+    if (estado == 1){
+        var mensaje = "<font color=red>Error ! - El Archivo no llegó al servidor por sobrepasar el tamaño permitido</font>" + linkSubir;
+    }
+        
+    if (estado == 2){
+        var mensaje = "<font color=red>Error ! - Solo se permiten Archivos tipo PDF </font>" + linkSubir;
+    }
     if (estado == 3)
         var mensaje = "Error ! - No se pudo copiar Archivo. Posible problema de permisos en server" + linkSubir;
 
-    if (estado == 4)
-        var mensaje = "<font color='red'>Error ! - Los Campo Tipo de Convoctoria, Correlativo y A&ntilde;o son necesarios.</font>" + link;
+    divMensajeR=document.getElementById("mensajeR");
+    divMensajeR.style.display="block";
+    divMensajeR.innerHTML=mensaje;
 
-    //xajax_FormManage(xajax.getFormValues('formRegister'),'Participacion');
+    divFileR=document.getElementById("fileR");
+    divFileR.style.display="none";
     
-
-    divMensaje=document.getElementById("mensaje"+letra);
-    divMensaje.style.display="block";
-    divMensaje.innerHTML=mensaje;
-
-    divFile=document.getElementById("file"+letra);
-    divFile.style.display="none";
-
-    
-    document.formRegister.pdf_on.value="1";
-    document.formRegister.archivoSubido.value=file;
-    document.formRegister.pdf_participacion_anterior.value=file;
-    
+    divnoFile=document.getElementById("no_file");
+    if(divnoFile){
+        divnoFile.style.display="none";
     }
-        
-function verFile(letra){
-            
-        divFile=document.getElementById("file"+letra);
+    }
+
+
+function verFile(){
+        divFile=document.getElementById("fileR");
         divFile.style.display="block";
 
-    if (letra == "A")
-        document.formUploadA.fileUpload.value="";
-    
-    if (letra == "I")
-        document.formUploadI.fileUpload.value="";
+        document.formUpload.fileUpload.value="";
+        document.getElementById("fileUpload").value="";
 
-    if (letra == "P")
-        document.formUploadP.fileUpload.value="";
-
-    if (letra == "Pre")
-        document.formUploadPre.fileUpload.value="";
-
-
-        divMensaje=document.getElementById("mensaje"+letra);
+        divMensaje=document.getElementById("mensajeR");
         divMensaje.style.display="none";
 
 }
 
-         
 </script>
 
 
@@ -284,6 +261,7 @@ function verFile(letra){
 }
 </style>
 
+  {ajax}
 </head>
 
 <!-- Global IE fix to avoid layout crash when single word size wider than column width -->

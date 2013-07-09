@@ -2,7 +2,7 @@
 
 date_default_timezone_set('America/Lima');
 
-    session_start();
+	session_start();
 
         if(isset($_SESSION['tmp']['ruta_pdf_temporal'])){
             @unlink($_SESSION['tmp']['ruta_pdf_temporal']);
@@ -51,15 +51,15 @@ $archivoUpload=$codigo.".pdf";
 //  (1) Comprovamos que existe el nombre temporal del archivo
 if ($_FILES['fileUpload']['tmp_name']!="") {
     
-        //  (2) - Comprobamos de que archivo se trata 
-     if ($tipo == 'jpg' or $tipo == 'png') {
+	    //  (2) - Comprobamos de que archivo se trata 
+	 if ($tipo == 'jpg' or $tipo == 'png') {
              //echo '<script>alert("Hola")</script>';
              //echo '<script>parent.efectoUpload();</script>';
-        //  (3) Por ultimo se intenta copiar el archivo al servidor.
-        if (!copy($_FILES['fileUpload']['tmp_name'],$destino)){
-                echo '<script> alert("Error al Subir el Archivo");</script>';
-            }
-        else{
+		//  (3) Por ultimo se intenta copiar el archivo al servidor.
+		if (!copy($_FILES['fileUpload']['tmp_name'],$destino)){
+			    echo '<script> alert("Error al Subir el Archivo");</script>';
+		    }
+		else{
                     
 /******Convierte la primera pagina del pdf en una imágen png*****/
 //exec("convert ".$destino."[0] ".$dir.$archivoPortada.".png");
@@ -74,10 +74,10 @@ if ($_FILES['fileUpload']['tmp_name']!="") {
                     }
                             //echo '<script>parent.document.getElementById("boton_guardar").innerHTML="<font color=green>Se terminó de subir</font>";</script>';
 
-        }
-    }
-     else{
-        //El Archivo que se intenta subir NO ES del tipo PDF.       
+		}
+	}
+	 else{
+		//El Archivo que se intenta subir NO ES del tipo PDF.		
                 echo '<script>parent.resultadoUpload(2, "'.$archivoUpload.'");</script>';
                 
          }

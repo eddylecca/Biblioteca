@@ -138,7 +138,7 @@ return $objResponse;
 
 
 	function iniArchivoShow(){
-                               
+                /*
 		$html='<form id="formUpload" name="formUpload" method="post" enctype="multipart/form-data" action="librerias/uploadEdit.php" target="iframeUpload">
 		            <div id="tituloUpload" name="tituloUpload" style="display:block" class="txt-azul">Carga de Archivo </div>
                             <label id="mensaje" class="txt-verde">*Luego de elegir el archivo, esperar que se muestre el mensaje.</label>
@@ -154,6 +154,8 @@ return $objResponse;
 		                    <div id="mensajeR"></div>
 
 		        </form>';
+                */
+                $html='<div id="carga_archivo">Hola</div>';
                 
                 if(isset($_SESSION["edit"])){
                     $sesion_iddata=$_SESSION["edit"]["iddata"];

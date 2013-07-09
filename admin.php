@@ -1102,6 +1102,9 @@
                 $objResponse->script('	$(document).ready(function() {
 		$("input.file").si();});');
                 
+                
+                $objResponse->script("xajax_carga_archivo()");
+                
         // $objResponse->alert(print_r($_SESSION["temp"],TRUE));
         
                 $objResponse->assign("imghome", "style.display", "none");
@@ -2549,6 +2552,124 @@ function crea_form($accion){
 	
 	
 
+function carga_archivo(){
+    $respuesta = new xajaxResponse();
+    
+    
+    $html='
+            <table class="options">
+            <thead>
+                    <tr>
+                            <!--<th>Subir cargo</th>-->
+                            <!--<th>Listado de Archivos Cargados</th>-->
+                    </tr>
+            </thead>
+            <tbody>
+                    <tr>
+                            <td>
+                                    <div id="demo1" style="width:500px"></div>
+                                    <!--<div id="report" style="overflow:auto;width:300px;height:200px;"></div>-->
+
+                            </td>
+                            <!--
+                            <td>
+                                <table>
+                                  <tr>
+                                    <td id="lista_archivos" class="infsub">
+                                    </td>
+                                  </tr>
+                                </table>
+                            </td>
+                            -->
+                    </tr>
+            </tbody>
+            </table>
+
+    ';
+    
+    $respuesta->assign("carga_archivo", "innerHTML", $html);
+    
+    $respuesta->script('
+			$("#demo1").ajaxupload({
+				url:"librerias/ax-jquery-multiuploader/examples/upload.php",
+                                allowExt:["png","gif","jpg","zip"],
+				remotePath:"uploaded/",
+                                finish:function(files)
+                                    {
+                                        alert("Todas las archivos han sido cargados");
+                                        //var conteo=files.length 
+                                        //alert(files);
+                                        //xajax_lista_archivos();
+                                        
+                                    },
+                                success:function(fileName)
+                                    {
+                                        
+                                        texto = fileName.split(".");
+                                        name=texto[0];
+                                        //alert(name);
+
+                                        //$("#report").append("<p>"+fileName+" uploaded.</p>");
+                                        //$("#report").append("<input class=\'filesupload\' type=\'text\' name=\'"+name+"\' id=\'"+name+"\' value=\'"+fileName+"\'></input>");
+                                        xajax_save_files(fileName);
+                                    }
+			});
+        
+    ');
+    
+    return $respuesta;
+}    
+
+
+function save_files($namefile){
+    $respuesta = new xajaxResponse();
+
+    $texto = explode('.',$namefile);
+    $name=$texto[0];
+    
+    $str_name=(str_replace(" ","-",$name));
+    
+        $_SESSION["files"]["file-".$str_name]=$namefile;
+        
+    //$respuesta->alert(print_r($_SESSION, true));
+    
+    return $respuesta;
+}
+
+
+
+function delete_file($namefile){
+    $respuesta = new xajaxResponse;
+    
+    //$respuesta->alert($namefile);
+        
+    $pos = array_search($namefile,$_SESSION["files"]);
+    
+    unset($_SESSION["files"][$pos]);
+    //$respuesta->alert(print_r($_SESSION, true));
+    
+    
+    $dir="librerias/ax-jquery-multiuploader/examples/uploaded/";
+    if (is_file($dir.$namefile)) {
+      if ( unlink($dir.$namefile) ){
+        $respuesta->assign($namefile, "value", "");
+      }
+     }
+
+     
+    $texto = explode('.',$namefile);
+    $name=$texto[0];
+     
+    /*
+     //Eliminar el input creado para el archivo cargado
+     $respuesta->script("
+        $('#$name').remove();
+     ");
+    */
+    
+    return $respuesta;
+}
+
 	/*******************************************************************
 	Registrar las Funciones
 	*******************************************************************/
@@ -2798,6 +2919,9 @@ function crea_form($accion){
     $xajax->registerFunction('registerSubject');
     $xajax->registerFunction('registerDescription');
     $xajax->registerFunction('click_checked');
+    $xajax->registerFunction('carga_archivo');
+    $xajax->registerFunction('save_files');
+    $xajax->registerFunction('delete_file');
 
 
 	$xajax->processRequest();	
