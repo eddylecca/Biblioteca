@@ -1095,19 +1095,39 @@ elseif(isset($_SESSION["tmp"])){
 		return $objResponse ;
 	}
 
-	function registerDescription($description){
+	function registerSumary($summary){
 		$objResponse = new xajaxResponse();
 
-		if($description==""){
-	        $objResponse->alert("Debe ingresar la descripción");
-	        $objResponse->script("$('#description').focus()");                
+		if($summary==""){
+	        $objResponse->alert("Debe ingresar un Resumen");
+	        $objResponse->script("$('#summary').focus()");                
 	    }
 	    else{
 	        if(isset($_SESSION["edit"])){
-	            $_SESSION["edit"]["description"]=addslashes($description);
+	            $_SESSION["edit"]["summary"]=addslashes($summary);
 	        }
 	        else{
-	            $_SESSION["tmp"]["description"]=addslashes($description);
+	            $_SESSION["tmp"]["summary"]=addslashes($summary);
+	        }
+	        
+	    }
+	    
+
+		return $objResponse ;
+	}
+	function registerDescription_Physical($description_physical){
+		$objResponse = new xajaxResponse();
+
+		if($description_physical==""){
+	        $objResponse->alert("Debe ingresar un Resumen");
+	        $objResponse->script("$('#description_physical').focus()");                
+	    }
+	    else{
+	        if(isset($_SESSION["edit"])){
+	            $_SESSION["edit"]["description_physical"]=addslashes($description_physical);
+	        }
+	        else{
+	            $_SESSION["tmp"]["description_physical"]=addslashes($description_physical);
 	        }
 	        
 	    }

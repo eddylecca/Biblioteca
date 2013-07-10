@@ -138,24 +138,8 @@ return $objResponse;
 
 
 	function iniArchivoShow(){
-                /*
-		$html='<form id="formUpload" name="formUpload" method="post" enctype="multipart/form-data" action="librerias/uploadEdit.php" target="iframeUpload">
-		            <div id="tituloUpload" name="tituloUpload" style="display:block" class="txt-azul">Carga de Archivo </div>
-                            <label id="mensaje" class="txt-verde">*Luego de elegir el archivo, esperar que se muestre el mensaje.</label>
-                            <label id="fileR" for="demo-photoupload" style="display:block">
-                                        <input id="fileUpload" name="fileUpload" type="file" class="file" onchange=" javascript: submit(); " />
-                            </label>
-		            	<input name="ano" type="hidden" value="2011" />
-		                <input name="date_in" type="hidden" value="" />
-		                <input name="tipoDocumento" type="hidden" value="1" />
-		                <input name="tipoPublicacion" type="hidden" value=1 />
-		                <input name="action" type="hidden" value="upload" />
-		                <br /><iframe name="iframeUpload" style="display:none"></iframe>
-		                    <div id="mensajeR"></div>
-
-		        </form>';
-                */
-                $html='<div id="carga_archivo">Hola</div>';
+               
+                $html='<div id="carga_archivo">files</div>';
                 
                 if(isset($_SESSION["edit"])){
                     $sesion_iddata=$_SESSION["edit"]["iddata"];

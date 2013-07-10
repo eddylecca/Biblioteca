@@ -895,6 +895,7 @@
 					</div>
 				<div id="archivo" style="display:none"></div>
 			</div>
+			
             <div><p><input class="button" type="button" onclick="xajax_newPonencia('.$iddata.',\''.$action.'\');" value='.$tituloBoton.' /></p></div>
 			';
 
@@ -954,16 +955,7 @@
 		$tipoPonencia="";
 		$tipoPonencia=comboTipoPonencia($tipoPonencia_id);
 
-		//$urljs = 'js/json/book.json';
-		//$urlJson = curl_init($urljs);
-		//Agregamos opciones necesarias para leer
-		//curl_setopt($urlJson,CURLOPT_RETURNTRANSFER, TRUE);
-		// Capturamos la URL
-		//$dataJson = curl_exec($urlJson);
-
-		//$jsonbook = '{"1": [{"nombre" : "Juanita Sierra", "edad": 25, "estudios" : "Preparatoria", "caracter": "Linda y atenta"}],"2": "Mapas","3": "Otros"}';
 		
-		//$abook = json_decode($urljs,true);
 		$formatBook ="<select>
 						<option></option>
 						<option value=1>Libro</option>
@@ -1005,6 +997,11 @@
        	<input type='text' placeholder='ej. Lima,2002 ' onchange='xajax_registerPublication(this.value); return false;' value='$publication' id='publication' name='publication' class='caja-buscador-1' /><div id='publication-error'></div></div>                
 		<div class='clear'></div>
 
+		<div class='campo-buscador'>Descripción Física</div>
+       	<div class='contenedor-caja-buscador-1'>
+       	<input type='text' placeholder='ej. 719 p. ; 21 cm' onchange='xajax_registerDescription_Physical(this.value); return false;' value='$description_physical' id='description_physical' name='publication' class='caja-buscador-1' /><div id='description_physical-error'></div></div>                
+		<div class='clear'></div>
+
 		<div class='campo-buscador'>Edición</div>
        	<div class='contenedor-caja-buscador-1'>
        	<input type='text' placeholder='ej. 1ra ed' value='$edition' onchange='xajax_registerEdition(this.value); return false;' id='edition' name='edition' class='caja-buscador-1' /><div id='edition-error'></div></div>                
@@ -1012,12 +1009,12 @@
 
 		<div class='campo-buscador'>Temas</div>
        	<div class='contenedor-caja-buscador-1'>
-       	<input type='text' placeholder='ej. tema1, tema2' onchange='xajax_registerSubject(this.value); return false;' value='$subject' id='subject' name='publication' class='caja-buscador-1' /><div id='description-error'></div></div>                
+       	<input type='text' placeholder='ej. tema1, tema2' onchange='xajax_registerSubject(this.value); return false;' value='$subject' id='subject' name='publication' class='caja-buscador-1' /><div id='subject-error'></div></div>                
 		<div class='clear'></div>	
 
-		<div class='campo-buscador'>Descripción</div>
+		<div class='campo-buscador'>Resumen</div>
        	<div class='contenedor-caja-buscador-1'>
-       	<textarea placeholder='ej. escriba aqui su descripcion' onchange='xajax_registerDescription(this.value); return false;' value='$description' id='description' name='description' class='caja-buscador-1' ></textarea><div id='description-error'></div></div>                
+       	<textarea placeholder='Escriba aqui el resumen' onchange='xajax_registerSumary(this.value); return false;' value='$summary' id='summary' name='summary' class='caja-buscador-1' ></textarea><div id='summary-error'></div></div>                
 		<div class='clear'></div>	
 		
        		
@@ -2106,14 +2103,14 @@
 						<span id="divMonth"></span>
 						<span id="divYear"></span>
 					</div>
-					<div style="clear:both;"></div>	
+					<div class="clear"></div>	
 				</div>
 
 			</form>
 			</div>
 			<div id="resultSearch" style="display: none;"></div>
 		</div>';
-	
+		
 	    //$objResponse->script("xajax_comboAreaShow()");
 	    //$objResponse->script("xajax_comboMonthShow()");
 	    //$objResponse->script("xajax_comboYearShow()");
@@ -2666,7 +2663,7 @@ function delete_file($namefile){
         $('#$name').remove();
      ");
     */
-    
+    		
     return $respuesta;
 }
 
@@ -2917,11 +2914,13 @@ function delete_file($namefile){
     $xajax->registerFunction('registerPublication');
     $xajax->registerFunction('registerEdition');
     $xajax->registerFunction('registerSubject');
-    $xajax->registerFunction('registerDescription');
+    $xajax->registerFunction('registerSumary');
     $xajax->registerFunction('click_checked');
     $xajax->registerFunction('carga_archivo');
     $xajax->registerFunction('save_files');
     $xajax->registerFunction('delete_file');
+    $xajax->registerFunction('registerDescription_Physical');
+
 
 
 	$xajax->processRequest();	

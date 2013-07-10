@@ -138,54 +138,6 @@ function verFile(){
 }
 
 </script>
-
-
-<style>
-	#project-label {
-		display: block;
-		font-weight: bold;
-		margin-bottom: 1em;
-	}
-	#foto_empleado {
-		float: left;
-		height: 100px;
-		width: 100px;
-                /*display: none;*/
-                /*top:302.09088134765625px; left: 1030.9090576171875px;*/
-	}
-	#project-description {
-		margin: 0;
-		padding: 0;
-	}
-
-        #nombre_empleado {
-		color: #366599;
-                font-weight: bold;
-	}
-        #cargo_empleado {
-		color: #6F8FB2;
-                font-weight: bold;
-                margin-bottom: 1em;
-                height: 160px;
-	}
-        #sede_empleado {
-		color: #6F8FB2;
-                font-weight: bold;
-                margin-bottom: 1em;
-	}
-
-        #nombre_institucion {
-		color: #366599;
-                font-weight: bold;
-	}
-
-
-        #oficina_empleado {
-		color: #6F8FB2;
-                font-weight: bold;
-	}
-        
-	</style>
         
         
 <style>
@@ -271,25 +223,7 @@ function verFile(){
     
 <div id="form" name="form"></div>
 
-<!--
-<div class="demo">
 
-<div id="dialog-form" title="Create new user">
-	<p class="validateTips">All form fields are required.</p>
-
-	<form>
-	<fieldset>
-		<label for="name">Name</label>
-		<input type="text" name="name" id="name" class="text ui-widget-content ui-corner-all" />
-		<label for="email">Email</label>
-		<input type="text" name="email" id="email" value="" class="text ui-widget-content ui-corner-all" />
-		<label for="password">Password</label>
-		<input type="password" name="password" id="password" value="" class="text ui-widget-content ui-corner-all" />
-	</fieldset>
-	</form>
-</div>
-
-</div><!-- End demo -->
     
     
     

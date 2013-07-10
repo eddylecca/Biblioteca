@@ -2827,7 +2827,9 @@ else{
         $_SESSION["publicaciones"]["publication"]=$resultCheck["publication"];
         $_SESSION["publicaciones"]["edition"]=$resultCheck["edition"];
         $_SESSION["publicaciones"]["subject"]=$resultCheck["subject"];
-        $_SESSION["publicaciones"]["description"]=$resultCheck["description"];
+        $_SESSION["publicaciones"]["description_physical"]=$resultCheck["description_physical"];
+        $_SESSION["publicaciones"]["summary"]=$resultCheck["summary"];
+
 
 
         
@@ -2927,7 +2929,8 @@ else{
                 }
                 
                 }
-    $objResponse->alert(print_r($xml,TRUE));
+     $objResponse->alert(print_r($recuperar,TRUE));
+
 	return $objResponse;
 }
 

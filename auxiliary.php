@@ -244,6 +244,9 @@ elseif(isset($_SESSION["tmp"])){
 
         /*publicacion*/
         $publication = isset($recuperar["publication"])?$recuperar["publication"]:"";
+        
+        /*descripcion phisica*/
+        $description_physical = isset($recuperar["description_physical"])?$recuperar["description_physical"]:"";
 
         /*edition*/
         $edition = isset($recuperar["edition"])?$recuperar["edition"]:"";
@@ -252,7 +255,7 @@ elseif(isset($_SESSION["tmp"])){
         $subject = isset($recuperar["subject"])?$recuperar["subject"]:"";
 
         /*description*/
-        $description = isset($recuperar["description"])?$recuperar["description"]:"";
+        $summary = isset($recuperar["summary"])?$recuperar["summary"]:"";
 
 
 		/*Lugar Pais */
@@ -304,22 +307,16 @@ elseif(isset($_SESSION["tmp"])){
                 $check["Error"]=1;
                 $check["funcion"]="xajax_displaydiv('author','titulo2')";
             }
-            /*
-            elseif (!isset($recuperar["authorSEC"]["idauthor"])){
-                $check["Msg"]="Seleccione Autor Secundario";
-                $check["Error"]=1;
-                $check["funcion"]="xajax_displaydiv('author','titulo2')";
-            }     
-            */            
+                      
 
-            if ($description=="") {
+            if ($summary=="") {
                 $check["Error"] = 1;
-                $check["Msg"] = "Ingrese una descripción";
+                $check["Msg"] = "Ingrese un Resumen";
                 $check["funcion"]="xajax_displaydiv('titulo_tipo_prepor','titulo1')";
-                $check["focus"]="$('#description').focus()";
+                $check["focus"]="$('#summary').focus()";
             }
             else{
-                $check["description"] = $description;
+                $check["summary"] = $summary;
             }
 
             if ($subject=="") {
@@ -340,6 +337,16 @@ elseif(isset($_SESSION["tmp"])){
             }
             else{
                 $check["edition"] = $edition;
+            }
+
+             if ($description_physical=="") {
+                $check["Error"] = 1;
+                $check["Msg"] = "Ingrese la descripción Física";
+                $check["funcion"]="xajax_displaydiv('titulo_tipo_prepor','titulo1')";
+                $check["focus"]="$('#description_physical').focus()";
+            }
+            else{
+                $check["description_physical"] = $description_physical;
             }
 
             if ($publication=="") {
@@ -382,94 +389,7 @@ elseif(isset($_SESSION["tmp"])){
             else{
                 $check["title"]=$title;
 
-            }
-
-            
-            
-/********************Validar*********************************************************/
-        // if($tipoPonencia_id==0){
-        //         $check["Msg"]="Seleccione Tipo de ponencia";
-        //         $check["Error"]=1;
-        //         $check["funcion"]="xajax_displaydiv('titulo_tipo_prepor','titulo1')";
-        // }
-        // else{
-        //         $check["idtipoPonencia"]=$tipoPonencia_id;
-        //         $check["tipoPonencia_description"]=$tipoPonencia_description;
-                
-        // }        
-        // if($idcategoriaEvento==0){
-        //         $check["Msg"]="Seleccione categoría de ponencia";
-        //         $check["Error"]=1;
-        //         $check["funcion"]="xajax_displaydiv('evento','titulo4')";
-        // }
-        // else{
-        //         $check["idcategoriaEvento"]=$idcategoriaEvento;
-        //         $check["categoriaEvento_description"]=$categoriaEvento_description;
-                
-        // }
-        
-        // if($idclaseEvento==0){
-        //         $check["Msg"]="Seleccione clase de ponencia";
-        //         $check["Error"]=1;
-        //         $check["funcion"]="xajax_displaydiv('evento','titulo4')";
-        // }
-        // else{
-        //         $check["idclaseEvento"]=$idclaseEvento;
-        //         $check["claseEvento_description"]=$claseEvento_description;
-                
-        // }
-
-        // if($evento_description==""){
-        //         $check["Msg"]="Ingrese nombre del evento";
-        //         $check["Error"]=1;
-        //         $check["funcion"]="xajax_displaydiv('evento','titulo4')";
-        // }
-        // else{                
-        //         $check["evento_description"]=$evento_description;
-                
-        // }
-        
-        // if($lugar==""){
-        //         $check["Msg"]="Ingrese el lugar";
-        //         $check["Error"]=1;
-        //         $check["funcion"]="xajax_displaydiv('lugarPais','titulo3')";
-        // }
-        // else{
-        //         $check["lugar"]=$lugar;                
-                
-        // }
-
-        // if($pais_description==""){
-        //         $check["Msg"]="Ingrese el país";
-        //         $check["Error"]=1;
-        //         $check["funcion"]="xajax_displaydiv('lugarPais','titulo3')";
-        // }
-        // else{
-        //         $check["pais_description"]=$pais_description;
-                
-        // }
-        
-        
-        // if($prePorNombre==""){
-        //     $check["Msg"]="Ingrese Nombre del Presentador";
-        //     $check["Error"]=1;
-        //     $check["funcion"]="xajax_displaydiv('titulo_tipo_prepor','titulo1')";
-        // }
-        // else{
-        //     $check["prePorNombre"]=$prePorNombre;
-                
-        // }
-        
-        // if($prePorApellido==""){
-        //     $check["Msg"]="Ingrese Apellido del Presentador";
-        //     $check["Error"]=1;
-        //     $check["funcion"]="xajax_displaydiv('titulo_tipo_prepor','titulo1')";
-        // }
-        // else{
-        //     $check["prePorApellido"]=$prePorApellido;
-                
-        // }
-    
+            }    
        
             
     return $check;
