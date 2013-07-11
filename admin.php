@@ -109,31 +109,7 @@
 	
 	function formLoginShow(){
 	    $respuesta = new xajaxResponse();
-                /*
-		$form= '<form onsubmit="xajax_verificaUsuarioShow(xajax.getFormValues(formLogin)); return false;" id="formLogin" method="post">	  	
-		            <div style="font-size:14px; padding: 15px 0 15px 0;">
-		            <span class="txt-rojo">Iniciar sesión</span>
-		            </div>
-		        	<div class="campo-login">Usuario:</div>
-		        	<div class="contenedor-caja-login">
-		        		<input name="usuario" id="usuario" class="caja-login" type="text"/>
-		        	</div>
-		            <div style="clear:both"></div>
-		            
-		            <div class="campo-login">Contraseña:</div>
-		            <div class="contenedor-caja-login">
-		            	<input name="clave" id="clave" class="caja-login" type="password"/>
-		            </div>
-		            <div style="clear:both"></div>
-		
-		            <div style="float:left">
-		            	<input name="Iniciar" value="Iniciar" type="submit"/>
-		            </div>
-		            <div style="clear:both"><p></p></div>
-		            <div id="error"></div>
-					<div id="mensaje"></div>
-               	</form>';
-	    */
+              
             $form= '
                 <form onsubmit="xajax_verificaUsuarioShow(xajax.getFormValues(formLogin)); return false;" id="formLogin" method="post">                    
                     <span>Usuario:</span>
@@ -444,38 +420,7 @@
 	    return $objResponse;
 	}
 
-	/******************************************
-	Función que muestra un Menú en el Template
-	*******************************************
-	function menuShow($sessionidarea=0){
-		$respuesta= new xajaxResponse();
-		//if (isset($_SESSION["admin"]))
-		$result=categoryResult($sessionidarea);
-		$count=$result["Count"];
-		$menu="<div><h3  class='txt-rojo'>Nuevo Ingreso:</h3></div>";
-
-		for($i=0;$i<$count;$i++){
-			$desc = ucfirst($result["category_description"][$i]);
-			$id = $result["idcategory"][$i];
-			$idfrom=isset($_SESSION["idfrom"])?$_SESSION["idfrom"]:0;
-			$idarea=isset($_SESSION["idarea"])?$_SESSION["idarea"]:0;
-	        $menu.="<div class='submenu'>»<a href='#' class='negro' onClick='xajax_formCategoryShow($id); return false'>$desc</a></div>";
-		}
-		
-
-		
-	    $menu.="<div><h3 class='txt-rojo'>Consultas :</h3>
-                    <div class='submenu'>»<a class='negro' href='#'  onclick='xajax_formConsultaShow(\"$idfrom\",\"admin\",\"$idarea\"); xajax_auxSearchShow(20,1,xajax.getFormValues(\"formSearch\"),\"\",\"0\");'>B&uacute;squeda y Edici&oacute;n</a></div>
-                    <div class='submenu'>»<a id='botonshow' class='negro' href='#'  >Estad&iacute;sticas   </a></div>
-	            <div class='left-box'><h3 class='txt-rojo'>Salir :</h3></div>
-	            <div class='submenu'>»<a href='#' class='negro' onClick='xajax_cerrarSesion(); return false'>Cerrar sesi&oacute;n</a></div>";
-		$respuesta->assign("menuLateral", "innerHTML", $menu);
-				
-		return $respuesta;
-	}
 	
-        
-        
 	/******************************************
 	Función que muestra un Menú en el Template
 	*******************************************/
@@ -491,27 +436,15 @@
                         case 0: //el segundo parametro es el currentpage al ser cero utiliza el valor del formulario
                             $menu.='<li><a href="#" onclick="xajax_formCategoryShow(2); return false"><img width="12px;" style="vertical-align:middle;" src="img/iconos/salir_16.png" /> Nuevo Libro</a></li>';
                             $menu.="<li><a href='#' onclick='xajax_formConsultaShow(\"$idfrom\",\"admin\",\"$idarea\"); xajax_auxSearchShow(20,1,xajax.getFormValues(\"formSearch\"),\"\",\"0\");'><img width='12px;' style='vertical-align:middle;' src='img/iconos/search_16.png' /> Consultas</a></li>";
-                        //$menu.='<li><a href="index.php" ><img width="12px;" style="vertical-align:middle;" src="img/iconos/home.png" /> Inicio</a></li>';
-                        //$menu.='<li><a href="#" onClick="xajax_formDocumentosShow(); return false;"><img width="12px;" style="vertical-align:middle;" src="img/iconos/agregar_16.png" /> Nuevo personal</a></li>';
-                        //$menu.='<li><a href="#" onClick="xajax_auxSearchShow(12,0,xajax.getFormValues(\'formSearch\')); return false;"><img width="12px;" style="vertical-align:middle;" src="img/iconos/home.png" /> Inicio</a></li>';
-                        //$menu.='<li><a href="#" onClick="xajax_inicio(); return false;"><img width="12px;" style="vertical-align:middle;" src="img/iconos/home.png" /> Inicio</a></li>';
+                        
                             
                     }
 
                     if($_SESSION["users_type"]==0){
                         //$menu.='<li><a href="#" onClick="xajax_formUsuarioShow(); return false;" ><img style="vertical-align:middle;" src="img/iconos/candado_llave_16.png" />Nuevo Usuario</a></li>';
-                    }
-                    
-                                
-                    //$menu.='<li><a href="#" onclick="xajax_registerTemp(\'\',\'temp\');"><img style="vertical-align:middle;" src="img/iconos/pdf_16.png" /> Generar PDF</a></li>';
-                    //$menu.='<li><span id="enlace_cv"></span></li>';
-                    
-                    
+                    }  
                     $menu.='<li style="float:right"><a href="#" onclick="xajax_cerrarSesion(); return false"><img width="12px;" style="vertical-align:middle;" src="img/iconos/salir_16.png" /> Cerrar Sesión</a></li>';
-                    
-                    //$menu.='<li><a>Tu sesión finalizará en:</a></li>';
-                    //$menu.='<li><a id="expira_sesion">4:30</a></li>';
-                    
+                             
                     $respuesta->assign("divformlogin", "style.display", "none");
                     $html='<table><tr><td style="text-align: center;">';
                     $html.='<img src="img/biblioteca.png" />';
@@ -545,22 +478,7 @@
                     
                 ');
 		return $respuesta;
-	}
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+	}  
         
         
 	function subcategoryResult($category=0,$idarea=0){
@@ -602,33 +520,7 @@
 	/******************************************
 	Función que muestra un Menú en el Template
 	*******************************************/
-	function menuGSShow($idarea=0){
-		$respuesta= new xajaxResponse();
 	
-		$result=subcategoryResult(5,$idarea);
-		$count=$result["Count"];
-	       
-		$menu="<div><h3  class='txt-rojo'>Nuevo Ingreso:</h3></div>";
-
-		for($i=0;$i<$count;$i++){
-			$desc = ucfirst($result["subcategory_description"][$i]);
-			$id = $result["idsubcategory"][$i];
-			//$idfrom=$_SESSION["idfrom"];
-                        $idfrom=isset($_SESSION["idfrom"])?$_SESSION["idfrom"]:0;
-			$idarea=isset($_SESSION["idarea"])?$_SESSION["idarea"]:0;
-	        $menu.="<div class='submenu'>»<a href='#' class='negro' onClick='xajax_formCategoryShow(5,$id); return false'>$desc</a></div>";
-		}
-	       
-                $menu.="<div><h3 class='txt-rojo'>Consultas :</h3>
-                        <div class='submenu'>»<a class='negro' href='#'  onClick='xajax_formConsultaShow(\"$idfrom\",\"admin\",\"$idarea\"); return false'>B&uacute;squeda</a></div>
-                        <div class='submenu'>»<a id='botonshow' class='negro' href='#'  >Estad&iacute;sticas   </a></div>
-                        <div class='left-box'><h3 class='txt-rojo'>Salir :</h3></div>
-                        <div class='submenu'>»<a href='#' class='negro' onClick='xajax_cerrarSesion(); return false'>Cerrar sesi&oacute;n</a></div>";
-		$respuesta->assign("menuLateral", "innerHTML", $menu);
-	       
-		$respuesta->assign("menuLateral", "innerHTML", $menu);
-		return $respuesta;
-	}
         
 	function formCategoryShow($idcategory,$idSubcategory=0){
 	    $respuesta = new xajaxResponse();
@@ -670,142 +562,7 @@
 		return $respuesta;
 	}
 	
-	function formPublicacionShow($iddata=0,$idSubcategory=0,$currentPage){
 	
-		$objResponse = new xajaxResponse();
-		//Borramos las variables de sesion
-		
-		if(isset($_SESSION["tmp"])){
-		    unset($_SESSION["tmp"]);
-		    unset($_SESSION["publicaciones"]);
-		}
-		
-		$link="";
-		if(isset($_SESSION["editar"])){
-		    if($_SESSION["editar"]==1){
-		        $action="UPD";
-		        $tituloBoton="ACTUALIZAR";
-                        $estilo="display:block";
-                        $boton='<span><input class="button" type="button" onclick="xajax_newPublication('.$iddata.',\''.$action.'\',xajax.getFormValues(\'subcategory\'),'.$currentPage.');" value='.$tituloBoton.' /></span>';
-                        $tituloGeneral = "Editar publicación";												
-		    }
-		}
-		else{
-			$action="INS";
-			$tituloBoton="GUARDAR";
-			$estilo="display:none";
-			$boton="";
-			$linkRegresar="";
-			$tituloGeneral="Tipo de Material";
-			
-		}
-	
-	
-		
-		
-		$html='<h2 class="txt-azul">'.$tituloGeneral.'</h2>
-			<div class="contactform">
-				<form id="subcategory">
-				<p>
-				<span id="registerTypePublication"></span>
-				<span id="botonRegresar"></span>
-				</p>
-				</form>
-			</div>
-			<div style="padding-top:20px;">
-	            <span class="tab" id="titulo1"></span>
-	            <span class="tab" id="titulo2"></span>
-	            <span class="tab" id="titulo3"></span>
-	            <span class="tab" id="titulo4"></span>
-	            <span class="tab" id="titulo5"></span>
-	            <span class="tab" id="titulo6"></span>
-	            <span class="tab" id="titulo7"></span>
-			</div>
-	
-	        <div id="idcontactform" class="listado-busqueda" style="'.$estilo.'">
-
-	            <div  id="titulo_resumen"></div><div id="titulo"></div>
-	
-	            <div id="author" style="display:none">
-			        <div id="search_authorPRI"></div>
-			        <div class="linea-separacion"></div>
-			        <div id="newFormAuthor"></div>
-	            </div>
-	
-	            <div id="referencia" style="display:none"></div>
-	        
-	            <div id="tipoTesis_pais_universidad" style="display:none"></div>
-	
-	            <div id="areas" style="display:none">
-	                <h1 id="titAreas"></h1>
-	                <div id="cont_areas"></div>
-	            </div>
-	
-	            <div id="area_tema" style="display:none">
-	                <div class="txt-azul" id="titArea"></div>
-	                <div id="area_propietaria"></div>
-					<div  class="linea-separacion"></div>	                    
-
-					<div class="txt-azul" id="titOtrasAreas"></div>
-	                <div id="otrasAreas"></div>
-					
-						                
-	                <div class="txt-azul" id="titOtrosTemas"></div>
-	                <div id="otrosTemas"></div>
-					<div  class="linea-separacion"></div>
-						                
-	                <div class="txt-azul" id="titNuevoTema"></div>
-	                <div id="nuevo_tema_publicacion"></div>
-	            </div>
-	
-	
-	            <div id="fecha_estado_permisos" style="display:none">
-	                <h1 id="titEstado"></h1>
-	                <div id="estado"></div>
-	                <div class="linea-separacion"></div>
-	                
-	                <div class="txt-azul" id="titFechas"></div>
-	                <div id="fechas"></div>
-	                <div class="linea-separacion"></div>
-	                
-	                <div class="txt-azul" id="titPermisos"></div>
-	                <div id="permisos"></div>
-	            </div>
-	
-	            <div id="fecha_permisos" style="display:none">
-	                <div class="txt-azul" id="titFechasTesis"></div>
-	                <div id="fechasTesis"></div>
-	                <div class="linea-separacion"></div>
-	                <div class="txt-azul" id="titPermisosTesis"></div>
-	                <div id="permisosTesis"></div>
-	            </div>
-	
-	            <div id="archivo" style="display:none"></div>
-		</div>
-		<div id="botonGuardarEditar"><p>'.$boton.'</p></div>';
-
-	    $objResponse->script("xajax_comboTypeSubcategoryShow($idSubcategory,1)");
-            
-	    $objResponse->Assign("formulario","style.display","block");
-	    $objResponse->Assign("formulario","innerHTML",$html);
-	    $objResponse->Assign("resultSearch","style.display","none");
-	    $objResponse->Assign("estadisticas", "style.display", "none");        
-
-                if(isset($_SESSION["editar"])){
-		    if($_SESSION["editar"]==1){
-                                $objResponse->script("xajax_formSubcategoryShow($idSubcategory)");
-                                
-				$linkRegresar='<span style="float:right;"><a class="negro" href=# id="boton_actualizar"onclick="xajax_abstractHide(\'formulario\'); xajax_abstractShow(\'consultas\'); xajax_abstractShow(\'resultSearch\'); xajax_abstractShow(\'paginator\');"><img style="cursor: pointer; border:0;" width="20px" src="img/flecha-izq.jpg">&nbsp;&nbsp; Retornar a resultados </a></span>';
-				$objResponse->assign("botonRegresar","innerHTML",$linkRegresar);
-                                
-                                
-		    }
-		}
-		
-
-	    //$objResponse->alert(print_r($_SESSION["edit"], true));
-		return $objResponse;
-	}
 	
 	function formPonenciasShow($iddata=0,$idSubcategory=0){
 		$objResponse = new xajaxResponse();
@@ -887,11 +644,10 @@
 	            </div>
 	
 					<div id="fecha_permisos" style="display:none">
-						<div class="txt-azul" id="titFechasTesis"></div>
+						
 						<div id="fechasTesis"></div>
 						<div  class="linea-separacion"></div>					
-						<div class="txt-azul" id="titPermisosTesis"></div>
-						<div id="permisosTesis"></div>
+						
 					</div>
 				<div id="archivo" style="display:none"></div>
 			</div>
@@ -954,6 +710,8 @@
         }
 		$tipoPonencia="";
 		$tipoPonencia=comboTipoPonencia($tipoPonencia_id);
+		
+		$listformat = new combo();
 
 		
 		$formatBook ="<select>
@@ -963,6 +721,9 @@
 						<option value=3>otros</option>
 
 					</select>";
+		$fbook_options = array("Libros","Mapas","Otros");
+		$fbook_values = array(1,2,3);
+		$formatBook = $listformat->comboList($fbook_options,$fbook_values,"OnChange","xajax_fbooks()","","0","list_fbook"," ","list_fbook");
         
         
 		$html="
@@ -970,7 +731,7 @@
 
        	
        	<input type='hidden' value='tipoPonencia_description' id='tipoPonencia_txt' name='tipoPonencia_txt' class='field'>
-		<div style='clear:both'></div>
+		<div class='clear'></div>
 		<div class='campo-buscador'>Título:&nbsp;</div>
        	<div class='contenedor-caja-buscador-1'>
        	<input type='text' placeholder='Ingrese titulo aqui' onchange='xajax_registerTitulo(this.value); return false;' value='$tit' id='title' name='title' class='caja-buscador-1' /><div id='titulo_error'></div></div>
@@ -1099,7 +860,7 @@
                 $objResponse->script('	$(document).ready(function() {
 		$("input.file").si();});');
                 
-                
+                //upload file - image of portada
                 $objResponse->script("xajax_carga_archivo()");
                 
         // $objResponse->alert(print_r($_SESSION["temp"],TRUE));
@@ -1107,884 +868,10 @@
                 $objResponse->assign("imghome", "style.display", "none");
                 
 		return $objResponse;
-	}
-	
-	
-	function formInformacionInternaShow($iddata=0,$idSubcategory=0){
-		$objResponse = new xajaxResponse();
+	}   
+
+
 		
-		if(isset($_SESSION["tmp"])){
-		    unset($_SESSION["tmp"]);
-		    //unset($_SESSION["publicaciones"]);
-		}
-		
-		if(isset($_SESSION["editar"])){
-		    if($_SESSION["editar"]==1){
-		        $action="UPD";
-                        $estilo="display:block";
-		        $tituloBoton="ACTUALIZAR";
-		        $tituloGeneral="Editar información interna";
-				$boton='<span><p><input class="button" type="button" onclick="xajax_newInformacionInterna('.$iddata.',\''.$action.'\',xajax.getFormValues(\'subcategory\'));" value='.$tituloBoton.' /></p></span>';
-		    }
-		}
-		else{
-                        $estilo="display:none";
-		        $action="INS";
-		        $tituloBoton="GUARDAR";
-		        $tituloGeneral="Ingresar información interna";
-		        $boton="";
-		}
-		
-		
-		$html='<h2 class="txt-azul">'.$tituloGeneral.'</h2>
-	        <div>
-	            <form id="subcategory">
-	            <span id="registerTypeInfInt"></span>
-                    <span id="botonRegresar"></span>
-	            </form>
-	        </div>
-			<div style="padding-top:20px;">
-	            <span class="tab" id="titulo1"></span>
-	            <span class="tab" id="titulo2"></span>
-	            <span class="tab" id="titulo3"></span>
-	            <span class="tab" id="titulo4"></span>
-	            <span class="tab" id="titulo5"></span>
-	            <span class="tab" id="titulo6"></span>
-	            <span class="tab" id="titulo7"></span>
-			</div>
-	
-			<div id="idcontactform" class="listado-busqueda" style="'.$estilo.'">
-
-	        	<div  id="titulo"></div>
-
-	        	<div id="author" style="display:none;">
-					<div  id="search_authorPRI"></div>
-				    <div  class="linea-separacion"></div>
-				    <div  id="newFormAuthor"></div>
-				</div>	                
-	
-				<div id="referencia" style="display:none"></div>
-	
-	
-		        <div id="areas" style="display:none">
-		            <div class="txt-azul" id="titAreas"></div>
-		            <div id="cont_areas"></div>
-		            
-		            <div class="txt-azul" id="titSubAreas"></div>
-		            <div id="divSubAreas"></div>
-		        </div>
-	
-		        <div id="fecha_permisos" style="display:none">
-		            <div class="txt-azul" id="titFechasTesis"></div>
-		            <div id="fechasTesis"></div>
-		            <div class="linea-separacion"></div>
-		            <div class="txt-azul" id="titPermisosTesis"></div>
-		            <div id="permisosTesis"></div>
-		        </div>
-	
-	        	<div id="region_departamento" style="display:none"></div>
-		
-	        	<div id="nro_magnitud" style="display:none"></div>
-	
-	        	<div id="year_quarter" style="display:none"></div>
-	
-	        	<div id="archivo" style="display:none"></div>
-	        </div>
-	        <div id="botonGuardarEditar">'.$boton.'</div>';
-	
-	    $objResponse->script("xajax_comboYearShowRegister(0,'divYearRegister')");
-	
-	    $cadena="xajax_comboRegionShow(0,1)";
-	    $objResponse->script($cadena);
-	
-	    //$cadena="xajax_comboTypeSubcategoryShow($idSubcategory,4)";
-	    $idarea=$_SESSION["idarea"];
-
-	    
-	    $objResponse->Assign("formulario","style.display","block");
-	    $objResponse->Assign("formulario","innerHTML","$html");
-	    $objResponse->Assign("resultSearch","style.display","none");
-	    $objResponse->Assign("estadisticas", "style.display", "none");
-            $objResponse->script("xajax_comboTypeSubcategoryShow($idSubcategory,4,$idarea)");            
-	    
-		if(isset($_SESSION["editar"])){
-		    if($_SESSION["editar"]==1){
-                                $objResponse->script("xajax_formSubcategoryShow($idSubcategory)");
-                        
-				$linkRegresar='<span style="float:right;"><a class="negro" href=# id="boton_actualizar"onclick="xajax_abstractHide(\'formulario\'); xajax_abstractShow(\'consultas\'); xajax_abstractShow(\'resultSearch\'); xajax_abstractShow(\'paginator\');"><img style="cursor: pointer; border:0;" width="20px" src="img/flecha-izq.jpg">&nbsp;&nbsp; Retornar a resultados </a></span>';
-				$objResponse->assign("botonRegresar","innerHTML",$linkRegresar);
-		    }
-		}
-            
-		if(isset($_SESSION["idarea"])){
-		    if($_SESSION["idarea"]==11 or $_SESSION["idarea"]==12 or $_SESSION["idarea"]==13 or $_SESSION["idarea"]==14){
-                        $objResponse->script("xajax_formSubcategoryShow($idSubcategory)"); 
-                    }
-                }
-                
-                
-                
-		return $objResponse;
-	}
-	
-	
-	
-	function formAsuntosAcademicosShow($iddata=0,$idSubcategory=0){
-		$objResponse = new xajaxResponse();
-	
-		if(isset($_SESSION["tmp"])){
-		    unset($_SESSION["tmp"]);
-		}
-	
-		if(isset($_SESSION["editar"])){
-		    if($_SESSION["editar"]==1){
-		        $action="UPD";
-		        $tituloBoton="ACTUALIZAR";
-		    }
-		}
-		else{
-		        $action="INS";
-		        $tituloBoton="GUARDAR";
-		}
-	
-		$html='<h2 class="txt-azul">Asuntos Acad&eacute;micos</h2>
-				<div style="padding-top:20px;">
-		            <span class="tab" id="titulo1"></span>
-		            <span class="tab" id="titulo2"></span>
-		            <span class="tab" id="titulo3"></span>
-		            <span class="tab" id="titulo4"></span>
-		            <span class="tab" id="titulo5"></span>
-		            <span class="tab" id="titulo6"></span>
-		            <span class="tab" id="titulo7"></span>
-				</div>
-		
-		        <div id="idcontactform" class="listado-busqueda" style="display:none">
-
-					<div  id="titulo_presentado"></div>
-		
-		            <div id="author" style="display:none">
-		                    <div  id="search_authorPRI"></div>
-		                    <div  id="newFormAuthor"></div>
-		            </div>
-		
-		            <div id="referencia" style="display:none"></div>
-		
-		            <div id="tipoTesis_pais_universidad" style="display:none">
-		                <h1 id="titTipoTesis"></h1>
-		                    <label id="labelTipoTesis"></label>
-		                    <div id="registerTipoTesis"></div>
-		                <h1 id="titPais"></h1>
-		                    <div id="pais"></div>
-		                <h1 id="titUniversidad"></h1>
-		                    <div id="universidad"></div>
-		            </div>
-
-					<div style="float:left">
-				        <div id="areas" style="display:none">
-				            <p style="width:300px" class="txt-azul" id="titAreas"></p>
-				            <div style="width:300px" id="cont_areas"></div>
-				        </div>
-				    
-					</div>
-					<div style="float:right">				        
-				        <div id="areasAdministrativas" style="display:none">
-				            <p style="width:300px" class="txt-azul" id="titAreasAdministrativas"></p>
-				            <div style="width:300px" id="cont_areasAdministrativas"></div>
-				        </div>
-					</div>
-					<div style="clear:both"></div>
-					<div id="institucion_externa" style="display:none">
-						<p class="txt-azul" id="tit_inst_ext"></p>
-						<div id="cont_inst_ext"></div>
-					</div>
-					<div id="divform"></div>
-		
-		            <div id="fecha_permisos" style="display:none">
-		                <div class="txt-azul" id="titFechasTesis">Fechas</div>
-		                <div id="fechasTesis"></div>
-						<div class="linea-separacion"></div>		                
-		                <div class="txt-azul" id="titPermisosTesis"></div>
-		                <div id="permisosTesis"></div>
-		            </div>
-					
-		            <div id="region_departamento" style="display:none">
-		                <h1 id="titRegion"></h1>
-		                    <div id="registerRegionBoletines"></div>
-		                    <div id="registerDepartamentoBoletines"></div>
-		            </div>
-		
-		            <div id="compendio" style="display:none"></div>
-                            
-                            <div id="year_quarter" style="display:none"></div>
-                            
-		            <div id="archivo" style="display:none"></div>
-			</div>		            
-		    <div>
-		            <form id="subcategory">
-		                <input name="tipoPublicacion" id="tipoPublicacion" type="hidden" value='.$idSubcategory.'>
-		                <p>
-		                <span id="registerTypeAsuAca"></span>
-		                <span><input class="button" type="button" onclick="xajax_newAsuntosAcademicos('.$iddata.',\''.$action.'\',xajax.getFormValues(\'subcategory\'));" value='.$tituloBoton.' /></span>
-		                </p>
-		            </form>
-		    </div>';
-
-
-	    $objResponse->Assign("formulario","style.display","block");
-	    $objResponse->Assign("formulario","innerHTML","$html");
-	    $objResponse->Assign("formSearch","style.display","none");
-	    $objResponse->Assign("estadisticas", "style.display", "none");
-	    $objResponse->script("xajax_comboRegionShow(0,1)");
-            $objResponse->script("xajax_formSubcategoryShow($idSubcategory,1)");
-            
-                if(isset($_SESSION["editar"])){
-		    if($_SESSION["editar"]==1){
-                                $objResponse->script("xajax_formSubcategoryShow($idSubcategory)");
-            
-                    }
-                }
-	    
-	    
-		return $objResponse;
-	}
-
-
-	function formGeoSocShow($iddata=0,$idSubcategory=0){
-		$objResponse = new xajaxResponse();
-	
-		if(isset($_SESSION["tmp"])){
-		    unset($_SESSION["tmp"]);
-		}
-	
-		if(isset($_SESSION["editar"])){
-		    if($_SESSION["editar"]==1){
-		        $action="UPD";
-		        $tituloBoton="ACTUALIZAR";
-		    }
-		}
-		else{
-		        $action="INS";
-		        $tituloBoton="GUARDAR";
-		}
-	
-		$html='<h2 class="txt-azul">Geofísica Y Sociedad</h2>
-				<div style="padding-top:20px;">
-		            <span class="tab" id="titulo1"></span>
-		            <span class="tab" id="titulo2"></span>
-		            <span class="tab" id="titulo3"></span>
-		            <span class="tab" id="titulo4"></span>
-		            <span class="tab" id="titulo5"></span>
-		            <span class="tab" id="titulo6"></span>
-		            <span class="tab" id="titulo7"></span>
-				</div>
-		
-		        <div id="idcontactform" class="listado-busqueda" style="display:none">
-
-					<div  id="titulo_presentado"></div>
-		
-		            <div id="author" style="display:none">
-		                    <div  id="search_authorPRI"></div>
-		                    <div  id="newFormAuthor"></div>
-		            </div>
-		
-		            <div id="referencia" style="display:none"></div>
-		
-		            <div id="tipoTesis_pais_universidad" style="display:none">
-		                <h1 id="titTipoTesis"></h1>
-		                    <label id="labelTipoTesis"></label>
-		                    <div id="registerTipoTesis"></div>
-		                <h1 id="titPais"></h1>
-		                    <div id="pais"></div>
-		                <h1 id="titUniversidad"></h1>
-		                    <div id="universidad"></div>
-		            </div>
-
-					<div style="float:left">
-				        <div id="areas" style="display:none">
-				            <p style="width:300px" class="txt-azul" id="titAreas"></p>
-				            <div style="width:300px" id="cont_areas"></div>
-				        </div>
-				    
-					</div>
-					<div style="float:right">				        
-				        <div id="areasAdministrativas" style="display:none">
-				            <p style="width:300px" class="txt-azul" id="titAreasAdministrativas"></p>
-				            <div style="width:300px" id="cont_areasAdministrativas"></div>
-				        </div>
-					</div>
-					<div style="clear:both"></div>
-					<div id="institucion_externa" style="display:none">
-						<p class="txt-azul" id="tit_inst_ext"></p>
-						<div id="cont_inst_ext"></div>
-					</div>
-					<div id="divform"></div>
-		
-		            <div id="fecha_permisos" style="display:none">
-		                <div class="txt-azul" id="titFechasTesis">Fechas</div>
-		                <div id="fechasTesis"></div>
-						<div class="linea-separacion"></div>		                
-		                <div class="txt-azul" id="titPermisosTesis"></div>
-		                <div id="permisosTesis"></div>
-		            </div>
-					
-		            <div id="region_departamento" style="display:none">
-		                <h1 id="titRegion"></h1>
-		                    <div id="registerRegionBoletines"></div>
-		                    <div id="registerDepartamentoBoletines"></div>
-		            </div>
-		
-		            <div id="compendio" style="display:none"></div>
-                            
-                            <div id="year_quarter" style="display:none"></div>
-                            
-		            <div id="archivo" style="display:none"></div>
-			</div>		            
-		    <div>
-		            <form id="subcategory">
-		                <input name="tipoPublicacion" id="tipoPublicacion" type="hidden" value='.$idSubcategory.'>
-		                <p>
-		                <span id="registerTypeGeoSoc"></span>
-		                <span><input class="button" type="button" onclick="xajax_newGeofisicaSociedad('.$iddata.',\''.$action.'\',xajax.getFormValues(\'subcategory\'));" value='.$tituloBoton.' /></span>
-		                </p>
-		            </form>
-		    </div>';
-
-
-	    $objResponse->Assign("formulario","style.display","block");
-	    $objResponse->Assign("formulario","innerHTML","$html");
-	    $objResponse->Assign("formSearch","style.display","none");
-	    $objResponse->Assign("estadisticas", "style.display", "none");
-	    $objResponse->script("xajax_comboRegionShow(0,1)");
-            $objResponse->script("xajax_formSubcategoryShow($idSubcategory,1)");
-            
-                if(isset($_SESSION["editar"])){
-		    if($_SESSION["editar"]==1){
-                                $objResponse->script("xajax_formSubcategoryShow($idSubcategory)");
-            
-                    }
-                }
-	    
-	    
-		return $objResponse;
-	}
-        
-
-
-	function formSubcategoryShow($tipo=1){
-		$objResponse = new xajaxResponse();
-		$html="";
-		$tipoDocumento="";
-		$subcategory="";
-
-                if(isset($_SESSION["tmp"])){
-                    unset($_SESSION["tmp"]);
-                }
-
-		//Limpiar las Capas de Títulos para que no se repitan en otros tipos documentos
-		$titulos=array("titulo1","titulo2","titulo3","titulo4","titulo5","titulo6","titulo7");
-		foreach ($titulos as $nombre_titulos){
-			$objResponse->assign($nombre_titulos,"innerHTML","");
-		}
-                $objResponse->script("xajax_registerDateIng()");
-		
-                        //###############################################################
-			// FECHA-ESTADO-PERMISOS
-                        
-         /****************************************************/                
-	    if(isset($_SESSION["edit"])){
-	        $recuperar=$_SESSION["edit"];
-	    }
-	    elseif(isset($_SESSION["tmp"])){
-	        $recuperar=$_SESSION["tmp"];
-	    }
-
-            
-            $month_pub=0;
-            $year_pub=0;           
-	    if(isset($recuperar["month_pub"])){
-                if($recuperar["month_pub"]!=""){
-                    $month_pub=$recuperar["month_pub"];
-                }
-	    else{
-                $month_date_pub=substr($recuperar["date_pub"],-5,2);
-	        $month_pub=$month_date_pub;
-                }
-
-	    }
-	
-	    if(isset($recuperar["year_pub"])){
-                if($recuperar["year_pub"]!=""){
-                    $year_pub=$recuperar["year_pub"];
-                }	    
-	    else{
-                $year_date_pub=substr($recuperar["date_pub"],0,4);
-	        $year_pub=$year_date_pub;
-                }
-
-	    }
-            
-            
-                if(isset($_SESSION["edit"])){
-                    
-                    $objResponse->script("xajax_registerMonthPub($month_pub)");
-                    $objResponse->script("xajax_registerYearPub($year_pub)");
-                    
-                }
-         /*****************************************************/                
-		
-		if($tipo==0){
-		    $html="";
-                    $funcion="";
-		    $_SESSION["subcategory"]="";
-                    $_SESSION["idsubcategory"]="";
-		    $objResponse->assign("idcontactform","style.display","none");
-		}
-		else if($tipo==1){   
-                        $funcion="newPublication";
-			$objResponse->assign("idcontactform","style.display","block");
-			$tipoDocumento="publicaciones";
-			$subcategory="articulos_indexados";
-			$idsubcategory=1;
-                        $idtypedocument=1;
-
-			// PARA EL TITULO
-                        //función que muestra la capa por default
-			$objResponse->script("xajax_displaydiv('titulo_resumen','titulo1')");
-                        
-			$objResponse->assign("titulo1","innerHTML","<a href=#1 onclick=\"xajax_displaydiv('titulo_resumen','titulo1'); return false;\">T&iacute;tulo / Resumen</a>");		    
-                        $objResponse->assign("titulo_resumen","innerHTML",iniTitulo_Resumen());
-
-                        //###############################################################
-			//PARA EL AUTOR
-                        $objResponse->assign("titulo2","innerHTML","<a href=#1 onclick=\"xajax_displaydiv('author','titulo2'); return false;\">Autor</a>");
-                        $objResponse->script("xajax_searchAuthorSesionPriShow()");
-                        $objResponse->script("xajax_searchAuthorSesionSecShow()");
-                        $objResponse->assign("search_authorPRI","innerHTML",iniAuthorPriShow());    		
-			$objResponse->assign("newFormAuthor","innerHTML",formAuthorShow());
-	    	
-			//###############################################################
-                        //REFERENCIA
-                        $objResponse->assign("titulo3","innerHTML","<a href=#1 onclick=\"xajax_displaydiv('referencia','titulo3'); return false;\">Referencia</a>");		    
-
-			if(isset($_SESSION["edit"])){
-			    $recuperar=$_SESSION["edit"];    
-			}
-			elseif(isset($_SESSION["tmp"])){
-			    $recuperar=$_SESSION["tmp"];
-			}
-	
-                        if(isset($recuperar["idreference"])){
-                            $id=$recuperar["idreference"];
-                        }
-                        else{
-                            $id=0;
-                        }
-
-                        $objResponse->assign("referencia","innerHTML",iniReferenciaShow($tipo,'titulo3'));
-                        $objResponse->script("xajax_comboReferenciaShow(".$_SESSION["idarea"].",$tipo,$id,1)");
-
-                        //###############################################################    		
-                        // AREA Y TEMA
-			$link="<a onclick=\"xajax_displaydiv('area_tema','titulo4'); return false;\" href='#'>&Aacute;rea y Tema</a>";
-			$objResponse->assign('titulo4',"innerHTML",$link);
-		
-		        //Temas del area 
-                        $objResponse->script("xajax_iniAreaShow('".$_SESSION["idarea"]."')");
-		
-		        //Asociar a otras areas
-                        $objResponse->script("xajax_iniOtrasAreasShow('".$_SESSION["idarea"]."')");
-		
-		        //Asociar a otros temas
-			$range=readSessionArea();
-			$objResponse->script("xajax_otrosTemasShow('$range')");
-		
-		        //Asociar a otros temas
-			$objResponse->script("xajax_iniOtrosTemasShow()");
-		
-		        //Ingresar nuevo tema
-			$objResponse->script("xajax_newThemeShow()");
-    		
-                        
-		    $link="<a onclick=\"xajax_displaydiv('fecha_estado_permisos','titulo5'); return false;\" href='#'>Fecha/Estado/Permisos</a>";
-		    $objResponse->Assign('titulo5',"innerHTML",$link);
-		    $htmlStatus=iniStatus();
-		    $htmlDates=iniDates();
-	            
-	            if(isset($_SESSION["edit"])){
-	                $objResponse->script("xajax_iniEditPermission('titPermisos','permisos')");   
-	            }
-	            else{                
-	                $objResponse->script("xajax_iniPermission('titPermisos','permisos')");
-	            }
-
-			$objResponse->Assign("estado","innerHTML",$htmlStatus);            
-			$objResponse->Assign("fechas","innerHTML",$htmlDates);
-			$objResponse->Assign("titFechas","innerHTML","Fechas");
-			
-
-			//###############################################################
-			// ARCHIVO			
-                        list($htmlArchivo,$link)=iniArchivoShow();
-                    
-                        $objResponse->Assign('titulo6',"innerHTML","<a href=#1 onclick=\"xajax_displaydiv('archivo','titulo6'); return false;\">Archivo</a>");
-                        $objResponse->Assign("archivo","innerHTML",$htmlArchivo);
-		
-                        if($link!=""){
-                            $objResponse->Assign("formUpload","style.display","none");
-                        }
-                        
-                        
-		}
-		else if($tipo==2){
-                    
-                        $funcion="newPublication";
-			$objResponse->assign("idcontactform","style.display","block");
-			$tipoDocumento="publicaciones";
-			$subcategory="tesis";
-			$idsubcategory=2;
-                        $idtypedocument=1;
-			unset($_SESSION["edit"]["idreference"]);
-			unset($_SESSION["edit"]["reference_description"]);
-			unset($_SESSION["edit"]["reference_details"]);
-		
-                        //función que muestra la capa por default
-                        $objResponse->script("xajax_displaydiv('titulo_resumen','titulo1')");
-		
-			$objResponse->assign("titulo1","innerHTML","<a href=#1 onclick=\"xajax_displaydiv('titulo_resumen','titulo1'); return false;\">T&iacute;tulo / Resumen</a>");		    
-                        $objResponse->assign("titulo_resumen","innerHTML",iniTitulo_Resumen());
-
-                        //###############################################################
-			//PARA EL AUTOR
-                        $objResponse->assign("titulo2","innerHTML","<a href=#1 onclick=\"xajax_displaydiv('author','titulo2'); return false;\">Autor</a>");
-                        $objResponse->script("xajax_searchAuthorSesionPriShow()");
-                        $objResponse->script("xajax_searchAuthorSesionSecShow()");
-                        $objResponse->assign("search_authorPRI","innerHTML",iniAuthorPriShow());    		
-			$objResponse->assign("newFormAuthor","innerHTML",formAuthorShow());
-	    	
-			//###############################################################
-                        $objResponse->script("xajax_iniTypeTesisCountryUniversity('titulo3')");
-                        $objResponse->script("xajax_iniDatePermission('titulo5')");
-		    
-			//###############################################################
-			// ARCHIVO			
-                        list($htmlArchivo,$link)=iniArchivoShow();
-                    
-                        $objResponse->Assign('titulo6',"innerHTML","<a href=#1 onclick=\"xajax_displaydiv('archivo','titulo6'); return false;\">Archivo</a>");
-                        $objResponse->Assign("archivo","innerHTML",$htmlArchivo);		    
-                
-                        if($link!=""){
-                            $objResponse->Assign("formUpload","style.display","none");
-                        }
-		}
-		else if($tipo==3){
-                        $funcion="newPublication";
-			$objResponse->assign("idcontactform","style.display","block");
-			$tipoDocumento="publicaciones";
-			$subcategory="otras_publicaciones";
-			$idsubcategory=3;
-                        $idtypedocument=1;
-                        
-                        //función que muestra la capa por default
-                        $objResponse->script("xajax_displaydiv('titulo','titulo1')");
-
-                        //$objResponse->script("xajax_iniTitulo('titulo1')");
-                        $objResponse->Assign('titulo1',"innerHTML","<a href=#1 onclick=\"xajax_displaydiv('titulo','titulo1'); return false;\">Título Resumen</a>");
-                        $objResponse->assign("titulo","innerHTML",iniTitulo_Resumen());
-		    
-                        //###############################################################
-			// AUTOR
-
-                        $objResponse->assign("titulo2","innerHTML","<a href=#1 onclick=\"xajax_displaydiv('author','titulo2'); return false;\">Autor</a>");
-                        $objResponse->script("xajax_searchAuthorSesionPriShow()");
-                        $objResponse->script("xajax_searchAuthorSesionSecShow()");
-                        $objResponse->assign("search_authorPRI","innerHTML",iniAuthorPriShow());    		
-			$objResponse->assign("newFormAuthor","innerHTML",formAuthorShow());
-	    	
-			//###############################################################
-			// REFERENCIA			
-                        $objResponse->assign("titulo3","innerHTML","<a href=#1 onclick=\"xajax_displaydiv('referencia','titulo3'); return false;\">Referencia</a>");		    
-
-			if(isset($_SESSION["edit"])){
-			    $recuperar=$_SESSION["edit"];    
-			}
-			elseif(isset($_SESSION["tmp"])){
-			    $recuperar=$_SESSION["tmp"];
-			}
-	
-                        if(isset($recuperar["idreference"])){
-                            $id=$recuperar["idreference"];
-                        }
-                        else{
-                            $id=0;
-                        }
-
-                        $objResponse->assign("referencia","innerHTML",iniReferenciaShow($tipo,'titulo3'));
-                        $objResponse->script("xajax_comboReferenciaShow(".$_SESSION["idarea"].",$tipo,$id,1)");
-		    
-			//###############################################################
-			// AREA					    
-		    
-                        //###############################################################
-			// FECHA-ESTADO-PERMISOS
-                        $link="<a onclick=\"xajax_displaydiv('fecha_estado_permisos','titulo4'); return false;\" href='#'>Fecha/Estado/Permisos</a>";
-                        $objResponse->Assign('titulo4',"innerHTML",$link);
-                        $htmlStatus=iniStatus();
-                        $htmlDates=iniDates();
-	            
-                        if(isset($_SESSION["edit"])){
-                            $objResponse->script("xajax_iniEditPermission('titPermisos','permisos')");   
-                        }
-                        else{                
-                            $objResponse->script("xajax_iniPermission('titPermisos','permisos')");
-                        }
-
-			$objResponse->Assign("estado","innerHTML",$htmlStatus);            
-			$objResponse->Assign("fechas","innerHTML",$htmlDates);
-			$objResponse->Assign("titFechas","innerHTML","Fechas");		
-		    
-			//###############################################################
-			// ARCHIVO			
-                        list($htmlArchivo,$link)=iniArchivoShow();
-                        if($link!=""){
-                            $objResponse->Assign("formUpload","style.display","none");
-                        }
-                        
-                        $objResponse->Assign('titulo5',"innerHTML","<a href=#1 onclick=\"xajax_displaydiv('archivo','titulo5'); return false;\">Archivo</a>");
-                        $objResponse->Assign("archivo","innerHTML",$htmlArchivo);		    
-		}
-
-		elseif($tipo==4){
-			$tipoDocumento="ponencias";
-			$subcategory="ponencia";
-			$idsubcategory=4;
-                        $idtypedocument=2;
-		}
-
-		else if($tipo==6){
-                        $funcion="newInformacionInterna";
-			$objResponse->assign("idcontactform","style.display","block");
-			$tipoDocumento="informacion_interna";
-			$subcategory="reportes_tecnicos";
-			$idsubcategory=6;
-                        $idtypedocument=3;
-		    //función que muestra la capa por default
-		    $objResponse->script("xajax_displaydiv('titulo','titulo1')");
-		    $objResponse->script("xajax_iniTitulo('titulo1')");
-		    
-	    	//###############################################################
-			// AUTOR
-                        $objResponse->assign("titulo2","innerHTML","<a href=#1 onclick=\"xajax_displaydiv('author','titulo2'); return false;\">Autor</a>");
-                        $objResponse->script("xajax_searchAuthorSesionPriShow()");
-                        $objResponse->script("xajax_searchAuthorSesionSecShow()");
-                        $objResponse->assign("search_authorPRI","innerHTML",iniAuthorPriShow());    		
-			$objResponse->assign("newFormAuthor","innerHTML",formAuthorShow());
-	    	
-			//###############################################################		    
-                        $objResponse->script("xajax_iniAreas('titulo3')");
-		    
-			//###############################################################		    
-                        $objResponse->script("xajax_iniDatePermission('titulo4')");
-		    
-			//###############################################################
-			// ARCHIVO			
-                        list($htmlArchivo,$link)=iniArchivoShow();
-                    
-                        $objResponse->Assign('titulo5',"innerHTML","<a href=#1 onclick=\"xajax_displaydiv('archivo','titulo5'); return false;\">Archivo</a>");
-                        $objResponse->Assign("archivo","innerHTML",$htmlArchivo);		    
-
-                        if($link!=""){
-                            $objResponse->Assign("formUpload","style.display","none");
-                        }
-		}
-
-		else if($tipo==7){
-                        $funcion="newInformacionInterna";
-			$objResponse->assign("idcontactform","style.display","block");
-			$tipoDocumento="informacion_interna";
-			$subcategory="informes_trimestrales";
-			$idsubcategory=7;
-                        $idtypedocument=3;
-                        
-                        $objResponse->script("xajax_displaydiv('year_quarter','titulo1')");
-                        $objResponse->script("xajax_iniYearQuarter('titulo1')");
-		    
-			//###############################################################		    
-                        $objResponse->script("xajax_iniDatePermission('titulo2')");
-		    
-			//###############################################################
-			// ARCHIVO			
-                        list($htmlArchivo,$link)=iniArchivoShow();
-                    
-                        $objResponse->Assign('titulo3',"innerHTML","<a href=#1 onclick=\"xajax_displaydiv('archivo','titulo3'); return false;\">Archivo</a>");
-                        $objResponse->Assign("archivo","innerHTML",$htmlArchivo);		    
-		
-                        if($link!=""){
-                            $objResponse->Assign("formUpload","style.display","none");
-                        }
-		}		
-		
-		else if($tipo==8){
-                        $funcion="newInformacionInterna";
-			$objResponse->assign("idcontactform","style.display","block");
-			$tipoDocumento="informacion_interna";
-			$subcategory="boletines";
-			$idsubcategory=8;
-                        $idtypedocument=3;
-                        
-                        //función que muestra la capa por default
-                        $objResponse->script("xajax_displaydiv('nro_magnitud','titulo1')");
-                        $objResponse->script("xajax_iniNroMagnitud('titulo1')");
-                        $objResponse->script("xajax_iniRegionDepartamentoFechas('titulo2')");
-
-                        //###############################################################
-                        // ARCHIVO					
-                        list($htmlArchivo,$link)=iniArchivoShow();
-                    
-                        $objResponse->Assign('titulo3',"innerHTML","<a href=#1 onclick=\"xajax_displaydiv('archivo','titulo3'); return false;\">Archivo</a>");
-                        $objResponse->Assign("archivo","innerHTML",$htmlArchivo);
-                    
-                        if($link!=""){
-                            $objResponse->Assign("formUpload","style.display","none");
-                        }
-                    
-		}
-		
-		else if($tipo==11){
-                        $funcion="newAsuntosAcademicos";
-			$objResponse->assign("idcontactform","style.display","block");
-			$tipoDocumento="asuntos_academicos";
-			$subcategory="compendios";
-			$idsubcategory=11;
-                        $idtypedocument=4;
-                        
-                        //función que muestra la capa por default
-                        $objResponse->script("xajax_displaydiv('compendio','titulo1')");
-                        $objResponse->script("xajax_iniNroCompendioYear('titulo1')");
-                        $objResponse->script("xajax_iniDatePermission('titulo2')");
-
-			//###############################################################
-			// ARCHIVO			
-                        list($htmlArchivo,$link)=iniArchivoShow();
-                    
-                        $objResponse->Assign('titulo3',"innerHTML","<a href=#1 onclick=\"xajax_displaydiv('archivo','titulo3'); return false;\">Archivo</a>");
-                        $objResponse->Assign("archivo","innerHTML",$htmlArchivo);		    
-
-                    if($link!=""){
-                        $objResponse->Assign("formUpload","style.display","none");
-                    }
-                
-		}
-		else if($tipo==12){
-                        $funcion="newAsuntosAcademicos";
-			$objResponse->assign("idcontactform","style.display","block");
-			$tipoDocumento="asuntos_academicos";
-			$subcategory="informes_trimestrales";
-			$idsubcategory=12;
-                        $idtypedocument=4;
-                        
-                        $objResponse->script("xajax_displaydiv('year_quarter','titulo1')");
-                        $objResponse->script("xajax_iniYearQuarter('titulo1')");
-		    
-			//###############################################################		    
-                        $objResponse->script("xajax_iniDatePermission('titulo2')");
-		    
-			//###############################################################
-			// ARCHIVO			
-                        list($htmlArchivo,$link)=iniArchivoShow();
-                    
-                        $objResponse->Assign('titulo3',"innerHTML","<a href=#1 onclick=\"xajax_displaydiv('archivo','titulo3'); return false;\">Archivo</a>");
-                        $objResponse->Assign("archivo","innerHTML",$htmlArchivo);		    
-		    
-                        if($link!=""){
-                            $objResponse->Assign("formUpload","style.display","none");
-                        }
-		}
-		else if($tipo==13){
-                        $funcion="newGeofisicaSociedad";
-			$objResponse->assign("idcontactform","style.display","block");
-			$tipoDocumento="informacion_interna";
-			$subcategory="informes_trimestrales";
-			$idsubcategory=13;
-                        $idtypedocument=5;
-                        
-                        $objResponse->script("xajax_displaydiv('year_quarter','titulo1')");
-                        $objResponse->script("xajax_iniYearQuarter('titulo1')");
-		    
-			//###############################################################		    
-                        $objResponse->script("xajax_iniDatePermission('titulo2')");
-		    
-			//###############################################################
-			// ARCHIVO			
-                        list($htmlArchivo,$link)=iniArchivoShow();
-                    
-                        $objResponse->Assign('titulo3',"innerHTML","<a href=#1 onclick=\"xajax_displaydiv('archivo','titulo3'); return false;\">Archivo</a>");
-                        $objResponse->Assign("archivo","innerHTML",$htmlArchivo);		    
-		    
-                        if($link!=""){
-                            $objResponse->Assign("formUpload","style.display","none");
-                        }
-		}
-		
-		else if($tipo==5){
-                        $funcion="newAsuntosAcademicos";
-			$objResponse->assign("idcontactform","style.display","block");
-			$tipoDocumento="asuntos_academicos";
-			$subcategory="charlas_internas";
-			$idsubcategory=5;
-                        $idtypedocument=4;
-                        
-                        //función que muestra la capa por default
-                        $objResponse->script("xajax_displaydiv('titulo_presentado','titulo1')");
-                        $objResponse->script("xajax_iniTitulo_Presentado('titulo1')");
-                        $objResponse->script("xajax_iniDatePermission('titulo3')");
-                        $objResponse->script("xajax_iniAreas('titulo2')");
-		    
-			//###############################################################
-			// ARCHIVO			
-                        list($htmlArchivo,$link)=iniArchivoShow();
-                    
-                        $objResponse->Assign('titulo4',"innerHTML","<a href=#1 onclick=\"xajax_displaydiv('archivo','titulo4'); return false;\">Archivo</a>");
-                        $objResponse->Assign("archivo","innerHTML",$htmlArchivo);		    
-		
-                        if($link!=""){
-                            $objResponse->Assign("formUpload","style.display","none");
-                        }
-		}
-
-                
-		if(isset($_SESSION["editar"])){
-		    if($_SESSION["editar"]==1){
-		        $action="UPD";
-		        $tituloBoton="ACTUALIZAR";
-				$boton="";
-		    }
-		}
-		else{
-			$action="INS";
-			$tituloBoton="GUARDAR";
-			$boton='<span><p><input class="button" type="button" id="boton_guardar" onclick="xajax_'.$funcion.'(0,\''.$action.'\',xajax.getFormValues(\'subcategory\'));" value='.$tituloBoton.' /></p></span>';
-			$objResponse->assign("botonGuardarEditar","innerHTML",$boton);
-														
-		}
-                
-		$_SESSION["tipoDocumento"]=$tipoDocumento;
-		$_SESSION["subcategory"]=$subcategory;
-                
-                if(isset($idtypedocument)){
-			$_SESSION["idtypedocument"]=$idtypedocument;
-		}
-
-		if(isset($idsubcategory)){
-			$_SESSION["idsubcategory"]=$idsubcategory;			
-		}
-                
-                $objResponse->script('	$(document).ready(function() {
-		$("input.file").si();});');
-                
-                //$objResponse->alert($boton);
-		return $objResponse;
-	}
-	
 	
 	
 	
@@ -2188,12 +1075,7 @@
 		');
 		return $objResponse;
 	}
-function click_checked(){
-		$objResponse = new xajaxResponse();
 
-		$objResponse->assign("divdestino","innerHTML","");
-		return $objResponse;
-	}
 	
 function crea_form($accion){
     $respuesta = new xajaxResponse();
@@ -2523,27 +1405,8 @@ function crea_form($accion){
     break;
 
     }
-
         
-	/*        
-	$respuesta->script('
-	jQuery.validator.setDefaults({
-		debug: true,
-		success: "valid"
-	});;
-
-	    $(document).ready(function(){
-	    $("#myform").validate({
-	    rules: {
-	    
-	    repassword_old: {
-	        equalTo: "#password_old"
-	    }
-	    }
-	    });
-	    });
-	');
-	*/
+	
     return $respuesta;        
 }
 	
@@ -2564,7 +1427,7 @@ function carga_archivo(){
             <tbody>
                     <tr>
                             <td>
-                                    <div id="demo1" style="width:500px"></div>
+                                    <div id="up_files" style="width:500px"></div>
                                     <!--<div id="report" style="overflow:auto;width:300px;height:200px;"></div>-->
 
                             </td>
@@ -2587,7 +1450,7 @@ function carga_archivo(){
     $respuesta->assign("carga_archivo", "innerHTML", $html);
     
     $respuesta->script('
-			$("#demo1").ajaxupload({
+			$("#up_files").ajaxupload({
 				url:"librerias/ax-jquery-multiuploader/examples/upload.php",
                                 allowExt:["png","gif","jpg","zip"],
 				remotePath:"uploaded/",
@@ -2595,7 +1458,7 @@ function carga_archivo(){
                                     {
                                         alert("Todas las archivos han sido cargados");
                                         //var conteo=files.length 
-                                        //alert(files);
+                                        alert(files);
                                         //xajax_lista_archivos();
                                         
                                     },
@@ -2627,6 +1490,7 @@ function save_files($namefile){
     $str_name=(str_replace(" ","-",$name));
     
         $_SESSION["files"]["file-".$str_name]=$namefile;
+        $_SESSION["publication"]["file"]=$namefile;
         
     //$respuesta->alert(print_r($_SESSION, true));
     

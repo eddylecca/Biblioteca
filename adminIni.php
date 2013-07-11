@@ -1173,43 +1173,12 @@ return $resultSql;
 	}
 
 	
-	/*
-function iniAreaTheme($divTitulo){
-	$objResponse = new xajaxResponse();
 
-	$link="<a onclick=\"xajax_displaydiv('area_tema','$divTitulo'); return false;\" href='#'>&Aacute;REA Y TEMA</a>";
-	$objResponse->Assign($divTitulo,"innerHTML",$link);
-
-        //Temas del area de Aeronomia
-    $cadena="xajax_iniAreaShow('".$_SESSION["idarea"]."')";
-    $objResponse->script($cadena);
-
-        //Asociar a otras areas
-    $cadena="xajax_iniOtrasAreasShow('".$_SESSION["idarea"]."')";
-    $objResponse->script($cadena);
-
-
-        //Asociar a otros temas
-	$range=readSessionArea();
-    $script="xajax_otrosTemasShow('$range')";
-	$objResponse->script($script);
-
-        //Asociar a otros temas
-	$script="xajax_iniOtrosTemasShow()";
-	$objResponse->script($script);
-
-        //Ingresar nuevo tema
-	$script="xajax_newThemeShow()";
-	$objResponse->script($script);
-
-    return $objResponse;
-}
-*/
 
 	function iniDatePermission($divTitulo){
 	    $objResponse = new xajaxResponse();
 	
-	    $link="<a onclick=\"xajax_displaydiv('fecha_permisos','$divTitulo'); return false;\" href='#'>Fecha / Permisos</a>";
+	    $link="<a onclick=\"xajax_displaydiv('fecha_permisos','$divTitulo'); return false;\" href='#'>Fechas</a>";
 	    $objResponse->assign($divTitulo,"innerHTML",$link);
 	
 	    //$objResponse->script("xajax_iniDates('titFechasTesis','fechasTesis')");
@@ -1255,58 +1224,24 @@ function iniAreaTheme($divTitulo){
                     $objResponse->script("xajax_registerYearPub($year_pub)");
                     
                 }
+
 /*****************************************************/                
                 //$objResponse->script("xajax_cargaScriptDates()");
 	    
 	    //$objResponse->script("xajax_iniPermission('titPermisosTesis','permisosTesis')");
           
-            if(isset($_SESSION["edit"])){
-                $objResponse->script("xajax_iniEditPermission('titPermisosTesis','permisosTesis')");   
-            }
-            else{                
-                $objResponse->script("xajax_iniPermission('titPermisosTesis','permisosTesis')");
+            // if(isset($_SESSION["edit"])){
+            //     $objResponse->script("xajax_iniEditPermission('titPermisosTesis','permisosTesis')");   
+            // }
+            // else{                
+            //     $objResponse->script("xajax_iniPermission('titPermisosTesis','permisosTesis')");
                 
-            }
+            // }
             
-
-	    return $objResponse;
-	}
-	
-	/*
-	function iniDateStatusPermission($divTitulo){
-	    $objResponse = new xajaxResponse();
-	
-	    $link="<a onclick=\"xajax_displaydiv('fecha_estado_permisos','$divTitulo'); return false;\" href='#'>FECHA/ESTADO/PERMISOS</a>";
-	    $objResponse->Assign($divTitulo,"innerHTML",$link);
-	
-	    //$objResponse->script("xajax_iniStatus()");
-	    $htmlStatus=iniStatus();
-	    //$objResponse->script("xajax_iniDates('titFechas','fechas')");
-	    $htmlDates=iniDates('titFechas','fechas');
-	    
-	    
-            //$objResponse->script("xajax_iniPermission('titPermisosTesis','permisosTesis')");
-            
-            if(isset($_SESSION["edit"])){
-                $objResponse->script("xajax_iniEditPermission('titPermisos','permisos')");   
-            }
-            else{                
-                $objResponse->script("xajax_iniPermission('titPermisos','permisos')");
-                
-            }
-
-		            
-		$objResponse->Assign("estado","innerHTML",$htmlStatus);            
-		//$respuesta->Assign("titEstado","innerHTML","Estado");
-
-		$objResponse->Assign("fechas","innerHTML",$htmlDates);
-		$objResponse->Assign("titFechas","innerHTML","Fechas");		
 		
 	    return $objResponse;
 	}
-*/
-
-
+	
 	function iniStatus(){
 
 		$result=searchStatus();
@@ -1343,120 +1278,120 @@ function iniAreaTheme($divTitulo){
 	    return $html;
 	}
 
-	function iniDates(){
+	// function iniDates(){
 	
-	    if(isset($_SESSION["edit"])){
-	        $recuperar=$_SESSION["edit"];
-	    }
-	    elseif(isset($_SESSION["tmp"])){
-	        $recuperar=$_SESSION["tmp"];
-	    }
+	//     if(isset($_SESSION["edit"])){
+	//         $recuperar=$_SESSION["edit"];
+	//     }
+	//     elseif(isset($_SESSION["tmp"])){
+	//         $recuperar=$_SESSION["tmp"];
+	//     }
             
-	    if(isset($recuperar["date_ing"])){
-	        $date_ing=$recuperar["date_ing"];
-	    }
-	    else{
-	        $date_ing=date("d/m/Y");
-	    }
+	//     if(isset($recuperar["date_ing"])){
+	//         $date_ing=$recuperar["date_ing"];
+	//     }
+	//     else{
+	//         $date_ing=date("d/m/Y");
+	//     }
             
-            $month_pub=0;
-            $year_pub=0;
-            $day_pub=0;
+ //            $month_pub=0;
+ //            $year_pub=0;
+ //            $day_pub=0;
 
-	    if(isset($recuperar["day_pub"])){
-                if($recuperar["day_pub"]!=""){
-                    $day_pub=$recuperar["day_pub"];
-                }
+	//     if(isset($recuperar["day_pub"])){
+ //                if($recuperar["day_pub"]!=""){
+ //                    $day_pub=$recuperar["day_pub"];
+ //                }
 	    
-	    else{
-                $day_date_pub=substr($recuperar["date_pub"],-8,2);
-	        $day_pub=$day_date_pub;
-                }
-            }
+	//     else{
+ //                $day_date_pub=substr($recuperar["date_pub"],-8,2);
+	//         $day_pub=$day_date_pub;
+ //                }
+ //            }
             
-	    if(isset($recuperar["month_pub"])){
-                if($recuperar["month_pub"]!=""){
-                    $month_pub=$recuperar["month_pub"];
-                    $desc_month_pub=$recuperar["desc_month_pub"];
-                }
-                else{
-                    $month_date_pub=substr($recuperar["date_pub"],-5,2);
-                    $month_pub=$month_date_pub;
-                }
-            }
+	//     if(isset($recuperar["month_pub"])){
+ //                if($recuperar["month_pub"]!=""){
+ //                    $month_pub=$recuperar["month_pub"];
+ //                    $desc_month_pub=$recuperar["desc_month_pub"];
+ //                }
+ //                else{
+ //                    $month_date_pub=substr($recuperar["date_pub"],-5,2);
+ //                    $month_pub=$month_date_pub;
+ //                }
+ //            }
             
-	    if(isset($recuperar["year_pub"])){
-                if($recuperar["year_pub"]!=""){
-                    $year_pub=$recuperar["year_pub"];
-                }
+	//     if(isset($recuperar["year_pub"])){
+ //                if($recuperar["year_pub"]!=""){
+ //                    $year_pub=$recuperar["year_pub"];
+ //                }
 	    
-	    else{
-                $year_date_pub=substr($recuperar["date_pub"],0,4);
-	        $year_pub=$year_date_pub;
-                }
-            }
+	//     else{
+ //                $year_date_pub=substr($recuperar["date_pub"],0,4);
+	//         $year_pub=$year_date_pub;
+ //                }
+ //            }
 	    
-	    if(isset($_SESSION["subcategory"])){
-	    	$subcategory=$_SESSION["subcategory"];
-	    }	
-	    else{
-	    	$subcategory="";
-	    }	    	
+	//     if(isset($_SESSION["subcategory"])){
+	//     	$subcategory=$_SESSION["subcategory"];
+	//     }	
+	//     else{
+	//     	$subcategory="";
+	//     }	    	
 
-	    $funcion="";
-            $comboDay_pub="";
-		switch($subcategory){
-		    case "ponencia":
-		    case "charlas_internas":
-		        $fecha_txt="Fecha de Presentaci&oacute;n:";
-		        break;
-		    case "boletines":
-		        $fecha_txt="Fecha de Sismo :";
-                        $comboDay_pub=comboDay($day_pub,'xajax_registerDayPub(this.value)');
-		        break;
-		    default:
-		        $fecha_txt="Fecha de publicaci&oacute;n:";
-		        break;
-		}
+	//     $funcion="";
+ //            $comboDay_pub="";
+	// 	switch($subcategory){
+	// 	    case "ponencia":
+	// 	    case "charlas_internas":
+	// 	        $fecha_txt="Fecha de Presentaci&oacute;n:";
+	// 	        break;
+	// 	    case "boletines":
+	// 	        $fecha_txt="Fecha de Sismo :";
+ //                        $comboDay_pub=comboDay($day_pub,'xajax_registerDayPub(this.value)');
+	// 	        break;
+	// 	    default:
+	// 	        $fecha_txt="Fecha de publicaci&oacute;n:";
+	// 	        break;
+	// 	}
                 
-		//$comboMonth_pub=comboMonth($month_pub,'xajax_registerMonthPub(this.value)');
-                $comboMonth_pub=comboMonth($month_pub,'xajax_obtenerIdDescripcion("month","registerMonthPub")');
-		$comboYear_pub=comboYear($year_pub,'xajax_registerYearPub(this.value)');
+	// 	//$comboMonth_pub=comboMonth($month_pub,'xajax_registerMonthPub(this.value)');
+ //                $comboMonth_pub=comboMonth($month_pub,'xajax_obtenerIdDescripcion("month","registerMonthPub")');
+	// 	$comboYear_pub=comboYear($year_pub,'xajax_registerYearPub(this.value)');
                 
                 
                 
-		$html='<div class="campo-buscador">Fecha de ingreso:</div>';
-		$html.='<div class="contenedor-caja-buscador-1">';
-		$html.="<input type='text' class='caja-buscador-4' name='date_ing' id='date_ing' READONLY value='$date_ing' />";
-		$html.='</div>';
-		$html.='<div style="clear:both"></div>';
-		//$html.='<div class="campo-buscador">'.$fecha_txt."</div>";
-		//$html.='<div class="contenedor-caja-buscador-1">';
-		//$html.="<input type='text' onchange='xajax_registerDatePub(this.value)' class='caja-buscador-2' name='date_pub' id='date_pub' READONLY size='5' value='$date_pub' />";
+	// 	$html='<div class="campo-buscador">Fecha de ingreso:</div>';
+	// 	$html.='<div class="contenedor-caja-buscador-1">';
+	// 	$html.="<input type='text' class='caja-buscador-4' name='date_ing' id='date_ing' READONLY value='$date_ing' />";
+	// 	$html.='</div>';
+	// 	$html.='<div style="clear:both"></div>';
+	// 	//$html.='<div class="campo-buscador">'.$fecha_txt."</div>";
+	// 	//$html.='<div class="contenedor-caja-buscador-1">';
+	// 	//$html.="<input type='text' onchange='xajax_registerDatePub(this.value)' class='caja-buscador-2' name='date_pub' id='date_pub' READONLY size='5' value='$date_pub' />";
                 
-                    //$html.='<div id="divMonth" class="caja-buscador-2">www</div>';
-                    //$html.='<div id="divYear" class="caja-buscador-2">www</div>';
+ //                    //$html.='<div id="divMonth" class="caja-buscador-2">www</div>';
+ //                    //$html.='<div id="divYear" class="caja-buscador-2">www</div>';
                 
-                $html.='<div id="registerDate" style="display:block;">
-                            <div style="clear:both;"></div>
-                            <div class="campo-buscador">'.$fecha_txt.' </div>
-                            <div class="contenedor-caja-buscador-1">
+ //                $html.='<div id="registerDate" style="display:block;">
+ //                            <div style="clear:both;"></div>
+ //                            <div class="campo-buscador">'.$fecha_txt.' </div>
+ //                            <div class="contenedor-caja-buscador-1">
                                 
-                                <span>'.$comboDay_pub.'</span>
-                                <span>'.$comboMonth_pub.'</span>
-                                <span>'.$comboYear_pub.'</span>
-                            </div>
-                        <div style="clear:both;"></div>	
-                        </div>';
+ //                                <span>'.$comboDay_pub.'</span>
+ //                                <span>'.$comboMonth_pub.'</span>
+ //                                <span>'.$comboYear_pub.'</span>
+ //                            </div>
+ //                        <div style="clear:both;"></div>	
+ //                        </div>';
                 
-		$html.='</div>';
-		$html.='<div style="clear:both"></div>';
+	// 	$html.='</div>';
+	// 	$html.='<div style="clear:both"></div>';
                 
                 
-                //xajax_comboMonthShow();
+ //                //xajax_comboMonthShow();
                 
-	    return $html;
-	}
+	//     return $html;
+	// }
 
 	function iniDatesTesis(){
 	
@@ -1516,7 +1451,7 @@ function iniAreaTheme($divTitulo){
 	    $funcion="";
 		switch($subcategory){
 		    case "ponencia":
-                        $fecha_txt="Fecha de evento:";
+                        $fecha_txt="Fecha de Registro:";
                         break;
 		    case "charlas_internas":
 		        $fecha_txt="Fecha de Presentaci&oacute;n:";
@@ -1529,174 +1464,174 @@ function iniAreaTheme($divTitulo){
 		        break;
 		}
 
-                $comboMonth=comboMonth($month_pub,'xajax_obtenerIdDescripcion("month","registerMonthPub")');
+        $comboMonth=comboMonth($month_pub,'xajax_obtenerIdDescripcion("month","registerMonthPub")');
 		$comboYear=comboYear($year_pub,'xajax_registerYearPub(this.value)');
     
-		$html='<div class="campo-buscador">Fecha de ingreso:</div>';
+		$html='<div class="campo-buscador">Fecha de Adquisición:</div>';
 		$html.='<div class="contenedor-caja-buscador-1">';
 		$html.="<input type='text' class='caja-buscador-4' name='date_ing' id='date_ing' READONLY value='$date_ing' />";
 		$html.='</div>';
-		$html.='<div style="clear:both"></div>';
+		$html.='<div class="clear"></div>';
                 
                 $html.='<div id="registerDate" style="display:block;">
-                            <div style="clear:both;"></div>
+                            <div class="clear"></div>
                             <div class="campo-buscador">'.$fecha_txt.' </div>
                             <div class="contenedor-caja-buscador-1">
                                 
                                 <span>'.$comboMonth.'</span>
                                 <span>'.$comboYear.'</span>
                             </div>
-                        <div style="clear:both;"></div>	
+                        <div class="clear"></div>	
                         </div>';
                 
 		$html.='</div>';
-		$html.='<div style="clear:both"></div>';
+		$html.='<div class="clear"></div>';
 	    return $html;
 	}
         
-	function iniEditPermission($tit_div,$cont_div){
-	    $respuesta = new xajaxResponse();
+	// function iniEditPermission($tit_div,$cont_div){
+	//     $respuesta = new xajaxResponse();
 	                                      
-	    if(isset($_SESSION["edit"])){
-	        $recuperar=$_SESSION["edit"];
-	    }
-	    elseif(isset($_SESSION["tmp"])){
-	        $recuperar=$_SESSION["tmp"];
-	    }
+	//     if(isset($_SESSION["edit"])){
+	//         $recuperar=$_SESSION["edit"];
+	//     }
+	//     elseif(isset($_SESSION["tmp"])){
+	//         $recuperar=$_SESSION["tmp"];
+	//     }
 	
-	    $result=searchPermission();
-	    $html="";
-		$checkbox="";
-	    if($result["Error"]==0){
-	        if($result["Count"]>0){
+	//     $result=searchPermission();
+	//     $html="";
+	// 	$checkbox="";
+	//     if($result["Error"]==0){
+	//         if($result["Count"]>0){
 	
-	            // El primer registro es el que determina si esta protegido con clave
-	            if(isset($recuperar["permission"][1])){
-	                    $checked="checked";
-	            }
-	            else{
-	                    $checked="";
-	            }
+	//             // El primer registro es el que determina si esta protegido con clave
+	//             if(isset($recuperar["permission"][1])){
+	//                     $checked="checked";
+	//             }
+	//             else{
+	//                     $checked="";
+	//             }
 	
-	            if(isset($recuperar["key"][1])){
-	                    $checkedkey="checked";
-	            }
-	            else{
-	                    $checkedkey="";
-	            }
+	//             if(isset($recuperar["key"][1])){
+	//                     $checkedkey="checked";
+	//             }
+	//             else{
+	//                     $checkedkey="";
+	//             }
 	            
-                    $checkbox.="<div class='campo-buscador'>";
-	            $checkbox.="<input $checked type=checkbox onclick=\"xajax_registerPermission('".$result["idpermission"][0]."' )\"  />&nbsp;".$result["permission_description"][0]."";
-                    $checkbox.="</div>";                
-                    $checkbox.="<div class='campo-buscador'>";
-	            $checkbox.="<input $checkedkey type=checkbox onclick=\"xajax_registerPermissionKey('1')\"  />&nbsp; Clave</p>";
-                    $checkbox.="</div>";
-	            $checkbox.='<div style="clear:both"></div>';
-                    $checkbox.="<p style='font-weight: bold;'>Permitir descarga desde las p&aacute;ginas web:</p>";
+ //                    $checkbox.="<div class='campo-buscador'>";
+	//             $checkbox.="<input $checked type=checkbox onclick=\"xajax_registerPermission('".$result["idpermission"][0]."' )\"  />&nbsp;".$result["permission_description"][0]."";
+ //                    $checkbox.="</div>";                
+ //                    $checkbox.="<div class='campo-buscador'>";
+	//             $checkbox.="<input $checkedkey type=checkbox onclick=\"xajax_registerPermissionKey('1')\"  />&nbsp; Clave</p>";
+ //                    $checkbox.="</div>";
+	//             $checkbox.='<div style="clear:both"></div>';
+ //                    $checkbox.="<p style='font-weight: bold;'>Permitir descarga desde las p&aacute;ginas web:</p>";
                     
-	            // Los demas registros son las opciones de descarga
-	            for($i=1;$i<$result["Count"];$i++){
+	//             // Los demas registros son las opciones de descarga
+	//             for($i=1;$i<$result["Count"];$i++){
 	                    
-	                    $key=$result["idpermission"][$i];
-	                    if(isset($recuperar["permission"][$key])){
-	                            $checked="checked";
-	                    }
-	                    else{
-	                            $checked="";
-	                    }
+	//                     $key=$result["idpermission"][$i];
+	//                     if(isset($recuperar["permission"][$key])){
+	//                             $checked="checked";
+	//                     }
+	//                     else{
+	//                             $checked="";
+	//                     }
 	
 	                    
-	                    if(isset($recuperar["key"][$key])){
-	                            $checkedkey="checked";
-	                    }
-	                    else{
-	                            $checkedkey="";
-	                    }
+	//                     if(isset($recuperar["key"][$key])){
+	//                             $checkedkey="checked";
+	//                     }
+	//                     else{
+	//                             $checkedkey="";
+	//                     }
 	                    
-	                    $clave=$i+1;
-                            $checkbox.="<div class='campo-buscador'>";
-	                    $checkbox.="<input $checked type=checkbox onclick=\"xajax_registerPermission('".$result["idpermission"][$i]."' )\"  />&nbsp;".$result["permission_description"][$i]."";
-                            $checkbox.="</div>";                            
-                            $checkbox.="<div class='campo-buscador'>";
-	                    $checkbox.="<input $checkedkey type=checkbox onclick=\"xajax_registerPermissionKey('$clave')\"  />&nbsp; Clave";
-                            $checkbox.="</div>";
-                            $checkbox.='<div style="clear:both"></div>';
-	            }
-	        }
-			else{
-				$checkbox="No hay registros";
-			}
-	    }
-	    else{
-	        $checkbox="Error SQL";
-	    }
+	//                     $clave=$i+1;
+ //                            $checkbox.="<div class='campo-buscador'>";
+	//                     $checkbox.="<input $checked type=checkbox onclick=\"xajax_registerPermission('".$result["idpermission"][$i]."' )\"  />&nbsp;".$result["permission_description"][$i]."";
+ //                            $checkbox.="</div>";                            
+ //                            $checkbox.="<div class='campo-buscador'>";
+	//                     $checkbox.="<input $checkedkey type=checkbox onclick=\"xajax_registerPermissionKey('$clave')\"  />&nbsp; Clave";
+ //                            $checkbox.="</div>";
+ //                            $checkbox.='<div style="clear:both"></div>';
+	//             }
+	//         }
+	// 		else{
+	// 			$checkbox="No hay registros";
+	// 		}
+	//     }
+	//     else{
+	//         $checkbox="Error SQL";
+	//     }
 	
-		$html="<fieldset>".$checkbox."</fieldset>";
-		$respuesta->Assign("$cont_div","innerHTML",$html);
-		$respuesta->Assign("$tit_div","innerHTML","Permisos de descarga");
-	    return $respuesta;
-	}
+	// 	$html="<fieldset>".$checkbox."</fieldset>";
+	// 	$respuesta->Assign("$cont_div","innerHTML",$html);
+	// 	$respuesta->Assign("$tit_div","innerHTML","Permisos de descarga");
+	//     return $respuesta;
+	// }
         
-	function iniPermission($tit_div,$cont_div){
-	    $respuesta = new xajaxResponse();
+	// function iniPermission($tit_div,$cont_div){
+	//     $respuesta = new xajaxResponse();
 	    
             
-            registerPermission(1);
-	    registerPermission(2);
-            /*
-            //if(isset($_SESSION["idsubcategory"])){
-            //if($_SESSION["idsubcategory"]!=7){*/
-                registerPermission(3);
-                //registerPermission(4);
-            //}}
+ //            registerPermission(1);
+	//     registerPermission(2);
+ //            /*
+ //            //if(isset($_SESSION["idsubcategory"])){
+ //            //if($_SESSION["idsubcategory"]!=7){*/
+ //                registerPermission(3);
+ //                //registerPermission(4);
+ //            //}}
             
-                /*
-            //if(isset($_SESSION["idsubcategory"])){
-            //if($_SESSION["idsubcategory"]!=7){*/
-                registerPermissionKey(1);
-                registerPermissionKey(2);
-                //registerPermissionKey(4);
-            //}}
+ //                /*
+ //            //if(isset($_SESSION["idsubcategory"])){
+ //            //if($_SESSION["idsubcategory"]!=7){*/
+ //                registerPermissionKey(1);
+ //                registerPermissionKey(2);
+ //                //registerPermissionKey(4);
+ //            //}}
             
-            $checked="";
-            //if(isset($_SESSION["idsubcategory"])){
-            //if($_SESSION["idsubcategory"]!=7){
-                $checked="checked";
-            //}}
+ //            $checked="";
+ //            //if(isset($_SESSION["idsubcategory"])){
+ //            //if($_SESSION["idsubcategory"]!=7){
+ //                $checked="checked";
+ //            //}}
             
-	    $html="";
-		$checkbox="";
-		$checkbox.="<div class='campo-buscador'>";
-		$checkbox.="<input checked type=checkbox onclick=\"xajax_registerPermission('1')\"  />&nbsp;IGP";
-		$checkbox.="</div>";                
-		$checkbox.="<div class='campo-buscador'><input $checked type=checkbox onclick=\"xajax_registerPermissionKey('1')\"  />&nbsp; Clave</p>";
-		$checkbox.="</div>";
-		$checkbox.='<div style="clear:both"></div>';
-		$checkbox.="<p style='font-weight: bold;'>Permitir descarga desde las p&aacute;ginas web:</p>";
+	//     $html="";
+	// 	$checkbox="";
+	// 	$checkbox.="<div class='campo-buscador'>";
+	// 	$checkbox.="<input checked type=checkbox onclick=\"xajax_registerPermission('1')\"  />&nbsp;IGP";
+	// 	$checkbox.="</div>";                
+	// 	$checkbox.="<div class='campo-buscador'><input $checked type=checkbox onclick=\"xajax_registerPermissionKey('1')\"  />&nbsp; Clave</p>";
+	// 	$checkbox.="</div>";
+	// 	$checkbox.='<div style="clear:both"></div>';
+	// 	$checkbox.="<p style='font-weight: bold;'>Permitir descarga desde las p&aacute;ginas web:</p>";
 
-		$checkbox.="<div class='campo-buscador'><input checked type=checkbox onclick=\"xajax_registerPermission('2')\"  />&nbsp;Area</span>";
-		$checkbox.="</div>";
-		$checkbox.="<div class='campo-buscador'><input $checked type=checkbox onclick=\"xajax_registerPermissionKey('1')\"  />&nbsp; Clave";
-		$checkbox.="</div>";
-		$checkbox.='<div style="clear:both"></div>';
-		$checkbox.="<div class='campo-buscador'><input $checked type=checkbox onclick=\"xajax_registerPermission('3')\"  />&nbsp;Autor";
-		$checkbox.="</div>";
-		$checkbox.="<div class='campo-buscador'><input type=checkbox onclick=\"xajax_registerPermissionKey('3')\"  />&nbsp; Clave";
-		$checkbox.="</div>";
-		$checkbox.='<div style="clear:both"></div>';                
-		$checkbox.="<div class='campo-buscador'><input type=checkbox onclick=\"xajax_registerPermission('4')\"  />&nbsp;Transparencia";
-		$checkbox.="</div>";
-		$checkbox.="<div class='campo-buscador'><input type=checkbox onclick=\"xajax_registerPermissionKey('4')\"  />&nbsp; Clave";                
-		$checkbox.="</div>";
-		$checkbox.='<div style="clear:both"></div>';
+	// 	$checkbox.="<div class='campo-buscador'><input checked type=checkbox onclick=\"xajax_registerPermission('2')\"  />&nbsp;Area</span>";
+	// 	$checkbox.="</div>";
+	// 	$checkbox.="<div class='campo-buscador'><input $checked type=checkbox onclick=\"xajax_registerPermissionKey('1')\"  />&nbsp; Clave";
+	// 	$checkbox.="</div>";
+	// 	$checkbox.='<div style="clear:both"></div>';
+	// 	$checkbox.="<div class='campo-buscador'><input $checked type=checkbox onclick=\"xajax_registerPermission('3')\"  />&nbsp;Autor";
+	// 	$checkbox.="</div>";
+	// 	$checkbox.="<div class='campo-buscador'><input type=checkbox onclick=\"xajax_registerPermissionKey('3')\"  />&nbsp; Clave";
+	// 	$checkbox.="</div>";
+	// 	$checkbox.='<div style="clear:both"></div>';                
+	// 	$checkbox.="<div class='campo-buscador'><input type=checkbox onclick=\"xajax_registerPermission('4')\"  />&nbsp;Transparencia";
+	// 	$checkbox.="</div>";
+	// 	$checkbox.="<div class='campo-buscador'><input type=checkbox onclick=\"xajax_registerPermissionKey('4')\"  />&nbsp; Clave";                
+	// 	$checkbox.="</div>";
+	// 	$checkbox.='<div style="clear:both"></div>';
             
-		$html=$checkbox;
-		$respuesta->Assign("$cont_div","innerHTML",$html);
-		$respuesta->Assign("$tit_div","innerHTML","Permisos de descarga");
+	// 	$html=$checkbox;
+	// 	$respuesta->Assign("$cont_div","innerHTML",$html);
+	// 	$respuesta->Assign("$tit_div","innerHTML","Permisos de descarga");
                 
-	    return $respuesta;
+	//     return $respuesta;
 	    
-	}
+	// }
 
 
 	function iniInstitucionExterna($tit_div,$cont_div){

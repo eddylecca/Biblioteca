@@ -417,7 +417,7 @@ return $objResponse;
 	        }
 	        else{
 	            $_SESSION["tmp"]["month_pub"]=$month_pub;
-                    $_SESSION["tmp"]["desc_month_pub"]=$desc_month_pub;
+                $_SESSION["tmp"]["desc_month_pub"]=$desc_month_pub;
 	        }
             }
                 
@@ -895,27 +895,27 @@ elseif(isset($_SESSION["tmp"])){
 	}
 
 
-
-	function registerPermission($idpermission){
+	//permission
+	// function registerPermission($idpermission){
 	
-		if(isset($_SESSION["editar"])){
-		    if(isset($_SESSION["edit"]["permission"][$idpermission])){
-		        unset($_SESSION["edit"]["permission"][$idpermission]);
-		    }
-		    else{
-		        $_SESSION["edit"]["permission"][$idpermission]=1;
-		    }
-		}
-		else{
-		    if(isset($_SESSION["tmp"]["permission"][$idpermission])){
-		        unset($_SESSION["tmp"]["permission"][$idpermission]);
-		    }
-		    else{
-		        $_SESSION["tmp"]["permission"][$idpermission]=1;
-		    }
-		}
-	    //echo print_r($_SESSION);
-	}
+	// 	if(isset($_SESSION["editar"])){
+	// 	    if(isset($_SESSION["edit"]["permission"][$idpermission])){
+	// 	        unset($_SESSION["edit"]["permission"][$idpermission]);
+	// 	    }
+	// 	    else{
+	// 	        $_SESSION["edit"]["permission"][$idpermission]=1;
+	// 	    }
+	// 	}
+	// 	else{
+	// 	    if(isset($_SESSION["tmp"]["permission"][$idpermission])){
+	// 	        unset($_SESSION["tmp"]["permission"][$idpermission]);
+	// 	    }
+	// 	    else{
+	// 	        $_SESSION["tmp"]["permission"][$idpermission]=1;
+	// 	    }
+	// 	}
+	//     // echo print_r($_SESSION);
+	// }
 
 	function registerPermissionKey($idclave){
 	

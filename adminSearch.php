@@ -2833,8 +2833,8 @@ else{
 
 
         
-        $_SESSION["publicaciones"]["idclaseEvento"]=$resultCheck["idclaseEvento"];
-        $_SESSION["publicaciones"]["claseEvento_description"]=$resultCheck["claseEvento_description"];
+        // $_SESSION["publicaciones"]["idclaseEvento"]=$resultCheck["idclaseEvento"];
+        // $_SESSION["publicaciones"]["claseEvento_description"]=$resultCheck["claseEvento_description"];
         
         
 
@@ -2901,6 +2901,8 @@ else{
 	}
                 
 		$xml= arrayToXml($_SESSION["publicaciones"],"book");
+		$demo=  $_SESSION["publicaciones"];
+		
 		$newPonenciaSQL=newPonenciaSQL($action,$iddata,4,$xml);
                 
                 if ($newPonenciaSQL["Error"]==1){
@@ -2911,6 +2913,7 @@ else{
                 else{
                     //$objResponse->alert($xml);
                     $objResponse->alert("Ponencia guardado satisfactoriamente");
+
                     $objResponse->script("xajax_formPonenciasShow()");
 
 
@@ -2929,7 +2932,7 @@ else{
                 }
                 
                 }
-     $objResponse->alert(print_r($recuperar,TRUE));
+     
 
 	return $objResponse;
 }
