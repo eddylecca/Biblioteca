@@ -1489,10 +1489,11 @@ function save_files($namefile){
     
     $str_name=(str_replace(" ","-",$name));
     
-        $_SESSION["files"]["file-".$str_name]=$namefile;
-        $_SESSION["publication"]["file"]=$namefile;
         
-    //$respuesta->alert(print_r($_SESSION, true));
+       $_SESSION["publicaciones"]["files"]["img-".$str_name]= $namefile;
+        
+        
+    //$respuesta->alert(print_r($namefile, true));
     
     return $respuesta;
 }

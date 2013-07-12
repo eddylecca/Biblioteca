@@ -1186,7 +1186,7 @@ return $resultSql;
 		$htmlDates=iniDatesTesis();
 		$objResponse->assign("fechasTesis","innerHTML",$htmlDates);	    
 
-/****************************************************/                
+		/****************************************************/                
 	    if(isset($_SESSION["edit"])){
 	        $recuperar=$_SESSION["edit"];
 	    }
