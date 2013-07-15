@@ -111,14 +111,18 @@
 	    $respuesta = new xajaxResponse();
               
             $form= '
-                <form onsubmit="xajax_verificaUsuarioShow(xajax.getFormValues(formLogin)); return false;" id="formLogin" method="post">                    
-                    <span>Usuario:</span>
-                    <span><input type="text" id="usuario" name="usuario" class="caja-login"></span>
-                    <span class="campo-login">Contraseña:</span>
-                    <span><input type="password" id="clave" name="clave" class="caja-login"></span>
-                    <span><input type="submit" return false;" name="Login" value="Login"></span>
-                    <span>&nbsp;</span>
-                    <span id="error"></span>
+                <form class="form-inline" onsubmit="xajax_verificaUsuarioShow(xajax.getFormValues(formLogin)); return false;" id="formLogin" method="post">                                    	
+                	<div class="input-prepend">
+  					<span class="add-on label-id" ></span>
+  					<input class="input-small" id="usuario" name="usuario" type="text" placeholder="Usuario">
+					</div>
+					<div class="input-prepend">
+					<span class="add-on label-pw"></span>
+  					<input class="input-small" id="clave" name="clave" type="password" placeholder="Contraseña">
+					</div>
+					<input type="submit" onclick="return false;" name="Login" class="btn" value="Ingresar">
+
+                   
                 </form>                
                 ';
                 
@@ -443,7 +447,7 @@
                     if($_SESSION["users_type"]==0){
                         //$menu.='<li><a href="#" onClick="xajax_formUsuarioShow(); return false;" ><img style="vertical-align:middle;" src="img/iconos/candado_llave_16.png" />Nuevo Usuario</a></li>';
                     }  
-                    $menu.='<li style="float:right"><a href="#" onclick="xajax_cerrarSesion(); return false"><img width="12px;" style="vertical-align:middle;" src="img/iconos/salir_16.png" /> Cerrar Sesión</a></li>';
+                    $menu.='<li><a href="#" onclick="xajax_cerrarSesion(); return false"><img width="12px;" style="vertical-align:middle;" src="img/iconos/salir_16.png" /> Cerrar Sesión</a></li>';
                              
                     $respuesta->assign("divformlogin", "style.display", "none");
                     $html='<table><tr><td style="text-align: center;">';

@@ -7,7 +7,7 @@ body{text-align:center;}
     background-image: url("../img/007.jpg");
     background-repeat: repeat-x;
     color: #FFFFFF;
-    height: 70px;
+    /*height: 70px;*/
 	text-align: center;
 }
 
@@ -48,4 +48,27 @@ body .tabactive a{
     color: green;
     font-size: 0.82em;
     font-weight: normal;
+}
+#formLogin .add-on
+{
+    background: url(../bootstrap/img/glyphicons.png) no-repeat;    
+    width: 30px;
+    }
+#formLogin .label-id{
+    background-position: -186px -95px;    
+    }
+#formLogin .label-pw
+{
+    background-position: -135px -958.5px;
+}
+.div-login-main{
+    padding-top: 10px;
+    background-color: #EEEEEE;
+    text-align: right;
+    padding: 6px 0;
+    border-bottom: 1px solid #BBBBBB;
+}
+
+.div-login-main div {
+    margin-right: 15px;
 }

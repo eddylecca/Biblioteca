@@ -4,7 +4,9 @@
 <link href="img/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>BIBLIOTECA - ADMIN</title>
-
+    <!--     Boostrap de twitter -->
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap-responsive.min.css">
 
     <!-- Framework CSS -->
     <link href="css/estilos.css" rel="stylesheet" type="text/css" />
@@ -227,41 +229,57 @@ function verFile(){
     
     
     
-    <div style="margin:0 auto 0 auto; width:970px; background-image: url(img/006a.gif);">
-            <div class="container" style="margin: 0 auto;">
+    <div class = "container">
+           
 
-	    	<div id="header" class="cabecera">
-	    		<div class="span-9" style="text-align:center; padding-bottom: 6px;"><br><img src="img/logo-minan-igp_2012.png"></div>
-			
-	    		<div class="span-11">&nbsp;</div>
-	    		<div class="span-4 last"><img src="img/igp-trans.png"></div>
+	    <div id="header" class="cabecera">
+            <div class="row">
+	    		<div class="span5"><br><img src="img/logo-minan-igp_2012.png"></div>		
+	    		
+	    		<div class="span2 offset5"><img src="img/igp-trans.png"></div>
+            </div>
 				
-                        <div class="span-24">
-                                <ul id="menu" class="dropdown"></ul>
+            <div class="container main-menu">
+                
+                    <div class="navbar navbar-inverse">
+                        <div class="navbar-inner">
+                            <button type="button" class="btn btn-navbar collapsed" data-toggle="collapse" data-target=".nav-collapse">
+                              <span class="icon-bar"></span>
+                              <span class="icon-bar"></span>
+                              <span class="icon-bar"></span>
+                            </button>
+                            <div class="nav-collapse collapse">
+                                <ul id="menu" class=" nav"></ul>
+                            </div>
+                        </div>
+                    </div>
+               
 		
 			</div>
                         <div id="saludo"></div>
-                        <div class="span-24">
-                            <div class="slideshow">
-                                <div style="display: block;">
-                                        <hr class="space">
-                                        <div class="span-24">
+            <div class="container ">
+                            <div class="slideshow" >
+                                
+                                       
+                                        <div class="span12">
                                             <div class="txt-blanco-30" style="text-align: center;">Biblioteca Virtual IGP</div>                                            
                                         </div>
-                                </div>
+                                
                             </div>
-	        	</div>
-                </div>
+	        </div>
+        </div>
+        <div class="container div-login-main">
+
                     
-                <div id="divformlogin" name="formlogin" style="background-color:#EEEEEE; text-align:right; border-bottom: 1px solid #BBBBBB; /*border-top: 2px solid #BBBBBB;*/">
+                <div id="divformlogin"  name="formlogin">
 
                 </div>
-	
+	    </div>
 	      <hr class="space">
               
-	      <div class="span-22 last">
+	      <div class="last container">
     
-                    <div class="columna-derecha">
+                    <div class=" span12">
                                 <hr class="space">
                                 <div id="imghome"></div>
                         
@@ -271,14 +289,20 @@ function verFile(){
                             <div id="paginator" class="wp-pagenavi"></div>
                         </div>
                     </div>
-                    <div class="span-24 contenedor-pie">
+                   
+        </div>
+        <div class="container">
+            <div class="row">
+             <div class="span12 contenedor-pie">
                           <br>
                           <p>Calle Badajoz # 169 - Mayorazgo IV Etapa - Ate Vitarte | Central Telefónica: 317-2300 |
                           <a class="mostaza" href="#">Contacto</a>| Escríbenos a: <a class="mostaza" href="mailto:web@igp.gob.pe">web@igp.gob.pe</a>
                           </p>
-                    </div>
-              </div>
-          </div>
+             </div>
+             </div>
+        </div>
+          
 </div>
+<script src="./bootstrap/js/bootstrap-collapse.js"></script>
 </body>
 </html>
