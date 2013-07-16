@@ -98,11 +98,23 @@
                         
             $respuesta->script($cadena);
             $respuesta->assign("subcontent1", "style.display","none");
-            $respuesta->assign("loginform", "style.display","block");                
+            $respuesta->assign("loginform", "style.display","block");   
+                           
             
 
             
-		}   
+		}
+		//tab title tooltip
+            $respuesta->script("$('[rel=propover]').popover({
+            							animation : 0.05 ,
+            							placement : 'top',
+            							trigger: 'hover',
+            							title:'Contáctenos',
+            							html:'true',
+            							content :\"Cualquier consulta escribanos a <span class='emailigp'>web@igp.gob.pe</span>\"
+            							});
+            					"); 
+
 		return $respuesta;
 	}	
 	
@@ -120,7 +132,7 @@
 					<span class="add-on label-pw"></span>
   					<input class="input-small" id="clave" name="clave" type="password" placeholder="Contraseña">
 					</div>
-					<input type="submit" onclick="return false;" name="Login" class="btn" value="Ingresar">
+					<input type="submit" name="Login" class="btn" value="Ingresar">
 
                    
                 </form>                
@@ -562,6 +574,7 @@
 		}
                 
                 //$respuesta->alert(print_r($_SESSION, true));
+		
 	
 		return $respuesta;
 	}
@@ -656,7 +669,7 @@
 				<div id="archivo" style="display:none"></div>
 			</div>
 			
-            <div><p><input class="button" type="button" onclick="xajax_newPonencia('.$iddata.',\''.$action.'\');" value='.$tituloBoton.' /></p></div>
+            <div class="action-btn"><input class="btn"  type="button" onclick="xajax_newPonencia('.$iddata.',\''.$action.'\');" value='.$tituloBoton.' rel="popover" data-content="tienes un contenido genial. ¿verdad que es atractivo?" data-original-title="Un titulo" /></div>
 			';
 
     	//###############################################################
@@ -669,7 +682,7 @@
 	    
 	    
 
-	    $titulo="T&iacute;tulo / Tipo";
+	    $titulo="Detalle";
 		if(isset($_SESSION["edit"])){
 		    $recuperar=$_SESSION["edit"];
 		}
@@ -715,16 +728,8 @@
 		$tipoPonencia="";
 		$tipoPonencia=comboTipoPonencia($tipoPonencia_id);
 		
-		$listformat = new combo();
-
+		$listformat = new combo();		
 		
-		$formatBook ="<select>
-						<option></option>
-						<option value=1>Libro</option>
-						<option value=2>mapas</option>
-						<option value=3>otros</option>
-
-					</select>";
 		$fbook_options = array("Libros","Mapas","Otros");
 		$fbook_values = array(1,2,3);
 		$formatBook = $listformat->comboList($fbook_options,$fbook_values,"OnChange","xajax_fbooks()","","0","list_fbook"," ","list_fbook");
@@ -779,14 +784,14 @@
 
 		<div class='campo-buscador'>Resumen</div>
        	<div class='contenedor-caja-buscador-1'>
-       	<textarea placeholder='Escriba aqui el resumen' onchange='xajax_registerSumary(this.value); return false;' value='$summary' id='summary' name='summary' class='caja-buscador-1' ></textarea><div id='summary-error'></div></div>                
+       	<textarea placeholder='Escriba aqui el resumen' onchange='xajax_registerSumary(this.value); return false;' value='$summary' id='summary' name='summary' rows='3' ></textarea><div id='summary-error'></div></div>                
 		<div class='clear'></div>	
 		
        		
        	";
        	
 	    $objResponse->Assign("titulo_tipo_prepor","innerHTML",$html);
-		$objResponse->Assign('titulo1',"innerHTML","<a href=#1 onclick=\"xajax_displaydiv('titulo_tipo_prepor','titulo1'); return false;\">$titulo</a>");
+		$objResponse->Assign('titulo1',"innerHTML","<a href=#1 onclick=\"xajax_displaydiv('titulo_tipo_prepor','titulo1'); return false;\"  rel='tooltip' data-toggle='tooltip' title='Información General!'>$titulo</a>");
 	    
 	    
 	    
@@ -794,7 +799,7 @@
 		//PARA EL AUTOR
 	    //$objResponse->script("xajax_iniAuthorShow('titulo2')");
 
-    	$objResponse->assign("titulo2","innerHTML","<a href=# onclick=\"xajax_displaydiv('author','titulo2'); return false;\">Autor</a>");
+    	$objResponse->assign("titulo2","innerHTML","<a class='tab-title' href='#' onclick=\"xajax_displaydiv('author','titulo2'); return false;\" rel='tooltip' data-toggle='tooltip' title='Gestione Autores aqui!' >Autor</a>");
     	$objResponse->script("xajax_searchAuthorSesionPriShow()");
     	$objResponse->script("xajax_searchAuthorSesionSecShow()");
 
@@ -808,7 +813,7 @@
     	//###############################################################    		
 	    //$objResponse->script("xajax_iniAreaTheme('titulo5')");
 	    // AREA Y TEMA
-		$link="<a onclick=\"xajax_displaydiv('area_tema','titulo5'); return false;\" href='#'>&Aacute;rea y Tema</a>";
+		$link="<a onclick=\"xajax_displaydiv('area_tema','titulo5'); return false;\" class='tab-title' href='#' rel='tooltip' title='Temas Relacionados'>&Aacute;rea y Tema</a>";
 		$objResponse->assign('titulo5',"innerHTML",$link);
 	
 	        //Temas del area 
@@ -825,11 +830,11 @@
 		$objResponse->script("xajax_iniOtrosTemasShow()");
 	
 	        //Ingresar nuevo tema
-		$objResponse->script("xajax_newThemeShow()");	    
+		$objResponse->script("xajax_newThemeShow();");	    
 	    
     	
 		//###############################################################    		
-                $objResponse->script("xajax_iniDatePermission('titulo6')");
+        $objResponse->script("xajax_iniDatePermission('titulo6')");
 	    
 		
 
@@ -840,7 +845,7 @@
             //$objResponse->script("xajax_cargaScriptMostrarAutores()");
 
         list($htmlArchivo,$link)=iniArchivoShow();
-        $objResponse->Assign('titulo7',"innerHTML","<a href=#1 onclick=\"xajax_displaydiv('archivo','titulo7'); return false;\">Imagen</a>");
+        $objResponse->Assign('titulo7',"innerHTML","<a class='tab-title' href=#1 onclick=\"xajax_displaydiv('archivo','titulo7'); return false;\" rel='tooltip' title='Imagen de Portada'>Imagen</a>");
     	$objResponse->Assign("archivo","innerHTML",$htmlArchivo);
     	
                     if($link!=""){
@@ -870,6 +875,7 @@
         // $objResponse->alert(print_r($_SESSION["temp"],TRUE));
         
                 $objResponse->assign("imghome", "style.display", "none");
+        
                 
 		return $objResponse;
 	}   
@@ -953,17 +959,21 @@
 		<div>
 			<div id="divformSearch">
 			<h2 class="txt-azul">Buscador </h2>
-			<form id="formSearch">
-				
-                                    '.$formArea.'
-				
-				<ul class="query_type">
+			<form id="formSearch">				
+                                    '.$formArea.'				    
+
+				    <label class="checkbox inline">
+					  <input type="radio" id="query_type_1" name="query_type" value="content"> Que contenga
+					</label>
+
+					<label class="checkbox inline">
+					  <input type="radio" id="query_type_2" name="query_type" value="empieza"> Empieza por
+					</label>
+					<label class="checkbox inline">
+					  <input type="radio" id="query_type_3" name="query_type" value="exacta" checked> Exacta
+					</label>
 				    
-				    <li><input class="query_type" type="radio" id="query_type_1" name="query_type" value="content" onclick="xajax_click_checked(this.value)"> <label for="query_type_1">Que contenga</label></li>
-				    <li><input class="query_type" type="radio" id="query_type_2" name="query_type" value="empieza" > <label for="query_type_2">Empieza por</label></li>
-				    <li><input class="query_type" type="radio" id="query_type_3" name="query_type" value="exacta" checked> <label for="query_type_3">Exacta</label></li>
-				    
-				</ul>					
+									
 				<div class="clear"></div>
 				<div>
                                     

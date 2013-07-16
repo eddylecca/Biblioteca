@@ -443,7 +443,7 @@
 		$dbh->query("SET NAMES 'utf8'");
 	
 	        if($iddata!=0){
-	            $sql = "SELECT * FROM data d, subcategory s WHERE d.idsubcategory=s.idsubcategory and iddata=$iddata";
+	            $sql = "SELECT * FROM book b WHERE idbook=$iddata";
 	        }
 	        else{
 	            $sql = "SELECT * FROM data d, subcategory s WHERE d.idsubcategory=s.idsubcategory";
@@ -453,10 +453,8 @@
 	    $i=0;
 	    if($dbh->query($sql)){
 	        foreach($dbh->query($sql) as $row) {
-	            $result["iddata"][$i]= $row["iddata"];
-	            $result["data_content"][$i]= $row["data_content"];
-	            $result["idcategory"][$i]= $row["idcategory"];
-	            $result["idsubcategory"][$i]= $row["idsubcategory"];
+	            $result["idbook"][$i]= $row["idbook"];
+	            $result["book_data"][$i]= $row["book_data"];         
 	
 	            $i++;
 	        }

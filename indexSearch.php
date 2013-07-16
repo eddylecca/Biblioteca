@@ -530,7 +530,7 @@
 					$titulo="<a href='$enlace' target='_blank'>".$titulo."</a>";
 				}
 				else{
-					$titulo="<a class='resultado' >".$titulo."</a>";
+					$titulo="<a class='resultado' onclick='xajax_editShow(".$result["idbook"][$i].", 2)' >".$titulo."</a>";
 				}
 
 				$html.="<div class='resultado-busqueda'>";

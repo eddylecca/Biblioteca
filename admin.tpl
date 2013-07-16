@@ -139,6 +139,7 @@ function verFile(){
 
 }
 
+
 </script>
         
         
@@ -277,7 +278,8 @@ function verFile(){
 	    </div>
 	      <hr class="space">
               
-	      <div class="last container">
+	      <div class="last container-fluid">
+                <div class="row-fluid">
     
                     <div class=" span12">
                                 <hr class="space">
@@ -289,14 +291,14 @@ function verFile(){
                             <div id="paginator" class="wp-pagenavi"></div>
                         </div>
                     </div>
-                   
+                </div>   
         </div>
         <div class="container">
             <div class="row">
              <div class="span12 contenedor-pie">
                           <br>
                           <p>Calle Badajoz # 169 - Mayorazgo IV Etapa - Ate Vitarte | Central Telefónica: 317-2300 |
-                          <a class="mostaza" href="#">Contacto</a>| Escríbenos a: <a class="mostaza" href="mailto:web@igp.gob.pe">web@igp.gob.pe</a>
+                          <a class="mostaza" href="#">Contacto</a>| Escríbenos a: <a rel="propover" class="mostaza" href="mailto:web@igp.gob.pe" >web@igp.gob.pe</a>
                           </p>
              </div>
              </div>
@@ -304,5 +306,7 @@ function verFile(){
           
 </div>
 <script src="./bootstrap/js/bootstrap-collapse.js"></script>
+<script src="./bootstrap/js/bootstrap-tooltip.js"></script>
+<script src="./bootstrap/js/bootstrap-popover.js"></script>
 </body>
 </html>

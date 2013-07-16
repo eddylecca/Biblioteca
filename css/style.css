@@ -1,5 +1,5 @@
 @charset "utf-8";
-body{text-align:center;}
+/*body{text-align:center;}*/
 .cabecera{height:190px; background-image:url(../img/001c.jpg);background-repeat:repeat-x;}
 .cabecera1{height:120px; background-image:url(../img/001c.jpg);background-repeat:repeat-x;}
 
@@ -72,3 +72,27 @@ body .tabactive a{
 .div-login-main div {
     margin-right: 15px;
 }
+.container .popover-content{
+    color:#000;
+    background: #f6f6f6 url(./ui-lightness/images/ui-bg_glass_100_fdf5ce_1x400.png) 50% 50% repeat-x;
+
+   
+}
+
+.container .popover-title{
+     
+     background-image: url(../img/007.jpg);
+     background-repeat: repeat-x;
+     color:#fff;
+
+}
+
+.container .emailigp {
+    color: #BD852D;
+    font-weight: bold;
+    text-shadow: 0 0 0, 0 0 0, 0 0 0.05px #BD852D;
+}
+.action-btn{
+    margin: 10px 0;
+}
+

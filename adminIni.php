@@ -1178,7 +1178,7 @@ return $resultSql;
 	function iniDatePermission($divTitulo){
 	    $objResponse = new xajaxResponse();
 	
-	    $link="<a onclick=\"xajax_displaydiv('fecha_permisos','$divTitulo'); return false;\" href='#'>Fechas</a>";
+	    $link="<a class='tab-title' onclick=\"xajax_displaydiv('fecha_permisos','$divTitulo'); return false;\" href='#' rel='tooltip' title='Fechas de edición, adquisición, etc'>Fechas</a>";
 	    $objResponse->assign($divTitulo,"innerHTML",$link);
 	
 	    //$objResponse->script("xajax_iniDates('titFechasTesis','fechasTesis')");

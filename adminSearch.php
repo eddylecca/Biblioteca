@@ -1,13 +1,13 @@
 <?php
 
-	function editShow($iddata=0,$currentPage){
+	function editShow($idbook=0,$currentPage){
 		$respuesta= new xajaxResponse();
 		
 		$result=searchPublication_iddataSQL(0,"",$iddata);
 		$idCategory=$result["idcategory"][0];
 		$idSubcategory=$result["idsubcategory"][0];                
                 
-                $_SESSION["edit"]["iddata"]=$iddata;
+                $_SESSION["edit"]["idbook"]=$idbook;
                 
 		if($result["Count"]>0){
 		    $_SESSION["editar"]=1;
@@ -35,12 +35,12 @@
 			}
 
                         
-		    foreach ($result["data_content"] as $xmldata){
+		    foreach ($result["book_data"] as $xmldata){
 		        $xmlt = simplexml_load_string($xmldata);
-		        $titulo=(string)$xmlt->titulo;
-                        $titulo=(str_replace("*","'",$titulo));
-		        $resumen=(string)$xmlt->resumen;
-		        $resumen=(str_replace("*","'",$resumen));
+		        $title=(string)$xmlt->title;
+                        $title=(str_replace("*","'",$title));
+		        $summary=(string)$xmlt->summary;
+		        $summary=(str_replace("*","'",$summary));
 		        $enlace=(string)$xmlt->enlace;
 		        $enlace=(str_replace("*","&",$enlace));
 		        $idreference=(string)$xmlt->idreference;
@@ -134,52 +134,7 @@
 		                $autorSEC="";
 		        }
 		
-		////////////////Recupera Permisos/////////////////////
-					$permisos="";
-					if(isset($xmlt->permisos)){
-						//Preguntamos si hay mas de un autor secundario
 		
-						if(isset($xmlt->permisos->idpermission1)){
-								eval('if (isset($xmlt->permisos->idpermission1)){$xmlflag=TRUE;} else {$xmlflag=FALSE;}');
-								if($xmlflag){
-									eval('$xmlpermisos=$xmlt->permisos->idpermission1;');
-		                                                        $permisos=(int)$xmlpermisos;
-		                                                        $_SESSION["edit"]["permission"][$permisos]=1;
-								}                                           
-	
-						}
-						if(isset($xmlt->permisos->idpermission2)){
-								eval('if (isset($xmlt->permisos->idpermission2)){$xmlflag=TRUE;} else {$xmlflag=FALSE;}');
-								if($xmlflag){
-									eval('$xmlpermisos=$xmlt->permisos->idpermission2;');
-		                                                        $permisos=(int)$xmlpermisos;
-		                                                        $_SESSION["edit"]["permission"][$permisos]=1;
-								}                                           
-		
-						}
-						if(isset($xmlt->permisos->idpermission3)){
-								eval('if (isset($xmlt->permisos->idpermission3)){$xmlflag=TRUE;} else {$xmlflag=FALSE;}');
-								if($xmlflag){
-									eval('$xmlpermisos=$xmlt->permisos->idpermission3;');
-		                                                        $permisos=(int)$xmlpermisos;
-		                                                        $_SESSION["edit"]["permission"][$permisos]=1;
-								}                                           
-		
-						}
-						if(isset($xmlt->permisos->idpermission4)){
-								eval('if (isset($xmlt->permisos->idpermission4)){$xmlflag=TRUE;} else {$xmlflag=FALSE;}');
-								if($xmlflag){
-									eval('$xmlpermisos=$xmlt->permisos->idpermission4;');
-		                                                        $permisos=(int)$xmlpermisos;
-		                                                        $_SESSION["edit"]["permission"][$permisos]=1;
-								}                                           
-		
-						}
-		
-					}
-					else{
-						$permisos="";
-					}
 		////////////////////////////////////////////////////
 		////////////////Recupera Claves/////////////////////
 					$claves="";
@@ -266,35 +221,7 @@
 					else{
 						$areasSEC="";
 					}
-		////////////////////////////////////////////////////
-		////////////////Recupera Sub Areas Aeronomia/////////////////////
-					$subAreas="";
-					if(isset($xmlt->subAreas)){
-						//Preguntamos si hay mas de un autor secundario
 		
-						if(isset($xmlt->subAreas->idsubarea1)){
-							for($j=0;$j<100;$j++){
-								eval('if (isset($xmlt->subAreas->idsubarea'.$j.')){$xmlflag=TRUE;} else {$xmlflag=FALSE;}');
-								if($xmlflag){
-									eval('$xmlsubAreas=$xmlt->subAreas->idsubarea'.$j.';');
-									$subAreas=(int)$xmlsubAreas;
-									$_SESSION["edit"]["subAreas"][$subAreas]=1;
-								}
-							}
-		
-						}
-						
-		
-						else{
-							$subAreas.=(int)$xmlt->subAreas->idsubarea0;
-							$_SESSION["edit"]["subAreas"][$subAreas]=1;
-						}
-		
-		
-					}
-					else{
-						$subAreas="";
-					}
 		////////////////////////////////////////////////////
 		////////////////Recupera Areas Administrativas/////////////////////
 					$areasAdministrativas="";
