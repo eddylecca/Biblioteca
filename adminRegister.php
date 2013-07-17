@@ -892,30 +892,7 @@ elseif(isset($_SESSION["tmp"])){
 	     else{
 	         $_SESSION["tmp"]["date_pub"]=$value;
 	     }
-	}
-
-
-	//permission
-	// function registerPermission($idpermission){
-	
-	// 	if(isset($_SESSION["editar"])){
-	// 	    if(isset($_SESSION["edit"]["permission"][$idpermission])){
-	// 	        unset($_SESSION["edit"]["permission"][$idpermission]);
-	// 	    }
-	// 	    else{
-	// 	        $_SESSION["edit"]["permission"][$idpermission]=1;
-	// 	    }
-	// 	}
-	// 	else{
-	// 	    if(isset($_SESSION["tmp"]["permission"][$idpermission])){
-	// 	        unset($_SESSION["tmp"]["permission"][$idpermission]);
-	// 	    }
-	// 	    else{
-	// 	        $_SESSION["tmp"]["permission"][$idpermission]=1;
-	// 	    }
-	// 	}
-	//     // echo print_r($_SESSION);
-	// }
+	}	
 
 	function registerPermissionKey($idclave){
 	
@@ -994,6 +971,28 @@ elseif(isset($_SESSION["tmp"])){
 	    }
 
             
+	    return $objResponse;
+	}
+	function registerfbook($fbook_id, $fbook_des){
+	    $objResponse = new xajaxResponse();     
+           
+	    
+
+	    if($fbook_id==0){
+	        $respuesta->alert("Seleccione un formato");
+	    }
+	    else{
+	        if(isset($_SESSION["edit"])){
+	            $_SESSION["edit"]["idfbook"]=$fbook_id;
+	            $_SESSION["edit"]["fbook_descripcion"]=$fbook_des;
+	        }
+	        else{
+	            $_SESSION["tmp"]["idfbook"]=$fbook_id;
+	            $_SESSION["tmp"]["fbook_descripcion"]=$fbook_des;
+	        }
+	
+		}
+
 	    return $objResponse;
 	}
 	function registerISBN($ISBN){

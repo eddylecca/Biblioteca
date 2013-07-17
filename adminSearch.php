@@ -2747,6 +2747,8 @@ else{
         $_SESSION["publicaciones"]["year_pub"]=$resultCheck["year_pub"];
         
         $_SESSION["publicaciones"]["title"]=$resultCheck["title"];
+        $_SESSION["publicaciones"]["idfbook"]=$resultCheck["idfbook"];
+        $_SESSION["publicaciones"]["formatbook"]=$resultCheck["fbook_descripcion"];
         $_SESSION["publicaciones"]["idtipoPonencia"]=$resultCheck["idtipoPonencia"];
 
         $_SESSION["publicaciones"]["ISBN"]=$resultCheck["ISBN"];
@@ -2859,7 +2861,7 @@ else{
                 }
                 
                 }
-     $objResponse->alert(print_r($demo,TRUE));
+     
 
 	return $objResponse;
 }

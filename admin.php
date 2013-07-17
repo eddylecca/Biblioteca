@@ -732,7 +732,7 @@
 		
 		$fbook_options = array("Libros","Mapas","Otros");
 		$fbook_values = array(1,2,3);
-		$formatBook = $listformat->comboList($fbook_options,$fbook_values,"OnChange","xajax_fbooks()","","0","list_fbook"," ","list_fbook");
+		$formatBook = $listformat->comboList($fbook_options,$fbook_values,"OnChange","xajax_obtenerIdDescripcion('list_fbook','registerfbook')","","0","list_fbook"," ","list_fbook");
         
         
 		$html="
@@ -1788,6 +1788,7 @@ function delete_file($namefile){
         $xajax->registerFunction('recuperarClave');        
         $xajax->registerFunction('sendemail');
 
+    $xajax->registerFunction('registerfbook');
     $xajax->registerFunction('registerISBN');
     $xajax->registerFunction('registerCallNumber');
     $xajax->registerFunction('registerPublication');

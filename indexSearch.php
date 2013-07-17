@@ -530,7 +530,8 @@
 					$titulo="<a href='$enlace' target='_blank'>".$titulo."</a>";
 				}
 				else{
-					$titulo="<a class='resultado' onclick='xajax_editShow(".$result["idbook"][$i].", 2)' >".$titulo."</a>";
+					$titulo="<a class='resultado' >".$titulo."</a>";
+					// $titulo="<a class='resultado' onclick='xajax_editShow(".$result["idbook"][$i].", 2)' >".$titulo."</a>";
 				}
 
 				$html.="<div class='resultado-busqueda'>";
@@ -1207,7 +1208,7 @@
                 $respuesta->assign('paginator', 'style.display',"block");
                 $respuesta->assign('estadisticas', 'style.display','none');
 
-        // $respuesta->alert(print_r($result["data_content"][0],TRUE));
+        $respuesta->alert(print_r($result,TRUE));
 
 		return $respuesta;
 	}

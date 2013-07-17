@@ -1052,7 +1052,7 @@
 		$respuesta->assign('divformSearch', 'style.display',"none");
         $respuesta->assign('paginator', 'style.display',"block");
         $respuesta->assign('estadisticas', 'style.display','none');
-        //$respuesta->alert(print_r($seccion,TRUE));
+        //$respuesta->alert(print_r($_SESSION["idfrom"],TRUE));
 		return $respuesta;
 	}
 	

@@ -236,6 +236,11 @@ elseif(isset($_SESSION["tmp"])){
         $prePorApellido=(str_replace("'","*",$prePorApellido));
 		/***************/
 
+        /* Formato de libro - id*/
+        $idfbook = isset($recuperar["idfbook"])?$recuperar["idfbook"]:""; 
+         /* Formato de libro  descripcion*/
+        $fbok_des = isset($recuperar["fbook_descripcion"])?$recuperar["fbook_descripcion"]:""; 
+
         /* Codigo ISBN*/
         $ISBN = isset($recuperar["ISBN"])?$recuperar["ISBN"]:"";
 
@@ -378,6 +383,19 @@ elseif(isset($_SESSION["tmp"])){
             }
             else{
                 $check["ISBN"]=$ISBN;
+            }
+
+            if($idfbook==0){ 
+                $check["Msg"]="Seleccione un formato del material bibliográfico";
+                $check["Error"]=1;
+                $check["funcion"]="xajax_displaydiv('titulo_tipo_prepor','titulo1'); return false;";
+                $check["focus"]="$('#list_fbook').val('').focus()";
+                
+            }
+            else{
+                $check["idfbook"]=$idfbook;
+                $check["fbook_descripcion"]=$fbok_des;
+
             }
 
             if($title==""){ 
@@ -1134,6 +1152,7 @@ $("#other").click(function() {
             $respuesta->script('                
                 var descripcion=document.getElementById("'.$nombreObjeto.'").options[document.getElementById("'.$nombreObjeto.'").selectedIndex].text;
                 var id=document.getElementById("'.$nombreObjeto.'").value;
+
 
                 xajax_'.$funcion.'(id,descripcion);
             ');
