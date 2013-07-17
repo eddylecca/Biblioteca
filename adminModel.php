@@ -458,6 +458,8 @@
 	
 	            $i++;
 	        }
+// 	        if(isset($result["iddata"])){
+// -              $result["Count"]=count($result["iddata"]);}
 	
 	        if(isset($result["idbook"])){
 	            $result["Count"]=count($result["idbook"]);

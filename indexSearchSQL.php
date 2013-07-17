@@ -49,6 +49,7 @@
 		      }
 		    else{
 		      $sql = "SELECT * FROM data d, subcategory s, category c WHERE d.idsubcategory=s.idsubcategory AND s.idcategory=c.idcategory ";
+		      //$sql = "SELECT idbook, book_data FROM book ";
 		    }
 		}
 	
@@ -604,6 +605,10 @@
 		$i=0;
 	    if($dbh->query($sql)){
 	        foreach($dbh->query($sql) as $row) {
+	        	
+	   //      	$result["book_data"][$i]= $row["book_data"];
+				// $result["idbook"][$i]= $row["idbook"];
+	            
 	            $result["iddata"][$i]= $row["iddata"];
 	            $result["data_content"][$i]= $row["data_content"];
 	            $result["idcategory"][$i]= $row["idcategory"];

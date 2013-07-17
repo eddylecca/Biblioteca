@@ -451,7 +451,7 @@
                     switch($_SESSION["users_type"]){
                         case 0: //el segundo parametro es el currentpage al ser cero utiliza el valor del formulario
                             $menu.='<li><a href="#" onclick="xajax_formCategoryShow(2); return false"><img width="12px;" style="vertical-align:middle;" src="img/iconos/salir_16.png" /> Nuevo Libro</a></li>';
-                            $menu.="<li><a href='#' onclick='xajax_formConsultaShow(\"$idfrom\",\"admin\",\"$idarea\"); xajax_auxSearchShow(20,1,xajax.getFormValues(\"formSearch\"),\"\",\"0\");'><img width='12px;' style='vertical-align:middle;' src='img/iconos/search_16.png' /> Consultas</a></li>";
+                            $menu.="<li><a href='#' onclick='xajax_formConsultaShow(\"$idfrom\",\"admin\",\"$idarea\"); xajax_auxSearchShow(20,1,xajax.getFormValues(\"formSearch\"),\"\",\"0\")'><img width='12px;' style='vertical-align:middle;' src='img/iconos/search_16.png' /> Consultas</a></li>";
                         
                             
                     }

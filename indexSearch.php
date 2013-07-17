@@ -284,6 +284,45 @@
 		return $html;
 	}	
 */	
+
+	function auxSearchShow($pageSize,$currentPage,$form="",$seccion="",$idarea=0){
+	
+		$respuesta = new xajaxResponse();
+		//$respuesta->Alert("ipp=$pageSize and page=$currentPage");	
+                //$respuesta->alert($form["tip_inf"]);
+	        
+	        
+		if(isset($_SESSION["idfrom"])){
+                    
+			if($form==""){
+                            
+				$result=searchPublicationSQL("","",$_SESSION["idfrom"],"","",$idarea);
+				$total=$result["Count"];
+                                
+				$respuesta->script("xajax_formConsultaShow(".$_SESSION["idfrom"].")");
+				$respuesta->script("xajax_searchPublicationShow(xajax.getFormValues('formSearch'),'".$_SESSION["idfrom"]."','$currentPage','$pageSize','$idarea')");
+				$respuesta->script("xajax_paginatorSearch($currentPage,$pageSize,$total,'',$idarea)");
+				// $respuesta->alert($_SESSION["idfrom"]);
+	
+			}
+			else{
+                
+				//$result=searchPublicationSQL("",$form,$_SESSION["idfrom"],"","",$idarea);
+				//$total=$result["Count"];                                
+				$respuesta->script("xajax_searchPublicationShow(xajax.getFormValues('formSearch'),'".$_SESSION["idfrom"]."','$currentPage','$pageSize','$idarea')");
+				// $respuesta->script("xajax_paginatorSearch($currentPage,$pageSize,$total,xajax.getFormValues('formSearch'),$idarea)");
+	                        
+			}
+	
+		}
+		//$respuesta->assign('divformSearch', 'style.display',"none");
+                $respuesta->assign('paginator', 'style.display',"block");
+                $respuesta->assign('estadisticas', 'style.display','none');
+
+         // $respuesta->alert(print_r($total,TRUE));
+
+		return $respuesta;
+	}
 	
 	function searchPublicationShow($form,$searchFrom=0, $currentPage="", $pageSize="", $idarea=0){
 		$objResponse = new xajaxResponse();
@@ -309,9 +348,9 @@
 		}
 	        
 		//$objResponse->Alert("ipp=$pageSize and page=$currentPage");
-		$objResponse->Assign("resultSearch","style.display","block");
-		$objResponse->Assign("resultSearch","innerHTML",$html);
-		//$objResponse->alert(print_r($searchFrom,TRUE));
+		$objResponse->assign("resultSearch","style.display","block");
+		$objResponse->assign("resultSearch","innerHTML",$html);
+		// $objResponse->alert(print_r('hola mundo'));
 	
 		
                 
@@ -475,68 +514,68 @@
 		if($result["Count"]>0){
 			foreach ($result["book_data"] as $xmldata){
 	
-				libxml_use_internal_errors(true);
+				//libxml_use_internal_errors(true);
 				$xmlt = simplexml_load_string($xmldata);
-				if (!$xmlt) {
+				// if (!$xmlt) {
 					
-					foreach(libxml_get_errors() as $error) {
-						echo "\t", $error->message;
-					}
-					return "Error cargando XML (searchPublication)\n";
+				// 	foreach(libxml_get_errors() as $error) {
+				// 		echo "\t", $error->message;
+				// 	}
+				// 	return "Error cargando XML (searchPublication)\n";
 						
-				}
+				// }
 
-				$autorSEC="";
-				if(isset($xmlt->authorSEC)){
-					//Preguntamos si hay mas de un autor secundario
+				// $autorSEC="";
+				// if(isset($xmlt->authorSEC)){
+				// 	//Preguntamos si hay mas de un autor secundario
 	
-					if(isset($xmlt->authorSEC->author_first_name1)){
-						for($j=0;$j<100;$j++){
-							eval('if (isset($xmlt->authorSEC->author_surname'.$j.')){$xmlflag=TRUE;} else {$xmlflag=FALSE;}');
-							if($xmlflag){
-								eval('$xmlfirstname=$xmlt->authorSEC->author_first_name'.$j.';');
-								eval('$xmlsurname=$xmlt->authorSEC->author_surname'.$j.';');
-								$autorSEC.=", ".ucfirst(substr((string)$xmlfirstname,0,1)).". ";
-								$autorSEC.=(str_replace("*","'",ucfirst((string)$xmlsurname)));
+				// 	if(isset($xmlt->authorSEC->author_first_name1)){
+				// 		for($j=0;$j<100;$j++){
+				// 			eval('if (isset($xmlt->authorSEC->author_surname'.$j.')){$xmlflag=TRUE;} else {$xmlflag=FALSE;}');
+				// 			if($xmlflag){
+				// 				eval('$xmlfirstname=$xmlt->authorSEC->author_first_name'.$j.';');
+				// 				eval('$xmlsurname=$xmlt->authorSEC->author_surname'.$j.';');
+				// 				$autorSEC.=", ".ucfirst(substr((string)$xmlfirstname,0,1)).". ";
+				// 				$autorSEC.=(str_replace("*","'",ucfirst((string)$xmlsurname)));
 	                            
-							}
-						}
+				// 			}
+				// 		}
 					
-						//reemplazamos la ultima coma por and
-						$posComa=strrpos($autorSEC,",");
-						$autorSEC{$posComa}="#";
-						$autorSEC=str_replace("#", ", and ", $autorSEC);
+				// 		//reemplazamos la ultima coma por and
+				// 		$posComa=strrpos($autorSEC,",");
+				// 		$autorSEC{$posComa}="#";
+				// 		$autorSEC=str_replace("#", ", and ", $autorSEC);
 						
-					}
-					//Solo un autor secundario
-					else{
-						$autorSEC=" and ".ucfirst(substr((string)$xmlt->authorSEC->author_first_name0,0,1)).". ";
-						$autorSEC.=(str_replace("*","'",ucfirst((string)$xmlt->authorSEC->author_surname0)));
-					}
+				// 	}
+				// 	//Solo un autor secundario
+				// 	else{
+				// 		$autorSEC=" and ".ucfirst(substr((string)$xmlt->authorSEC->author_first_name0,0,1)).". ";
+				// 		$autorSEC.=(str_replace("*","'",ucfirst((string)$xmlt->authorSEC->author_surname0)));
+				// 	}
 					
-				}
-				else{
-					$autorSEC="";
-				}
+				// }
+				// else{
+				// 	$autorSEC="";
+				// }
 				/* autor principal*/
-				  $idautorPRI=(int)$xmlt->authorPRI->idauthor0;
-				$autorPRI=(str_replace("*","'",ucfirst((string)$xmlt->authorPRI->author_surname0))).", ".ucfirst(substr((string)$xmlt->authorPRI->author_first_name0,0,1)).".";
-				$prePor=(str_replace("*","'",ucfirst((string)$xmlt->prePorApellido))).", ".ucfirst((string)$xmlt->prePorNombre).".";
+				//   $idautorPRI=(int)$xmlt->authorPRI->idauthor0;
+				// $autorPRI=(str_replace("*","'",ucfirst((string)$xmlt->authorPRI->author_surname0))).", ".ucfirst(substr((string)$xmlt->authorPRI->author_first_name0,0,1)).".";
+				// $prePor=(str_replace("*","'",ucfirst((string)$xmlt->prePorApellido))).", ".ucfirst((string)$xmlt->prePorNombre).".";
 	                        
-				eval('if (isset($xmlt->enlace)){$xmlflag=TRUE; $enlace=(string)$xmlt->enlace;} else {$xmlflag=FALSE;}');
+				// eval('if (isset($xmlt->enlace)){$xmlflag=TRUE; $enlace=(string)$xmlt->enlace;} else {$xmlflag=FALSE;}');
                                 $titulo=ucfirst((string)$xmlt->title);
                                 $titulo=(str_replace("*","'",$titulo));
-				if(($xmlflag) and ($enlace!="")){
-					$titulo="<a href='$enlace' target='_blank'>".$titulo."</a>";
-				}
-				else{
+				// if(($xmlflag) and ($enlace!="")){
+				// 	$titulo="<a href='$enlace' target='_blank'>".$titulo."</a>";
+				// }
+				// else{
 					$titulo="<a class='resultado' >".$titulo."</a>";
 					// $titulo="<a class='resultado' onclick='xajax_editShow(".$result["idbook"][$i].", 2)' >".$titulo."</a>";
-				}
+				// }
 
 				$html.="<div class='resultado-busqueda'>";
 
-				$html.= $autorPRI." ".$autorSEC." , ".$titulo;
+				$html.= $titulo;
 
 
 
@@ -1174,44 +1213,7 @@
 	
 	**************************************************/
 	
-	function auxSearchShow($pageSize,$currentPage,$form="",$seccion="",$idarea=0){
 	
-		$respuesta = new xajaxResponse();
-		//$respuesta->Alert("ipp=$pageSize and page=$currentPage");	
-                //$respuesta->alert($form["tip_inf"]);
-	        
-	        
-		if(isset($_SESSION["idfrom"])){
-                    
-			if($form==""){
-                            
-				$result=searchPublicationSQL("","",$_SESSION["idfrom"],"","",$idarea);
-				$total=$result["Count"];
-                                
-				$respuesta->script("xajax_formConsultaShow(".$_SESSION["idfrom"].")");
-				$respuesta->script("xajax_searchPublicationShow(xajax.getFormValues('formSearch'),'".$_SESSION["idfrom"]."','$currentPage','$pageSize','$idarea')");
-				$respuesta->script("xajax_paginatorSearch($currentPage,$pageSize,$total,'',$idarea)");
-	
-			}
-			else{
-                //$respuesta->alert($_SESSION["idfrom"]);
-				$result=searchPublicationSQL("",$form,$_SESSION["idfrom"],"","",$idarea);
-				$total=$result["Count"];
-                                //$respuesta->alert($total);
-				$respuesta->script("xajax_searchPublicationShow(xajax.getFormValues('formSearch'),'".$_SESSION["idfrom"]."','$currentPage','$pageSize','$idarea')");
-				// $respuesta->script("xajax_paginatorSearch($currentPage,$pageSize,$total,xajax.getFormValues('formSearch'),$idarea)");
-	                        
-			}
-	
-		}
-		//$respuesta->assign('divformSearch', 'style.display',"none");
-                $respuesta->assign('paginator', 'style.display',"block");
-                $respuesta->assign('estadisticas', 'style.display','none');
-
-        $respuesta->alert(print_r($result,TRUE));
-
-		return $respuesta;
-	}
 	
 	
 	

@@ -288,8 +288,8 @@ function verFile(){
                             <div id="formulario"></div>
                             <div id="consultas"></div>        
                             <div class="paginacion">
-                            <div id="paginator" class="wp-pagenavi"></div>
-                        </div>
+                                <div id="paginator" class="wp-pagenavi"></div>
+                            </div>
                     </div>
                 </div>   
         </div>
