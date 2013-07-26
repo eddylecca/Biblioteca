@@ -730,7 +730,7 @@
 		
 		$listformat = new combo();		
 		
-		$fbook_options = array("Libros","Mapas","Otros");
+		$fbook_options = array("Libro","Mapa","Otro");
 		$fbook_values = array(1,2,3);
 		$formatBook = $listformat->comboList($fbook_options,$fbook_values,"OnChange","xajax_obtenerIdDescripcion('list_fbook','registerfbook')","","0","list_fbook"," ","list_fbook");
         
@@ -868,6 +868,22 @@
                 
                 $objResponse->script('	$(document).ready(function() {
 		$("input.file").si();});');
+
+                
+                $objResponse->script('	
+                    
+                                $("#list_fbook").change(function() {
+                                //var idtypedocument=$("#s_selectTypeDocument :selected").val();
+                                var list_fbook_description=$("#list_fbook :selected").text();
+                                alert(list_fbook_description);
+                                
+                                //$("#idtypedocument").val(idtypedocument);
+                                //$("#list_fbook_description").val(list_fbook_description);
+                                
+
+                                });
+
+                ');
                 
                 //upload file - image of portada
                 $objResponse->script("xajax_carga_archivo()");

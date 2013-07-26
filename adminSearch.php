@@ -2841,7 +2841,7 @@ else{
                 }
                 else{
                     //$objResponse->alert($xml);
-                    $objResponse->alert("Ponencia guardado satisfactoriamente");
+                    $objResponse->alert("Libro guardado satisfactoriamente");
 
                     $objResponse->script("xajax_formPonenciasShow()");
 
